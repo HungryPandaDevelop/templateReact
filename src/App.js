@@ -12,6 +12,8 @@ import Registration from 'pages/Registration';
 import Authorization from 'pages/Authorization';
 import Cabinet from 'pages/Cabinet';
 
+import GoogleAuth from 'pages/GoogleAuth';
+
 const App = ()=> {
   return (
       <>
@@ -24,6 +26,7 @@ const App = ()=> {
             <Route path='/registration' element={<Registration/>} ></Route>
             <Route path='/authorization' element={<Authorization/>} ></Route>
             <Route path='/Cabinet' element={<Cabinet/>} ></Route>
+            <Route path='/google' element={<GoogleAuth/>} ></Route>
           </Routes>
         </BrowserRouter>
 
