@@ -15,16 +15,16 @@ const TempateInputText = (props) => {
     labelSecond,
     placeholder,
     num,
+    wrapClass,
     checkErrorSubmit,
     setErrCheck,
-    wrapClass,
   } = props.obj;
 
 
 
 
   useEffect(() => {
-    console.log('in check')
+
     if (setErrCheck) {
       if (error) {
         setErrCheck(false);

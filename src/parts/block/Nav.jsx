@@ -10,6 +10,12 @@ const Nav = () => {
         <li>
           <Link to="/registration">Registration</Link>
         </li>
+        <li>
+          <Link to="/authorization">Authorization</Link>
+        </li>
+        <li>
+          <Link to="/cabinet">Cabinet</Link>
+        </li>
       </ul>
     </div>
   )

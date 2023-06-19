@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 
 import RenderForm from 'templates/forms/RenderForm';
 
@@ -7,18 +8,17 @@ import { useNavigate } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
-import { registrationAccount } from 'services/registrationAccount';
+import { authorizationAccount } from 'services/authorizationAccount';
 
 import GoogleAuth from 'parts/block/GoogleAuth';
 
-
-const Registration = ({ formData }) => {
+const Authorization = ({ formData }) => {
 
   const navigate = useNavigate();
 
   const submitSuccess = () => {
 
-    registrationAccount(formData.values).then((res) => {
+    authorizationAccount(formData.values).then((res) => {
       if (!res) { return false };
       navigate('/cabinet/', { replace: true });
     });
@@ -31,13 +31,14 @@ const Registration = ({ formData }) => {
   return (
     <div className="main-full">
       <h1>
-        Registration
+        Authorization
       </h1>
       <RenderForm
         fields={regFields}
-        btnSubmiText="Регистрация"
+        btnSubmiText="Войти"
         submitSuccess={submitSuccess}
       />
+
       <GoogleAuth />
     </div>
   )
@@ -51,4 +52,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Registration);
+export default connect(mapStateToProps)(Authorization);

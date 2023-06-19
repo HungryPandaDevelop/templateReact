@@ -10,8 +10,8 @@ const TemplateForm = (props) => {
   const {
     fields,
     btnSubmiText,
-    onSubmitIn,
     waitAnsw,
+    submitSuccess
   } = props;
 
 
@@ -30,7 +30,13 @@ const TemplateForm = (props) => {
       setCheckErrorSubmit(false);
     }, 10000);
 
-    errCheck && !waitAnsw && onSubmitIn();
+
+    if (errCheck) {
+      submitSuccess();
+    } else {
+      console.log('Ошибка полей')
+    }
+
 
   };
 
