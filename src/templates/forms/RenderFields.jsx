@@ -61,8 +61,8 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, }) => {
 
 
 
-  const choiseFieldType = (obj, index) => {
-    console.log(obj)
+  const choiseFieldType = (obj) => {
+
     switch (obj.type) {
       case 'title':
         return (
@@ -89,84 +89,43 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, }) => {
       case 'phone':
         return (
           <RenderInputPhone
-            name={obj.name}
-            placeholder={obj.placeholder}
-            label={obj.label}
-            labelSecond={obj.labelSecond}
-            disabled={obj.disabled}
-            num={index}
-            className={obj.wrapClass}
+            obj={obj}
           />
         );
       case 'select':
         return (
           <RenderInputSelect
-            name={obj.name}
-            label={obj.label}
-            labelSecond={obj.labelSecond}
-            placeholder={obj.placeholder}
-            options={obj.options}
-            num={index}
-            hideByClickId={obj.hideByClickId}
-            className={obj.wrapClass}
+            obj={obj}
           />
         );
       case 'date':
         return (
           <RenderInputDate
-            name={obj.name}
-            placeholder={obj.placeholder}
-            label={obj.label}
-            labelSecond={obj.labelSecond}
-            num={index}
-            view={obj.view}
-            className={obj.wrapClass}
-            hideByClickId={obj.hideByClickId}
+            obj={obj}
           />
         );
       case 'password':
         return (
           <RenderInputPassword
             obj={obj}
-            num={index}
-            checkErrorSubmit={checkErrorSubmit}
-            setErrCheck={setErrCheck}
 
           />
         );
 
       case 'checkbox':
         return (<RenderInputCheckbox
-          name={obj.name}
-          label={obj.label}
-          labelSecond={obj.labelSecond}
-          options={obj.options}
-          num={index}
-          hideByClickId={obj.hideByClickId}
-          className={obj.wrapClass}
+          obj={obj}
         />)
       case 'radio':
         return (
           <RenderInputRadio
-            name={obj.name}
-            label={obj.label}
-            labelSecond={obj.labelSecond}
-            options={obj.options}
-            num={index}
-            hideByClickId={obj.hideByClickId}
-            className={obj.wrapClass}
+            obj={obj}
           />
         );
       case 'switch':
         return (
           <RenderInputSwitch
-            name={obj.name}
-            label={obj.label}
-            options={obj.options}
-            // num={obj.num}
-            num={index}
-            hideByClickId={obj.hideByClickId}
-            className={obj.wrapClass}
+            obj={obj}
           />
         );
 
@@ -236,68 +195,33 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, }) => {
       case 'multy':
         return (
           <RenderInputMulty
-            mainname={obj.mainname}
-            label={obj.label}
-            labelSecond={obj.labelSecond}
-            allFields={obj.allFields}
-            checkErrorSubmit={checkErrorSubmit}
-            setErrCheck={setErrCheck}
-            // num={obj.num}
-            num={index}
-            className={obj.wrapClass}
-            hideByClickId={obj.hideByClickId}
+            obj={obj}
           />
         );
       case 'complex':
         return (
           <RenderInputComplex
-            name={obj.name}
-            label={obj.label}
-            allFields={obj.allFields}
-            btnAddText={obj.btnAddText}
-            // num={obj.num}
-            num={index}
-            className={obj.wrapClass}
+            obj={obj}
           />
         );
       case 'coords':
         return (
           <RenderInputCoords
-            name={obj.name}
-            placeholder={obj.placeholder}
-            label={obj.label}
-            labelSecond={obj.labelSecond}
-            disabled={obj.disabled}
-            // num={obj.num}
-            num={index}
-            className={obj.wrapClass}
+            obj={obj}
           />
         );
       case 'city':
         return (
           <>
             <RenderInputCity
-              name={obj.name}
-              // num={obj.num}
-              num={index}
-              placeholder={obj.placeholder}
-              label={obj.label}
-              labelSecond={obj.labelSecond}
-              disabled={obj.disabled}
-              validate={obj.validate}
-              checkErrorSubmit={checkErrorSubmit}
-              setErrCheck={setErrCheck}
-              className={obj.wrapClass}
+              obj={obj}
             />
           </>
         );
       case 'star':
         return (
           <RenderInputStar
-            name={obj.name}
-            label={obj.label}
-            num={index}
-            className={obj.wrapClass}
+            obj={obj}
           />
         );
       default:

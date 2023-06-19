@@ -1,38 +1,43 @@
-import { useState, useEffect } from 'react';
 import { Field } from 'redux-form';
+import { useState, useEffect } from 'react';
 
-import { required, minLength, mailCheck } from 'templates/forms/validator';
 
+const TemplateFieldPassword = (props) => {
 
-const TemplateFieldPassword = ({
-  input,
-  label,
-  placeholder,
-  labelSecond,
-  className,
-  num,
-  checkErrorSubmit,
-  setErrCheck,
-  meta: {
-    error,
-  }
-}) => {
+  const {
+    input,
+    meta: { error }
+  } = props;
+
+  const {
+    label,
+    labelSecond,
+    placeholder,
+    num,
+    checkErrorSubmit,
+    setErrCheck,
+    wrapClass,
+  } = props.obj;
 
   const [showPass, setShowPass] = useState(false);
 
 
   useEffect(() => {
-    if (error) {
-      setErrCheck(false);
+
+    if (setErrCheck) {
+      if (error) {
+        setErrCheck(false);
+      }
+      else {
+        setErrCheck(true);
+      }
     }
-    else {
-      setErrCheck(true);
-    }
+
   }, [error]);
 
 
   return (
-    <div className={className}>
+    <div className={wrapClass}>
       {num && <i className="num-offset">{num}</i>}
 
 
@@ -43,7 +48,7 @@ const TemplateFieldPassword = ({
         placeholder={placeholder}
         className={`input-decorate ${checkErrorSubmit && error && 'input-error'} ${input.value.length > 0 ? 'input-empty' : ''}`}
       />
-      {label && <label htmlFor={input.name}><b>{label}</b> {labelSecond ? <span>{labelSecond}</span> : ''}</label>}
+      {label && <label htmlFor={input.name}><b>{label}</b>{labelSecond && <div className='hint-input'><i><span>{labelSecond}</span></i></div>}</label>}
       <i className="pass-ico" data-visibility={showPass} onClick={() => { setShowPass((prevState) => !prevState) }}></i>
 
       {(checkErrorSubmit && (error && <span className='input-error-text'>{error}</span>))}
@@ -51,41 +56,15 @@ const TemplateFieldPassword = ({
   )
 }
 
-const RenderInputPassword = ({
-  obj,
-  num,
-  checkErrorSubmit,
-  setErrCheck,
-}) => {
+const RenderInputPassword = ({ obj }) => {
 
-  const {
-    name,
-    validate,
-    label,
-    labelSecond,
-    wrapClass,
-  } = obj;
 
-  let validateArr = [];
-
-  validate && validate.map((item) => {
-    if (item === 'required') { validateArr.push(required); }
-    else if (item === 'minLength') { validateArr.push(minLength); }
-    // else if (item === 'checkRus') { validateArr.push(checkRus); }
-    else if (item === 'mailCheck') { validateArr.push(mailCheck); }
-
-  })
 
   return <Field
-    name={name}
-    label={label}
-    labelSecond={labelSecond}
-    className={wrapClass}
-    num={num}
+    name={obj.name}
+    validate={obj.validate}
+    obj={obj}
     component={TemplateFieldPassword}
-    validate={validateArr}
-    checkErrorSubmit={checkErrorSubmit}
-    setErrCheck={setErrCheck}
   />;
 }
 

@@ -20,8 +20,10 @@ const TemplateForm = (props) => {
 
 
   const onSubmit = (e) => {
-
     e.preventDefault();
+
+    console.log('sub form')
+
     setCheckErrorSubmit(true);
 
     setTimeout(() => {
@@ -38,7 +40,7 @@ const TemplateForm = (props) => {
 
   return (
     <form
-      className="form main-grid"
+      className="form form-color main-grid"
     >
       <RenderFields
         fields={fields}
@@ -47,7 +49,7 @@ const TemplateForm = (props) => {
 
       />
       <div className="col-12 btn-container">
-        <button className="btn btn--blue" onClick={(e) => { onSubmit(e) }} >
+        <button className="btn btn--white" onClick={(e) => { onSubmit(e) }} >
           {waitAnsw ? (<>Loading...</>) : (
             <><i></i><span>{btnSubmiText}</span></>
           )}

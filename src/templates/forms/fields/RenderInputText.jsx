@@ -17,14 +17,14 @@ const TempateInputText = (props) => {
     num,
     checkErrorSubmit,
     setErrCheck,
-    className,
+    wrapClass,
   } = props.obj;
 
 
 
 
   useEffect(() => {
-
+    console.log('in check')
     if (setErrCheck) {
       if (error) {
         setErrCheck(false);
@@ -36,13 +36,9 @@ const TempateInputText = (props) => {
 
   }, [error]);
 
-  useEffect(() => {
-    // setNum();
-  }, []);
-
 
   return (
-    <div className={className}>
+    <div className={wrapClass}>
       {<i className="num-offset">{num}</i>}
 
 
@@ -50,10 +46,11 @@ const TempateInputText = (props) => {
         {...input}
         type="text"
         id={input.name}
-        className={`input-decorate ${checkErrorSubmit && error && 'input-error'} ${input.value.length > 0 ? 'input-empty' : ''} `}
         placeholder={placeholder}
+        className={`input-decorate ${checkErrorSubmit && error && 'input-error'} ${input.value.length > 0 ? 'input-empty' : ''} `}
+
       />
-      {label && <label htmlFor={input.name}><b>{label}</b>{labelSecond && <div className='hint-input-file'><i><span>{labelSecond}</span></i></div>}</label>}
+      {label && <label htmlFor={input.name}><b>{label}</b>{labelSecond && <div className='hint-input'><i><span>{labelSecond}</span></i></div>}</label>}
       {(checkErrorSubmit && (error && <span className='input-error-text'>{error}</span>))}
     </div>
   );
@@ -65,6 +62,7 @@ const RenderInputText = ({ obj }) => {
 
   return <Field
     name={obj.name}
+    validate={obj.validate}
     obj={obj}
     component={TempateInputText}
   />;

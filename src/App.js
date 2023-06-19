@@ -3,7 +3,7 @@ import {BrowserRouter, Routes, Route } from 'react-router-dom';
 import Nav from 'parts/block/Nav';
 
 import Main from 'pages/Main' ;
-import LogIn from 'pages/LogIn';
+import Registration from 'pages/Registration';
 
 const App = ()=> {
   return (
@@ -11,7 +11,7 @@ const App = ()=> {
         <Nav/>
         <Routes> 
           <Route path='/' exept element={<Main/>} ></Route>
-          <Route path='/login' element={<LogIn/>} ></Route>
+          <Route path='/registration' element={<Registration/>} ></Route>
         </Routes>
       </BrowserRouter>
   );
