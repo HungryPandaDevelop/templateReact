@@ -20,15 +20,12 @@ const AuthInfo = ({
       console.log('state user change', user,)
       if (user) {
         console.log('get listing', auth.currentUser.uid)
-        // setTimeout(() => {
-        getSingleListing('users', auth.currentUser.uid).then(res => {
-          console.log('get listing', res)
-          ActionFn('SET_INFO_ACCOUNT', { ...res });
-        });
-        // }, 1000);
-
-
-
+        setTimeout(() => {
+          getSingleListing('users', auth.currentUser.uid).then(res => {
+            console.log('get listing', res)
+            ActionFn('SET_INFO_ACCOUNT', { ...res });
+          });
+        }, 1000);
       }
       else {
         ActionFn('SET_INFO_ACCOUNT', { uid: false });

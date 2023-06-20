@@ -13,6 +13,7 @@ import Authorization from 'pages/Authorization';
 import Cabinet from 'pages/Cabinet';
 
 import GoogleAuth from 'pages/GoogleAuth';
+// import VKauth from 'pages/VKauth';
 
 const App = ()=> {
   return (
@@ -27,6 +28,7 @@ const App = ()=> {
             <Route path='/authorization' element={<Authorization/>} ></Route>
             <Route path='/Cabinet' element={<Cabinet/>} ></Route>
             <Route path='/google' element={<GoogleAuth/>} ></Route>
+            {/* <Route path='/vk' element={<VKauth/>} ></Route> */}
           </Routes>
         </BrowserRouter>
 
