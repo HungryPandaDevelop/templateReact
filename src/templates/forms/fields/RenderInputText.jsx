@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 
 
-const TempateInputText = (props) => {
+const TempateInput = (props) => {
 
   const {
     input,
@@ -39,9 +39,7 @@ const TempateInputText = (props) => {
 
   return (
     <div className={wrapClass}>
-      {<i className="num-offset">{num}</i>}
-
-
+      {/* {<i className="num-offset">{num}</i>} */}
       <input
         {...input}
         type="text"
@@ -64,7 +62,7 @@ const RenderInputText = ({ obj }) => {
     name={obj.name}
     validate={obj.validate}
     obj={obj}
-    component={TempateInputText}
+    component={TempateInput}
   />;
 }
 

@@ -12,6 +12,9 @@ import Registration from 'pages/Registration';
 import Authorization from 'pages/Authorization';
 import Cabinet from 'pages/Cabinet';
 
+import ListUsers from 'pages/ListUsers';
+import Chat from 'pages/Chat';
+
 import GoogleAuth from 'pages/GoogleAuth';
 // import VKauth from 'pages/VKauth';
 
@@ -26,7 +29,10 @@ const App = ()=> {
             <Route path='/' exept element={<Main/>} ></Route>
             <Route path='/registration' element={<Registration/>} ></Route>
             <Route path='/authorization' element={<Authorization/>} ></Route>
-            <Route path='/Cabinet' element={<Cabinet/>} ></Route>
+            <Route path='/cabinet' element={<Cabinet/>} ></Route>
+            <Route path='/list_users' element={<ListUsers/>} ></Route>
+            <Route path='/chat' element={<Chat/>} ></Route>
+            <Route path='/cabinet/chat/:roomUrl'  element={<Chat/>} ></Route>
             <Route path='/google' element={<GoogleAuth/>} ></Route>
             {/* <Route path='/vk' element={<VKauth/>} ></Route> */}
           </Routes>

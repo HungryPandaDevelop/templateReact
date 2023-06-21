@@ -20,7 +20,7 @@ import RenderInputRadio from './fields/RenderInputRadio';  // radio
 
 import RenderInputSelect from './fields/RenderInputSelect'; // селект
 
-// import RenderInputFile from './fields/RenderInputFile'; // файл
+import RenderInputFile from './fields/RenderInputFile'; // файл
 
 // import RenderInputFileDropZone from './fields/RenderInputFileDropZone'; // зона файлов
 
@@ -129,22 +129,12 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, }) => {
           />
         );
 
-      // case 'file':
-      //   return (
-      //     <RenderInputFile
-      //       name={obj.name}
-      //       label={obj.label}
-      //       labelSecond={obj.labelSecond}
-      //       typeAccept={obj.typeAccept}
-      //       maxSize={obj.maxSize}
-      //       textEmpty={obj.textEmpty}
-      //       nameFolder={obj.nameFolder}
-      //       // num={obj.num}
-      //       num={index}
-      //       className={obj.wrapClass}
-      //       hideByClickId={obj.hideByClickId}
-      //     />
-      //   );
+      case 'file':
+        return (
+          <RenderInputFile
+            obj={obj}
+          />
+        );
       // case 'dropzone':
       //   return (
       //     <RenderInputFileDropZone

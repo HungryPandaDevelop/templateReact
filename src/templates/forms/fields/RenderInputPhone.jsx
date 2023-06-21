@@ -1,58 +1,63 @@
 import { Field } from 'redux-form';
-// import PhoneInput from 'react-phone-input-2' удалить
-// import { createTextMask } from 'redux-form-input-masks' удалить;
-import InputMask from 'react-input-mask';
-// import { withMask } from 'use-mask-input' удалить;
-// const phoneMask = createTextMask({
-//   pattern: '+7 (999) 999-99-99',
-// }); удалить
+import { useEffect } from 'react';
 
-const TempateInputText = (props) => {
+import InputMask from 'react-input-mask';
+
+
+const TempateInput = (props) => {
   const {
     input,
+    meta: { error }
   } = props;
 
-  return (
-    <>
-      {/* <input
-        {...input}
-        type="text"
-        // ref={withMask('9999-9999')}
-        id={input.name}
-        className={`input-decorate  ${input.name.length > 0 ? 'input-empty' : ''} `}
+  const {
+    label,
+    labelSecond,
+    num,
+    wrapClass,
+    checkErrorSubmit,
+    setErrCheck,
+  } = props.obj;
 
-      /> */}
-      <InputMask
+  useEffect(() => {
+
+    if (setErrCheck) {
+      if (error) {
+        setErrCheck(false);
+      }
+      else {
+        setErrCheck(true);
+      }
+    }
+
+  }, [error]);
+
+  return (
+    <div className={wrapClass}>
+      {/* {<i className="num-offset">{num}</i>} */}
+      {<InputMask
         {...input}
         mask='+7 (999) 999-99-99'
+        placeholder='+7 (999) 999-99-99'
         maskChar={null}
-
         id={input.name}
-        className={`input-decorate  ${input.value.length > 0 ? 'input-empty' : ''} `}
-      />
-    </>
+        className={`input-decorate ${checkErrorSubmit && error && 'input-error'} ${input.value.length > 0 ? 'input-empty' : ''} `}
+      />}
+      {label && <label htmlFor={input.name}><b>{label}</b>{labelSecond && <div className='hint-input'><i><span>{labelSecond}</span></i></div>}</label>}
+      {(checkErrorSubmit && (error && <span className='input-error-text'>{error}</span>))}
+    </div>
   );
 }
 
 
-const RenderInputPhone = ({ name, placeholder, label, labelSecond, className, num }) => {
-  return (
-    <div className={className}>
-      {num && <i className="num-offset">{num}</i>}
+const RenderInputPhone = ({ obj }) => {
 
-
-      <Field
-        name={name}
-        type="tel"
-        placeholder={placeholder}
-
-        component={TempateInputText}
-      // {...phoneMask}
-
-      />
-      {label && (<label htmlFor={name}><b>{label}</b> {labelSecond ? <span>{labelSecond}</span> : ''}</label>)}
-    </div>
-  );
+  return <Field
+    name={obj.name}
+    validate={obj.validate}
+    obj={obj}
+    component={TempateInput}
+  />;
 }
 
 export default RenderInputPhone;

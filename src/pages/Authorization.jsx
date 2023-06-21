@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 import RenderForm from 'templates/forms/RenderForm';
 
 import { regFields } from 'base/forms/regFields';

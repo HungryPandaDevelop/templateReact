@@ -115,12 +115,11 @@ const TemplateFile = (props) => {
 }
 
 
-const RenderInputFile = (props) => {
+const RenderInputFile = ({ obj }) => {
 
   return <Field
-    name={props.name}
-    props={props}
-    typeAccept={props.typeAccept}
+    name={obj.name}
+    obj={obj}
     component={TemplateFile}
   />
 

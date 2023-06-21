@@ -11,10 +11,10 @@ import { toast } from 'react-toastify';
 
 
 
-export const saveInfo = async (dataForm, cardsId, baseName) => {
+export const saveListing = async (dataForm, cardsId, baseName) => {
   
     try {
-   
+
       const cardsRef = doc(db, baseName, cardsId);
 
       await updateDoc(cardsRef, dataForm);

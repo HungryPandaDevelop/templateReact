@@ -1,7 +1,6 @@
 const accounInfo = {
   uid: false,
   email: '',
-  infoAccount: [],
   
 }
 export const accountReducer = (state=accounInfo, action) => {
