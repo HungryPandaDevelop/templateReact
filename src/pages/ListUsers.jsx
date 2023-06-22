@@ -12,10 +12,12 @@ const ListUsers = ({ account }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getListing('users').then((res) => {
+
+    getListing('users', 'noUserRef', account.uid).then((res) => {
       setListings(res);
       setLoading(false);
     });
+
   }, [])
 
   if (loading) { return 'Loading...' }
@@ -23,7 +25,7 @@ const ListUsers = ({ account }) => {
 
   const onInviteChat = (userInfo) => {
 
-    createRoom([account, userInfo], account.uid).then(res => {
+    createRoom({ 'my': account, 'he': userInfo }, account.uid).then(res => {
       console.log('invite res', res)
     });
   }
@@ -53,10 +55,36 @@ const ListUsers = ({ account }) => {
 }
 
 const mapStateToProps = (state) => {
-
+  // console.log('account.uid', state)
   return {
     account: state.account,
   }
 }
 
 export default connect(mapStateToProps)(ListUsers);
+
+
+
+
+  // примеры async
+  // const siteWp = 'https://zoo-base.sait.website/wp-json/wp/v2/pages/3';
+
+  // const fetchWp = () => {
+  //   return fetch(siteWp)
+  //     .then(response => response.json())
+  // }
+  // const fetchWpAsync = async () => {
+  //   const response = await fetch(siteWp);
+  //   const dataJs = await response.json()
+  //   // console.log('dataJs', dataJs)
+
+  //   return dataJs;
+  // }
+  // axios.get(`${siteWp}/wp-json/wp/v2/pages/3`).then(res => {
+
+  //   console.log('re', res.data.content.rendered)
+  //   setListings(res.data);
+  //   setLoading(false);
+
+  // });
+  // примеры async

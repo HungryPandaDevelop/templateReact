@@ -3,16 +3,19 @@ import RenderForm from 'templates/forms/RenderForm';
 
 import { regFields } from 'base/forms/regFields';
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
 import { registrationAccount } from 'services/registrationAccount';
 
+
 import GoogleAuth from 'parts/block/GoogleAuth';
 
 
-const Registration = ({ formData }) => {
+
+
+const Registration = ({ formData, uid }) => {
 
   const navigate = useNavigate();
 
@@ -26,7 +29,7 @@ const Registration = ({ formData }) => {
 
   }
 
-
+  if (uid) return <Navigate to='/cabinet' />
 
   return (
     <div className="main-full">
@@ -47,6 +50,7 @@ const Registration = ({ formData }) => {
 const mapStateToProps = (state) => {
 
   return {
+    uid: state.account.uid,
     formData: state.form.singleInput,
   }
 }

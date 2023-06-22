@@ -13,23 +13,24 @@ const AuthInfo = ({
 }) => {
 
   useEffect(() => {
-    // console.log('userInfo render', account)
+
     const auth = getAuth();
 
     onAuthStateChanged(auth, (user) => {
-      console.log('state user change', user,)
+
       if (user) {
-        console.log('get listing', auth.currentUser.uid)
         // setTimeout(() => {
         getSingleListing('users', auth.currentUser.uid).then(res => {
-          console.log('get listing', res)
+
+          localStorage.setItem('account', JSON.stringify(res));
           ActionFn('SET_INFO_ACCOUNT', { ...res });
         });
         // }, 1000);
       }
       else {
-        ActionFn('SET_INFO_ACCOUNT', { uid: false });
-      }
+        localStorage.removeItem('account');
+        ActionFn('SET_INFO_ACCOUNT', { uid: false, email: '', });
+      };
     });
 
 

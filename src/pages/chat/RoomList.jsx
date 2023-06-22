@@ -1,25 +1,38 @@
 import { useState, useEffect } from 'react';
-import { getMyRooms } from 'services/chatEvents';
+import { getMyRoomsOnline } from 'services/chatEvents';
+import { deleteListing } from 'services/getListings';
 
 const RoomList = ({ uid }) => {
 
-  const [listings, setListings] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
-    getMyRooms(uid).then((res) => {
-      setListings(res);
-      setLoading(false);
-    });
-  }, [])
 
-  if (loading) { return 'Loading...' }
+    getMyRoomsOnline(setRooms, uid);
+
+  }, []);
+
+  console.log('r', rooms)
+
+  const onDeleteRoom = (id) => {
+    console.log('id', id)
+    deleteListing(rooms, 'messages', id);
+  }
 
   return (
     <div>
       <h2>RoomList</h2>
       <div>
-        {listings.map((item, index) => (<div key={index}>Room</div>))}
+        {rooms.map((item, index) => (
+          <div key={index}>
+            <h4>Room: {item.id}</h4>
+            <div
+              className="btn btn--blue"
+              onClick={() => { onDeleteRoom(item.id) }}
+            >delete</div>
+          </div>
+        ))
+        }
       </div>
     </div>
   )

@@ -8,9 +8,11 @@ import { connect } from 'react-redux';
 
 import { authorizationAccount } from 'services/authorizationAccount';
 
+import { Navigate } from 'react-router-dom';
+
 import GoogleAuth from 'parts/block/GoogleAuth';
 
-const Authorization = ({ formData }) => {
+const Authorization = ({ formData, uid }) => {
 
   const navigate = useNavigate();
 
@@ -25,6 +27,7 @@ const Authorization = ({ formData }) => {
   }
 
 
+  if (uid) return <Navigate to='/cabinet' />
 
   return (
     <div className="main-full">
@@ -46,6 +49,7 @@ const Authorization = ({ formData }) => {
 const mapStateToProps = (state) => {
 
   return {
+    uid: state.account.uid,
     formData: state.form.singleInput,
   }
 }

@@ -27,6 +27,14 @@ export const getListing = async (baseName,  type, uid ) => {
       orderBy('timestamp', 'desc'),
     );
   }
+  if(type==='noUserRef'){
+    q = query(
+      listingsRef,
+      where('uid', '!=', uid),
+      orderBy('uid', 'desc'),
+
+    );
+  }
   else if(type==='rooms'){
     q = query(
       listingsRef,
@@ -42,6 +50,7 @@ export const getListing = async (baseName,  type, uid ) => {
 
   const querySnap = await getDocs(q);
 
+  // console.log('doc',querySnap)
 
   const getData = querySnap.docs.map((doc) => ({
     id: doc.id,
@@ -54,23 +63,14 @@ export const getListing = async (baseName,  type, uid ) => {
 
 
 
-export const onDeleteCards = async (listings, listingId, name) => {
+export const deleteListing = async (listings, nameCollection, listingId) => {
   if (window.confirm('Delete ?')) {
-    await deleteDoc(doc(db, name, listingId))
+    await deleteDoc(doc(db, nameCollection, listingId))
     return  listings.filter((listing) => listing.id !== listingId)
   }
   else{
     return listings;
   }
-}
-
-export const onDeleteCollection = async (baseName, listingId ) => {
-    try {
-      await deleteDoc(doc(db, baseName, listingId))
-      toast.success('Is delete');
-    } catch (error) {
-      toast.error('Невозможно удалить')
-    }
 }
 
 
