@@ -33,8 +33,10 @@ const Registration = ({ formData, uid }) => {
 
   return (
     <div className="main-full">
+      <div className="stub"></div>
+      <div className="stub"></div>
       <h1>
-        Registration
+        Регистраиця
       </h1>
       <RenderForm
         fields={regFields}

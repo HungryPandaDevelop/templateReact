@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getMyRoomsOnline } from 'services/chatEvents';
 import { deleteListing } from 'services/getListings';
+import { Link } from 'react-router-dom';
 
 const RoomList = ({ uid }) => {
 
@@ -20,20 +21,22 @@ const RoomList = ({ uid }) => {
   }
 
   return (
-    <div>
-      <h2>RoomList</h2>
-      <div>
-        {rooms.map((item, index) => (
-          <div key={index}>
-            <h4>Room: {item.id}</h4>
+    <div className='chat-list'>
+      {rooms.map((item, index) => (
+        <div key={index} className='chat-list-item'>
+          <h4>Room: {item.id}</h4>
+          <div>
+            <Link to={`/cabinet/chat/${item.id}`}
+              className="btn btn--yellow"
+            >Войти</Link>
             <div
               className="btn btn--blue"
               onClick={() => { onDeleteRoom(item.id) }}
             >delete</div>
           </div>
-        ))
-        }
-      </div>
+        </div>
+      ))
+      }
     </div>
   )
 };

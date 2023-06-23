@@ -55,7 +55,7 @@ const TemplateForm = (props) => {
 
       />
       <div className="col-12 btn-container">
-        <button className="btn btn--white" onClick={(e) => { onSubmit(e) }} >
+        <button className="btn btn--blue" onClick={(e) => { onSubmit(e) }} >
           {waitAnsw ? (<>Loading...</>) : (
             <><i></i><span>{btnSubmiText}</span></>
           )}

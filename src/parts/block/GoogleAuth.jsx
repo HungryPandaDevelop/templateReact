@@ -15,7 +15,7 @@ const GoogleAuth = () => {
   return (
     <div>
       <h1>Авторизация через Google</h1>
-      <button className="btn" onClick={onGoogleClick}>Google Авторизация</button>
+      <button className="btn btn--black-border" onClick={onGoogleClick}>Google Авторизация</button>
     </div>
   )
 }

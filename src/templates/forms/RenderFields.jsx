@@ -26,7 +26,7 @@ import RenderInputFile from './fields/RenderInputFile'; // файл
 
 // import RenderInputFileVideo from './fields/RenderInputFileVideo'; // видео
 
-// import RenderInputFilePhoto from './fields/RenderInputFilePhoto'; // фото
+import RenderInputFilePhoto from './fields/RenderInputFilePhoto'; // фото
 
 
 
@@ -166,22 +166,20 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, }) => {
       //       className={obj.wrapClass}
       //     />
       //   );
-      // case 'photo':
-      //   return (
-      //     <RenderInputFilePhoto
-      //       name={obj.name}
-      //       label={obj.label}
-      //       labelSecond={obj.labelSecond}
-      //       allFields={obj.allFields}
-      //       typeUpload={obj.typeUpload}
-      //       maxSize={obj.maxSize}
-      //       typeFile={obj.typeFile}
-      //       textEmpty={obj.textEmpty}
-      //       // num={obj.num}
-      //       num={index}
-      //       className={obj.wrapClass}
-      //     />
-      //   );
+      case 'photo':
+        return (
+          <RenderInputFilePhoto
+            name={obj.name}
+            label={obj.label}
+            labelSecond={obj.labelSecond}
+            allFields={obj.allFields}
+            typeUpload={obj.typeUpload}
+            maxSize={obj.maxSize}
+            typeFile={obj.typeFile}
+            textEmpty={obj.textEmpty}
+            className={obj.wrapClass}
+          />
+        );
       case 'multy':
         return (
           <RenderInputMulty

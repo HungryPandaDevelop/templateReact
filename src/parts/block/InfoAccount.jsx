@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ActionFn from 'store/actions';
-
+import { Link } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
 
 const InfoAccount = ({ account }) => {
@@ -12,18 +12,24 @@ const InfoAccount = ({ account }) => {
     ActionFn('SET_INFO_ACCOUNT', { uid: false, email: '', infoAccount: [], });
   };
 
-  if (!account.uid) { return false };
+  // if (!account.uid) { return false };
 
   return (
-    <div>
-      <h3>uid: {account.uid}</h3>
-      <h3>email: {account.email} </h3>
-      <div
-        className="btn btn--blue"
-        onClick={onLogOut}
-      >Выйти</div>
+    <>
+      {/* <h3>uid: {account.uid}</h3>
+      <h3>email: {account.email} </h3> */}
 
-    </div>
+      {account.uid ? (
+        <>
+          <Link to="/cabinet/chat" className="btn btn-out btn--white">Чат</Link>
+          <Link to="/cabinet" className="btn btn-out btn--white">Кабинет</Link>
+          <div
+            className="btn btn--white"
+            onClick={onLogOut}
+          >Выйти</div>
+        </>) : (<><Link to="/authorization" className="btn btn-out btn--white">Войти</Link></>)}
+
+    </>
   )
 };
 

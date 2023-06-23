@@ -1,11 +1,8 @@
+import Section from "pages/Main/Section"
 
 const Main = () => {
   return (
-    <div className="main-full">
-      <h1>
-        Main
-      </h1>
-    </div>
+    <Section />
   )
 }
 

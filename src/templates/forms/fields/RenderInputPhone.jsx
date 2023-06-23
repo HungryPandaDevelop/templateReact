@@ -35,6 +35,7 @@ const TempateInput = (props) => {
   return (
     <div className={wrapClass}>
       {/* {<i className="num-offset">{num}</i>} */}
+      {label && <label htmlFor={input.name}><b>{label}</b>{labelSecond && <div className='hint-input'><i><span>{labelSecond}</span></i></div>}</label>}
       {<InputMask
         {...input}
         mask='+7 (999) 999-99-99'
@@ -43,7 +44,7 @@ const TempateInput = (props) => {
         id={input.name}
         className={`input-decorate ${checkErrorSubmit && error && 'input-error'} ${input.value.length > 0 ? 'input-empty' : ''} `}
       />}
-      {label && <label htmlFor={input.name}><b>{label}</b>{labelSecond && <div className='hint-input'><i><span>{labelSecond}</span></i></div>}</label>}
+
       {(checkErrorSubmit && (error && <span className='input-error-text'>{error}</span>))}
     </div>
   );

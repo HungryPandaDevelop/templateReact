@@ -73,5 +73,11 @@ export const deleteListing = async (listings, nameCollection, listingId) => {
   }
 }
 
+export const deleteListingTemp = async ( nameCollection, listingId) => {
+  if (window.confirm('Delete ?')) {
+    await deleteDoc(doc(db, nameCollection, listingId))
+  }
+}
+
 
 

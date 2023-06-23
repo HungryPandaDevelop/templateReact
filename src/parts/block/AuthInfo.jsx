@@ -40,7 +40,7 @@ const AuthInfo = ({
 
   return (
     <>
-      <div>AuthInfo: {(account.uid ? 'Logged: ' + account.uid : 'No Logged')}</div>
+      {/* <div>AuthInfo: {(account.uid ? 'Logged: ' + account.uid : 'No Logged')}</div> */}
     </>
   )
 }

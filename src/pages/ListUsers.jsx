@@ -1,56 +1,63 @@
 import { useState, useEffect } from 'react'
 
+
+
 import { getListing } from 'services/getListings';
 
-import { createRoom } from 'services/chatEvents';
+
+
 
 import { connect } from 'react-redux';
+
+import UserItem from 'pages/ListUser/UserItem';
 
 const ListUsers = ({ account }) => {
 
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const [likes, setLikes] = useState([]);
+
+
+
   useEffect(() => {
+
+    getListing('likes', 'userRef', account.uid).then((res) => {
+      setLikes(res);
+    });
 
     getListing('users', 'noUserRef', account.uid).then((res) => {
       setListings(res);
       setLoading(false);
     });
 
-  }, [])
+  }, []);
 
   if (loading) { return 'Loading...' }
 
 
-  const onInviteChat = (userInfo) => {
 
-    createRoom({ 'my': account, 'he': userInfo }, account.uid).then(res => {
-      console.log('invite res', res)
-    });
-  }
-
-  const UserItem = ({ userInfo }) => {
-
-    return (
-      <div>
-        <div>mail: {userInfo.email}</div>
-        <div>
-          <div className="btn btn--blue">Like</div>
-          <div
-            className="btn btn--yellow"
-            onClick={() => { onInviteChat(userInfo) }}
-          >Chat</div>
-        </div>
-      </div>
-    )
-  }
 
   return (
-    <div>
-      <h1>ListUsers</h1>
-      {listings.map((userInfo, index) => (<div key={index}><UserItem userInfo={userInfo} /></div>))}
-    </div>
+    <>
+      <div className="stub"></div>
+      <div className="stub"></div>
+      <div className="main-full">
+        <h1>Пользователи</h1>
+      </div>
+      <div className="catalog-grid main-grid">
+        {listings.map((userInfo, index) => (
+          <div key={index} className="col-4">
+            <UserItem
+              userInfo={userInfo}
+              account={account}
+              likes={likes}
+            />
+          </div>
+        ))}
+      </div>
+
+    </>
   )
 }
 

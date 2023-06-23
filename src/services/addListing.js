@@ -1,69 +1,42 @@
 import { db } from 'config/firebase';
 
 import {
-  addDoc,
-  doc,
   collection,
+  query,
+  onSnapshot,
   serverTimestamp,
-  setDoc
+  addDoc,
+  getDocs,
+  getDoc,
+  updateDoc,
+  doc,
+  where,
+  setDoc,
+  orderBy
 } from 'firebase/firestore';
+
+import { v4 as uuidv4 } from 'uuid';
 
 import { toast } from 'react-toastify';
 
 
-// export const addCards = async (dataForm, baseCards, uid)=>{
-
-//   try {
-    
-//     dataForm['userRef'] = uid;
-//     dataForm['timestamp'] = serverTimestamp();
-
-//     await addDoc(collection(doc(db, 'test'), baseCards), dataForm);
-
-//     toast.success('Карточка добавлена');
-
-//   } catch (error) {
-//     toast.error('Невозможно добавить')
-//     console.log(error)
-//   }
-// }
-
-
 export const addCardsDefault = async (dataForm, baseCards, )=>{
 
+  const generateId = uuidv4();
+
   try {
-    
+    console.log('dataForm', dataForm)
     dataForm['timestamp'] = serverTimestamp();
+    dataForm.id = generateId;
 
+    await setDoc(doc(db, baseCards,  generateId), dataForm);
     // await addDoc(collection(db, baseCards), dataForm);
-
-    const frankDocRef = doc(db, baseCards, dataForm.sligPost);
-
-    await setDoc(frankDocRef, dataForm);
-
+  
     toast.success('Элемент добавален');
+    return generateId;
 
   } catch (error) {
     toast.error('Невозможно добавить')
     console.log(error)
   }
 }
-
-// export const addRews = async (dataForm, baseCards, listingId)=>{
-
-//   try {
-    
-//     dataForm['listingRef'] = listingId;
-//     dataForm['timestamp'] = serverTimestamp();
-
-//     await addDoc(collection(db, baseCards), dataForm);
-    
-//     toast.success('Карточка добавлена');
-
-    
-
-//   } catch (error) {
-//     toast.error('Невозможно обновить профиль')
-//     console.log(error)
-//   }
-// }

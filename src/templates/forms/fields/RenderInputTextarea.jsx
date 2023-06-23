@@ -1,25 +1,23 @@
 import { Field } from 'redux-form';
 import { useEffect } from 'react';
 
-import { connect } from 'react-redux';
-
-import { required, minLength, mailCheck } from 'templates/forms/validator';
-
-const TempateInputTextarea = (props) => {
+const TempateInput = (props) => {
 
   const {
     input,
+    meta: { error }
+  } = props;
+
+  const {
     label,
     labelSecond,
-    checkErrorSubmit,
+    placeholder,
     maxLength,
+    wrapClass,
+    checkErrorSubmit,
     setErrCheck,
-    num,
-    className,
-    meta: {
-      error,
-    }
-  } = props;
+  } = props.obj;
+
 
   useEffect(() => {
     if (setErrCheck) {
@@ -33,15 +31,14 @@ const TempateInputTextarea = (props) => {
   }, [error]);
 
   return (
-    <div className={className}>
-      {num && <i className="num-offset">{num}</i>}
-
+    <div className={wrapClass}>
 
       <textarea
         {...input}
         type="textarea"
         id={input.name}
         className={`input-decorate ${checkErrorSubmit && error && 'input-error'} ${input.value.length > 0 ? 'input-empty' : ''} `}
+        placeholder={placeholder}
         maxLength={maxLength}
       >
       </textarea>
@@ -51,54 +48,16 @@ const TempateInputTextarea = (props) => {
   );
 }
 
-const RenderInputTextarea = ({
-  obj,
-  inputValueConnect,
-  checkErrorSubmit,
-  setErrCheck,
-  num,
-}) => {
+const RenderInputTextarea = ({ obj }) => {
 
-  const {
-    name,
-    label,
-    labelSecond,
-    maxLength,
-    validate,
-    wrapClass,
-    hideByClickId,
-  } = obj;
-
-  let validateArr = [];
-  validate && validate.map((item) => {
-    if (item === 'required') { validateArr.push(required); }
-    else if (item === 'minLength') { validateArr.push(minLength); }
-    else if (item === 'mailCheck') { validateArr.push(mailCheck); }
-  });
-
-  if (hideByClickId && !inputValueConnect) { return false }
-  else if (hideByClickId && inputValueConnect.length > 0 && hideByClickId.indexOf(inputValueConnect) === -1) {
-    return false;
-  }
 
   return <Field
-    name={name}
-    label={label}
-    labelSecond={labelSecond}
-    component={TempateInputTextarea}
-    className={wrapClass}
-    num={num}
-    maxLength={maxLength}
-    validate={validateArr}
-    checkErrorSubmit={checkErrorSubmit}
-    setErrCheck={setErrCheck}
+    name={obj.name}
+    validate={obj.validate}
+    obj={obj}
+    component={TempateInput}
   />;
 }
 
-const mapStateToProps = (state) => {
 
-  return {
-    inputValueConnect: state.inputConnectState.inputValueConnect,
-  }
-}
-export default connect(mapStateToProps)(RenderInputTextarea);
+export default RenderInputTextarea;

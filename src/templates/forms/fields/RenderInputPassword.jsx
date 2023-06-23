@@ -38,9 +38,7 @@ const TemplateFieldPassword = (props) => {
 
   return (
     <div className={wrapClass}>
-      {num && <i className="num-offset">{num}</i>}
-
-
+      {label && <label htmlFor={input.name}><b>{label}</b>{labelSecond && <div className='hint-input'><i><span>{labelSecond}</span></i></div>}</label>}
       <input
         type={showPass ? ("text") : ("password")}
         {...input}
@@ -48,7 +46,7 @@ const TemplateFieldPassword = (props) => {
         placeholder={placeholder}
         className={`input-decorate ${checkErrorSubmit && error && 'input-error'} ${input.value.length > 0 ? 'input-empty' : ''}`}
       />
-      {label && <label htmlFor={input.name}><b>{label}</b>{labelSecond && <div className='hint-input'><i><span>{labelSecond}</span></i></div>}</label>}
+
       <i className="pass-ico" data-visibility={showPass} onClick={() => { setShowPass((prevState) => !prevState) }}></i>
 
       {(checkErrorSubmit && (error && <span className='input-error-text'>{error}</span>))}

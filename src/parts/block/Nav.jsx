@@ -1,29 +1,20 @@
 import { Link } from 'react-router-dom';
 const Nav = () => {
   return (
-    <div className="main-full">
-      <h2>Nav</h2>
-      <ul>
-        <li>
-          <Link to="/">Main</Link>
-        </li>
-        <li>
-          <Link to="/registration">Registration</Link>
-        </li>
-        <li>
-          <Link to="/authorization">Authorization</Link>
-        </li>
-        <li>
-          <Link to="/cabinet">Cabinet</Link>
-        </li>
-        <li>
-          <Link to="/cabinet/list_users">List Users</Link>
-        </li>
-        <li>
-          <Link to="/cabinet/chat">Chat</Link>
-        </li>
-      </ul>
-    </div>
+    <ul>
+      <li>
+        <Link to="/cabinet/list_users">Все Пользователи</Link>
+      </li>
+      {/* <li>
+        <Link to="/support">Поддержка</Link>
+      </li>
+      <li>
+        <Link to="/safety">Безопасность</Link>
+      </li> */}
+      <li>
+        <Link to="/about">О Нас</Link>
+      </li>
+    </ul>
   )
 };
 

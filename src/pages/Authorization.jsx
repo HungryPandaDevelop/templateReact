@@ -2,13 +2,11 @@ import RenderForm from 'templates/forms/RenderForm';
 
 import { regFields } from 'base/forms/regFields';
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
 import { authorizationAccount } from 'services/authorizationAccount';
-
-import { Navigate } from 'react-router-dom';
 
 import GoogleAuth from 'parts/block/GoogleAuth';
 
@@ -23,16 +21,17 @@ const Authorization = ({ formData, uid }) => {
       navigate('/cabinet/', { replace: true });
     });
 
-
-  }
+  };
 
 
   if (uid) return <Navigate to='/cabinet' />
 
   return (
     <div className="main-full">
+      <div className="stub"></div>
+      <div className="stub"></div>
       <h1>
-        Authorization
+        Авторизация
       </h1>
       <RenderForm
         fields={regFields}
