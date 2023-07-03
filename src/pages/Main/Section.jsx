@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import img1 from 'frontend/images/temp/partners/1.svg'
-import img2 from 'frontend/images/temp/partners/2.svg'
-import img3 from 'frontend/images/temp/partners/3.svg'
-import img4 from 'frontend/images/temp/partners/4.svg'
+import img1 from 'frontend/images/partners/1.svg'
+import img2 from 'frontend/images/partners/2.svg'
+import img3 from 'frontend/images/partners/3.svg'
+import img4 from 'frontend/images/partners/4.svg'
 
 
 const Section = ({ account }) => {
