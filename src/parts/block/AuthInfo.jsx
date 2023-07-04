@@ -19,6 +19,7 @@ const AuthInfo = ({
     onAuthStateChanged(auth, (user) => {
 
       if (user) {
+        console.log('u', user.emailVerified)
         // setTimeout(() => {
         getSingleListing('users', auth.currentUser.uid).then(res => {
 

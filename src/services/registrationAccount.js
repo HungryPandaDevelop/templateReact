@@ -4,6 +4,7 @@ import {
   getAuth,
   updateProfile,
   createUserWithEmailAndPassword,
+  sendEmailVerification
 } from 'firebase/auth';
 
 
@@ -32,11 +33,15 @@ export const registrationAccount = async (formData) => {
     updateProfile(auth.currentUser, {
       displayName: name
     });
+
+    await sendEmailVerification(auth.currentUser);
+    
     /* add to base auth */
 
     /* add to firestore base */
     const user = userCredential.user;
-
+    // await user.sendEmailVertification();
+  
     const formDataCopy = { ...formData, uid: user.uid };
 
     delete formDataCopy.password;
@@ -47,7 +52,7 @@ export const registrationAccount = async (formData) => {
 
     toast.success('Rегистрация успешна');
   
-    return true;
+    // return true;
 
   } catch (error) {
     if( error.code === 'auth/email-already-in-use'){

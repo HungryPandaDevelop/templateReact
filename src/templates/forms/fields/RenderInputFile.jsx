@@ -9,8 +9,8 @@ import storeImage from 'hooks/storeImage';
 
 const TemplateFile = (props) => {
 
-  const storage = getStorage();
 
+  const storage = getStorage();
 
   const {
     input,

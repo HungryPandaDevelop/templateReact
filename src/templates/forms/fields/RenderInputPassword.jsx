@@ -13,7 +13,6 @@ const TemplateFieldPassword = (props) => {
     label,
     labelSecond,
     placeholder,
-    num,
     checkErrorSubmit,
     setErrCheck,
     wrapClass,
@@ -39,16 +38,16 @@ const TemplateFieldPassword = (props) => {
   return (
     <div className={wrapClass}>
       {label && <label htmlFor={input.name}><b>{label}</b>{labelSecond && <div className='hint-input'><i><span>{labelSecond}</span></i></div>}</label>}
-      <input
-        type={showPass ? ("text") : ("password")}
-        {...input}
-        id={input.name}
-        placeholder={placeholder}
-        className={`input-decorate ${checkErrorSubmit && error && 'input-error'} ${input.value.length > 0 ? 'input-empty' : ''}`}
-      />
+      <div className={`input-password ${showPass ? 'view-pass' : ''}`}>
+        <input
+          type={showPass ? ("text") : ("password")}
+          {...input}
+          placeholder={placeholder}
+          className={`input-decorate ${checkErrorSubmit && error && 'input-error'}`}
+        />
 
-      <i className="pass-ico" data-visibility={showPass} onClick={() => { setShowPass((prevState) => !prevState) }}></i>
-
+        <i data-visibility={showPass} onClick={() => { setShowPass(!showPass) }}></i>
+      </div>
       {(checkErrorSubmit && (error && <span className='input-error-text'>{error}</span>))}
     </div>
   )

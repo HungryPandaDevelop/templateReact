@@ -22,7 +22,7 @@ import RenderInputSelect from './fields/RenderInputSelect'; // селект
 
 import RenderInputFile from './fields/RenderInputFile'; // файл
 
-// import RenderInputFileDropZone from './fields/RenderInputFileDropZone'; // зона файлов
+import RenderInputFileDropZone from './fields/RenderInputFileDropZone'; // зона файлов
 
 // import RenderInputFileVideo from './fields/RenderInputFileVideo'; // видео
 
@@ -135,22 +135,12 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, }) => {
             obj={obj}
           />
         );
-      // case 'dropzone':
-      //   return (
-      //     <RenderInputFileDropZone
-      //       name={obj.name}
-      //       label={obj.label}
-      //       labelSecond={obj.labelSecond}
-      //       typeAccept={obj.typeAccept}
-      //       maxSize={obj.maxSize}
-      //       textEmpty={obj.textEmpty}
-      //       nameFolder={obj.nameFolder}
-      //       // num={obj.num}
-      //       num={index}
-      //       hideByClickId={obj.hideByClickId}
-      //       className={obj.wrapClass}
-      //     />
-      //   );
+      case 'dropzone':
+        return (
+          <RenderInputFileDropZone
+            obj={obj}
+          />
+        );
       // case 'fileVideo':
       //   return (
       //     <RenderInputFileVideo

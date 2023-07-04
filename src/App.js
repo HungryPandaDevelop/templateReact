@@ -14,6 +14,11 @@ import Registration from 'pages/Registration';
 import Authorization from 'pages/Authorization';
 import Cabinet from 'pages/Cabinet';
 
+
+import Reg from 'pages/registration/Reg1';
+import RegImg from 'pages/registration/Reg2';
+import RegEnd from 'pages/registration/Reg3';
+
 import ListUsers from 'pages/ListUsers';
 
 import Chat from 'pages/Chat';
@@ -39,6 +44,12 @@ const App = ()=> {
             <Route path='/' exept element={<Main/>} ></Route>
             <Route path='/registration' element={<Registration/>} ></Route>
             <Route path='/authorization' element={<Authorization/>} ></Route>
+
+            <Route path='/reg' element={<Reg/>} ></Route>
+            <Route path='/reg-img' element={<RegImg/>} ></Route>   {/* Под вопросом, безопасность!! */}
+            <Route path='/reg-end' element={<RegEnd/>} ></Route> 
+
+
             <Route path='/cabinet' element={<PrivatRoute/>} >
               <Route index element={<Cabinet/>} ></Route>
               <Route path='/cabinet/list_users' element={<ListUsers/>} ></Route>

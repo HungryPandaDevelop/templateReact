@@ -1,77 +1,78 @@
 import { Field } from 'redux-form';
 import { useState, useEffect, useRef } from 'react';
 
+import { russianCities } from 'base/russianCities';
 
-import { connect } from 'react-redux';
 
-const TempateInputCity = (props) => {
+const TempateInput = (props) => {
 
   const {
     input,
-    placeholder,
-    label,
-    labelSecond,
-    num,
-    className,
-    russianCities
+    meta: { error }
   } = props;
 
-  const [сhoiseName, setСhoiseName] = useState('');
-  const [сhoiseNameFiltering, setСhoiseNameFiltering] = useState('');
+  const {
+    label,
+    labelSecond,
+    wrapClass,
+  } = props.obj;
+
+  const [сhoiseName, setСhoiseName] = useState('Выбрать город');
+
+  const [filterVal, setFilterVal] = useState('');
+
   const [russianCitiesList, setRussianCities] = useState(russianCities);
-  const [cityPopupState, setCityPopupState] = useState(false);
 
+  const selectRef = useRef(null);
 
-  const wrapperRef = useRef(null);
-  const inputRef = useRef(null);
+  const [open, setOpen] = useState(false);
+
 
   useEffect(() => {
 
-    setRussianCities(russianCities);
 
-    if (input.value) {
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
 
-      setСhoiseName(input.value);
 
-    };
-
-    const hideByBodyClick = (e) => {
-      if (e.target.className !== 'search-input input-decorate' && e.target.className !== 'search-name city-name') {
-        setCityPopupState(false)
+    function handleClick(e) {
+      if (selectRef && selectRef.current) {
+        const ref = selectRef.current
+        if (!ref.contains(e.target)) {
+          setOpen(false)
+        }
       }
-
-    };
-    const hideByBodyByKey = (e) => {
-      if (e.key === 'Escape') { setCityPopupState(false); }
-    };
-    document.addEventListener('keydown', hideByBodyByKey);
-    document.body.addEventListener('click', hideByBodyClick);
-    return () => {
-      document.body.removeEventListener('click', hideByBodyByKey)
-      document.body.removeEventListener('keydown', hideByBodyClick)
-    };
-
+    }
 
   }, [input.value]);
 
   const choiseCity = (e) => {
-    setСhoiseName(e.currentTarget.getAttribute('namecity'));
-    setСhoiseNameFiltering('');
+
+    setFilterVal('');
+
     setRussianCities(russianCities);
 
 
-    setCityPopupState(false);
+    setOpen(false);
 
+    setСhoiseName(e.currentTarget.getAttribute('namecity'));
     input.onChange(e.currentTarget.getAttribute('namecity'));
   }
+
   const onSearchCity = (e) => {
 
-    setСhoiseNameFiltering(e.target.value);
+    setFilterVal(e.target.value);
 
     const dataSearch = russianCities.filter(item => (item.name.toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0));
 
     setRussianCities(dataSearch)
 
+  }
+
+  const clearFilterVal = () => {
+    setFilterVal('');
+    setСhoiseName('Выбрать город');
+    setOpen(false);
   }
 
   const renderCityList = (russianCitiesListParam) => {
@@ -88,56 +89,41 @@ const TempateInputCity = (props) => {
     )) : (<li>Список пуст</li>);
   }
 
+
   return (
-    <div className={className}>
-      <div className='search-field-input'>
-        {num && <i className="num-offset">{num}</i>}
+    <div className={wrapClass}>
+      {label && <label><b>{label}</b>{labelSecond && <div className='hint-input'><i><span>{labelSecond}</span></i></div>}</label>}
+      <div
+        ref={selectRef}
+        className={`custom-select search-select ${open ? 'active' : ''}`}
 
+      >
 
-        <input
-          {...input}
-          type="hidden"
-          placeholder={placeholder}
-          className={`input-decorate  ${input.value.length > 0 ? 'input-empty' : ''} `}
+        <span
+          onClick={() => { setOpen(!open) }}
+        >{сhoiseName}</span>
+        <i></i>
 
-        />
-        {label && <label><b>{label}</b>{labelSecond && <div className='hint-input-file'><i><span>{labelSecond}</span></i></div>}</label>}
-        <div className="search-field">
-
-          <div
-            className="search-name city-name"
-            onClick={() => { setCityPopupState(true) }}
-          >{сhoiseName}</div>
-          <i className={`search-field-arrow ${cityPopupState ? 'active' : ''}`}></i>
-
-
-          {cityPopupState && (
-            <div
-              className="search-field-popup"
-              ref={wrapperRef}
-            >
-              {/* <div className="filters-close-popup" onClick={() => { setCityPopupState(false) }}></div> */}
-              <div className="search-field-container">
-                <i></i>
-
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={сhoiseNameFiltering}
-                  className="search-input input-decorate"
-                  onChange={onSearchCity}
-                  // onBlur={() => setCityPopupState(false)}
-                  placeholder="Введите название города"
-                // onFocus={(event) => { setCityPopupState(true); event.target.select() }}
-                />
-              </div>
-
-              <ul className="ln">
-                {renderCityList(russianCitiesList)}
-              </ul>
+        {open && (
+          <ul
+            className='ln'
+          >
+            <div className={`search-field-container ${сhoiseName !== 'Выбрать город' ? 'search-choises' : ''}`}>
+              <em
+                onClick={clearFilterVal}
+              ></em>
+              <input
+                type="text"
+                value={filterVal}
+                className="search-input input-decorate"
+                onChange={onSearchCity}
+                placeholder="Введите название города"
+              />
             </div>
-          )}
-        </div>
+
+            {renderCityList(russianCitiesList)}
+          </ul>
+        )}
       </div>
     </div>
 
@@ -147,24 +133,15 @@ const TempateInputCity = (props) => {
 
 
 
-const RenderInputCity = ({ name, placeholder, label, className, num, russianCities }) => {
+const RenderInputCity = ({ obj }) => {
 
   return <Field
-    name={name}
-    label={label}
-    placeholder={placeholder}
-    className={className}
-    component={TempateInputCity}
-    num={num}
-    russianCities={russianCities}
+    name={obj.name}
+    obj={obj}
+    component={TempateInput}
+
   />;
 }
 
-const mapStateToProps = (state) => {
 
-  return {
-    russianCities: state.russianCities
-  }
-}
-
-export default connect(mapStateToProps)(RenderInputCity);
+export default RenderInputCity;

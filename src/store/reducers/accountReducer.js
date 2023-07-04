@@ -1,4 +1,4 @@
-
+localStorage.removeItem('account');
 let sessionAccount = localStorage.getItem('account') && JSON.parse(localStorage.getItem('account'));
 
 let accounInfo = sessionAccount ? sessionAccount : {

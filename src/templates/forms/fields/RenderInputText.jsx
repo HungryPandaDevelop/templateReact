@@ -14,7 +14,6 @@ const TempateInput = (props) => {
     label,
     labelSecond,
     placeholder,
-    num,
     wrapClass,
     checkErrorSubmit,
     setErrCheck,
@@ -46,7 +45,7 @@ const TempateInput = (props) => {
         type="text"
         id={input.name}
         placeholder={placeholder}
-        className={`input-decorate ${checkErrorSubmit && error && 'input-error'} ${input.value.length > 0 ? 'input-empty' : ''} `}
+        className={`input-decorate ${checkErrorSubmit && error && 'input-error'}`}
 
       />
 
@@ -61,8 +60,8 @@ const RenderInputText = ({ obj }) => {
 
   return <Field
     name={obj.name}
-    validate={obj.validate}
     obj={obj}
+    validate={obj.validate}
     component={TempateInput}
   />;
 }
