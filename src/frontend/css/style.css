@@ -2697,6 +2697,12 @@ footer .nav li {
 .popup-container a:hover {
   text-decoration: none;
 }
+.popup-container .reg-btn {
+  color: #0B132B;
+}
+.popup-container .reg-btn:hover {
+  color: #00AEEF;
+}
 .popup-container h4 {
   margin-bottom: 15px;
 }

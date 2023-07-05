@@ -10,9 +10,6 @@ import { connect } from 'react-redux';
 import { registrationAccount } from 'services/registrationAccount';
 
 
-import GoogleAuth from 'parts/block/GoogleAuth';
-
-
 
 
 const Registration = ({ formData, uid }) => {
@@ -43,7 +40,7 @@ const Registration = ({ formData, uid }) => {
         btnSubmiText="Регистрация"
         submitSuccess={submitSuccess}
       />
-      <GoogleAuth />
+
     </div>
   )
 }

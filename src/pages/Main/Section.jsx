@@ -19,7 +19,7 @@ const Section = ({ account }) => {
             <h1>Знакомство в отелях</h1>
             {!account.uid && (
               <div className="btn-container">
-                <Link className="element-btn btn btn--black" to="/registration">Создать аккаунт</Link>
+                <Link className="element-btn btn btn--black" to="/reg-start">Создать аккаунт</Link>
               </div>
             )}
 

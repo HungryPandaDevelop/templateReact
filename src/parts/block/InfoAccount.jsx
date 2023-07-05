@@ -16,8 +16,8 @@ const InfoAccount = ({ account }) => {
 
   return (
     <>
-      {/* <h3>uid: {account.uid}</h3>
-      <h3>email: {account.email} </h3> */}
+      <h3>uid: {account.uid}</h3>
+      <h3>email: {account.email} </h3>
 
       {account.uid ? (
         <>

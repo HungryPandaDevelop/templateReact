@@ -10,14 +10,14 @@ import AuthInfo from 'parts/block/AuthInfo';
 
 
 import Main from 'pages/Main' ;
-import Registration from 'pages/Registration';
 import Authorization from 'pages/Authorization';
 import Cabinet from 'pages/Cabinet';
 
 
-import Reg from 'pages/registration/Reg1';
-import RegImg from 'pages/registration/Reg2';
-import RegEnd from 'pages/registration/Reg3';
+import RegStart from 'pages/registration/RegStart';
+import RegEnd from 'pages/registration/RegEnd';
+import RegPhone from 'pages/registration/RegPhone';
+import RegMail from 'pages/registration/RegMail';
 
 import ListUsers from 'pages/ListUsers';
 
@@ -42,12 +42,14 @@ const App = ()=> {
 
           <Routes> 
             <Route path='/' exept element={<Main/>} ></Route>
-            <Route path='/registration' element={<Registration/>} ></Route>
             <Route path='/authorization' element={<Authorization/>} ></Route>
 
-            <Route path='/reg' element={<Reg/>} ></Route>
-            <Route path='/reg-img' element={<RegImg/>} ></Route>   {/* Под вопросом, безопасность!! */}
+            <Route path='/reg-start' element={<RegStart/>} ></Route>
+            <Route path='/reg-mail' element={<RegMail/>} ></Route>
+            <Route path='/reg-phone' element={<RegPhone/>} ></Route> 
+
             <Route path='/reg-end' element={<RegEnd/>} ></Route> 
+
 
 
             <Route path='/cabinet' element={<PrivatRoute/>} >

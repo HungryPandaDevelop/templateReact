@@ -48,3 +48,18 @@ export const regFieldsSecond = {
     wrapClass: "input-box col-12",
   },
 };
+export const regFieldsThree = {
+  phone: { 
+    name: "phone", 
+    type:"phone" , 
+    wrapClass: "input-box col-12",
+  },
+};
+
+export const regFieldVertification = {
+  vert: { 
+    name: "vert", 
+    type:"text" , 
+    wrapClass: "input-box col-12",
+  },
+};

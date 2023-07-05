@@ -19,14 +19,14 @@ const AuthInfo = ({
     onAuthStateChanged(auth, (user) => {
 
       if (user) {
-        console.log('u', user.emailVerified)
         // setTimeout(() => {
+        console.log('getSingleListing', auth.currentUser.uid)
         getSingleListing('users', auth.currentUser.uid).then(res => {
-
+          console.log('getSingleListing', res)
           localStorage.setItem('account', JSON.stringify(res));
           ActionFn('SET_INFO_ACCOUNT', { ...res });
         });
-        // }, 1000);
+        // }, 500);
       }
       else {
         localStorage.removeItem('account');
@@ -37,7 +37,6 @@ const AuthInfo = ({
 
 
   }, []);
-  // }, [account.uid]);
 
   return (
     <>

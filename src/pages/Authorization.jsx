@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 
 import { authorizationAccount } from 'services/authorizationAccount';
 
-import GoogleAuth from 'parts/block/GoogleAuth';
 
 const Authorization = ({ formData, uid }) => {
 
@@ -39,7 +38,6 @@ const Authorization = ({ formData, uid }) => {
         submitSuccess={submitSuccess}
       />
 
-      <GoogleAuth />
     </div>
   )
 }
