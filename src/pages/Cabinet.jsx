@@ -2,7 +2,7 @@ import { saveListing } from 'services/saveListing';
 
 import { useState, useEffect } from 'react';
 
-import RenderForm from 'templates/forms/RenderForm';
+import RenderForm from 'components/forms/RenderForm';
 
 import { getSingleListing } from 'services/getSingleListing';
 

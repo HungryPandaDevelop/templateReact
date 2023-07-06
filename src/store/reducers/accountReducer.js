@@ -1,9 +1,9 @@
-localStorage.removeItem('account');
+// localStorage.removeItem('account');
+
 let sessionAccount = localStorage.getItem('account') && JSON.parse(localStorage.getItem('account'));
 
 let accounInfo = sessionAccount ? sessionAccount : {
   uid: '',
-  email: '', 
 };
 
 export const accountReducer = (state=accounInfo, action) => {

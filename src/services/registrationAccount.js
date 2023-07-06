@@ -1,4 +1,4 @@
-
+import { db } from 'default/config/firebase';
 
 import { 
   getAuth,
@@ -7,8 +7,6 @@ import {
   sendEmailVerification
 } from 'firebase/auth';
 
-
-import { db } from 'config/firebase';
 
 import {
   doc,
@@ -22,25 +20,29 @@ import { toast } from 'react-toastify';
 
 
 export const registrationAccount = async (formData) => {
+
+ 
+
   const { name, email, password } = formData;
 
   try {
-
+  
     const auth = getAuth();
-
+ 
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 
     updateProfile(auth.currentUser, {
       displayName: name
     });
 
-    await sendEmailVerification(auth.currentUser);
+    
     
     /* add to base auth */
 
     /* add to firestore base */
     const user = userCredential.user;
-    // await user.sendEmailVertification();
+    
+    
   
     const formDataCopy = { ...formData, uid: user.uid };
 
@@ -48,11 +50,24 @@ export const registrationAccount = async (formData) => {
 
     formDataCopy.timestamp = serverTimestamp();
 
+    console.log('1')
     await setDoc(doc(db, 'users', user.uid), formDataCopy);
+    console.log('2')
+    
+    console.log('3')
 
-    toast.success('Rегистрация успешна');
-  
-    // return true;
+    await sendEmailVerification(auth.currentUser).then(function() {
+      // Verification email sent.
+      console.log('Verification email sent.')
+      toast.success('Verification sent');
+    })
+    .catch(function(error) {
+      console.log('Error occurred. Inspect error.code.')
+      // Error occurred. Inspect error.code.
+    });
+
+
+    return user;
 
   } catch (error) {
     if( error.code === 'auth/email-already-in-use'){
@@ -62,4 +77,4 @@ export const registrationAccount = async (formData) => {
     return false;
   }
 }
-    
+

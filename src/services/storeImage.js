@@ -7,9 +7,10 @@ import {
 import { getAuth } from 'firebase/auth';
 import { v4 as uuidv4 } from 'uuid';
 
-const auth = getAuth();
+// 
 
 const storeImage = async (image, setLoadingFile, nameFolder) => {
+  const auth = getAuth();
   return new Promise((resolve, reject) => {
     const storage = getStorage();
     const fileName = `${auth.currentUser.uid}-${image.name}-${uuidv4()}`;
@@ -52,7 +53,7 @@ const storeImage = async (image, setLoadingFile, nameFolder) => {
     );
     // import from firebase build/ storage/ web/ upload file/
 
-  })
+  });
 }
 
 export default storeImage

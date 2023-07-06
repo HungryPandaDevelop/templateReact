@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 
 import { Field } from 'redux-form';
 
-import storeImage from 'hooks/storeImage';
+import storeImage from 'services/storeImage';
 
 const TemplateFile = (props) => {
 

@@ -11,13 +11,9 @@ const InfoAccount = ({ account }) => {
     auth.signOut();
     ActionFn('SET_INFO_ACCOUNT', { uid: false, email: '', infoAccount: [], });
   };
-
-  // if (!account.uid) { return false };
-
   return (
     <>
-      <h3>uid: {account.uid}</h3>
-      <h3>email: {account.email} </h3>
+      {/* <h3>uid: {account.uid}</h3> */}
 
       {account.uid ? (
         <>
@@ -27,7 +23,7 @@ const InfoAccount = ({ account }) => {
             className="btn btn--white"
             onClick={onLogOut}
           >Выйти</div>
-        </>) : (<><Link to="/authorization" className="btn btn-out btn--white">Войти</Link></>)}
+        </>) : (<><Link to="/auth-start" className="btn btn-out btn--white">Войти</Link></>)}
 
     </>
   )

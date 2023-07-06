@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { googleAuth } from 'services/googleAuth';
 
-const GoogleAuth = () => {
+const GoogleAuth = ({ btnText }) => {
   const navigate = useNavigate();
 
   const onGoogleClick = () => {
@@ -13,7 +13,7 @@ const GoogleAuth = () => {
   }
 
   return (
-    <div className="btn reg-btn google--btn" onClick={onGoogleClick}><i> </i><span>Создать через Gmail</span></div>
+    <div className="btn reg-btn google--btn" onClick={onGoogleClick}><i> </i><span>{btnText}</span></div>
   )
 }
 

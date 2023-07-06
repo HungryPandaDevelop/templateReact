@@ -1,14 +1,14 @@
 import { useState } from 'react';
 
-import Popup from 'templates/Popup';
+import Popup from 'components/Popup';
+import RenderForm from 'components/forms/RenderForm';
 import Section from "pages/Main/Section"
-import RenderForm from 'templates/forms/RenderForm';
 
-import { regFieldsThree, regFieldVertification } from 'base/forms/regFieldsAll';
+import { regFieldsPhone, regFieldVertification } from 'base/forms/authFields';
 
 import { connect } from 'react-redux';
 
-import { db } from 'config/firebase';
+import { db } from 'default/config/firebase';
 
 import {
   getAuth,
@@ -34,7 +34,6 @@ const RegPhone = ({ formData }) => {
 
   const [loading, setLoading] = useState(false);
   const [showOTP, setShowOTP] = useState(false);
-  const [user, setUser] = useState(null);
   const auth = getAuth();
 
   auth.languageCode = 'ru';
@@ -83,9 +82,6 @@ const RegPhone = ({ formData }) => {
       .confirm(formData.values.vert)
       .then(async (res) => {
 
-        setUser(res.user);
-
-
         const docRef = doc(db, 'users', res.user.uid);
         const docSnap = await getDoc(docRef);
 
@@ -131,7 +127,7 @@ const RegPhone = ({ formData }) => {
             <h3>Введите номер телефона</h3>
             <h4>Мы отправим код в виде СМС</h4>
             <RenderForm
-              fields={regFieldsThree}
+              fields={regFieldsPhone}
               btnSubmiText={loading ? 'Loading..' : "Войти"}
               submitSuccess={onSignup}
             />

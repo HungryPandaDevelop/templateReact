@@ -3,21 +3,23 @@ import {BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import PrivatRoute from 'parts/PrivatRoute';
+import PrivatRoute from 'blocks/PrivatRoute';
+import Header from 'blocks/header/Header';
+import Footer from 'blocks/footer/Footer';
 
-
-import AuthInfo from 'parts/block/AuthInfo';
+import CheckAuth from 'blocks/header/CheckAuth';
 
 
 import Main from 'pages/Main' ;
-import Authorization from 'pages/Authorization';
 import Cabinet from 'pages/Cabinet';
 
 
-import RegStart from 'pages/registration/RegStart';
-import RegEnd from 'pages/registration/RegEnd';
-import RegPhone from 'pages/registration/RegPhone';
-import RegMail from 'pages/registration/RegMail';
+import AuthStart from 'pages/auth/AuthStart';
+import RegStart from 'pages/auth/RegStart';
+
+import RegPhone from 'pages/auth/RegPhone';
+import RegMail from 'pages/auth/RegMail';
+import AuthMail from 'pages/auth/AuthMail';
 
 import ListUsers from 'pages/ListUsers';
 
@@ -25,31 +27,28 @@ import Chat from 'pages/Chat';
 import ChatRoom from 'pages/chat/Room';
 
 
-// import GoogleAuth from 'pages/GoogleAuth';
+
 // import VKauth from 'pages/VKauth';
 
-import Header from 'parts/header/Header';
-import Footer from 'parts/footer/Footer';
+
 
 const App = ()=> {
   return (
       <>
         <BrowserRouter>
-          <AuthInfo />
+          <CheckAuth />
           <Header />
           
           
 
           <Routes> 
             <Route path='/' exept element={<Main/>} ></Route>
-            <Route path='/authorization' element={<Authorization/>} ></Route>
 
+            <Route path='/auth-start' element={<AuthStart/>} ></Route>
             <Route path='/reg-start' element={<RegStart/>} ></Route>
             <Route path='/reg-mail' element={<RegMail/>} ></Route>
+            <Route path='/auth-mail' element={<AuthMail/>} ></Route>
             <Route path='/reg-phone' element={<RegPhone/>} ></Route> 
-
-            <Route path='/reg-end' element={<RegEnd/>} ></Route> 
-
 
 
             <Route path='/cabinet' element={<PrivatRoute/>} >

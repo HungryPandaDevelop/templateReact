@@ -1,4 +1,4 @@
-import RenderForm from 'templates/forms/RenderForm';
+import RenderForm from 'components/forms/RenderForm';
 import { connect } from 'react-redux';
 
 import { chatFields } from 'base/forms/chatFields';

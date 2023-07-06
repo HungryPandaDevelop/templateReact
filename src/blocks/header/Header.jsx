@@ -1,7 +1,7 @@
-import logo from 'frontend/images/logo.svg'
+import logo from 'default/frontend/images/logo.svg'
 import { Link } from 'react-router-dom'
-import Nav from 'parts/block/Nav';
-import InfoAccount from 'parts/block/InfoAccount';
+import Nav from 'blocks/header/Nav';
+import InfoAccount from 'blocks/header/InfoAccount';
 
 const Header = () => {
   return (

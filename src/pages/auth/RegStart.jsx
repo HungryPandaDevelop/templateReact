@@ -1,11 +1,11 @@
 
 import { Link } from 'react-router-dom';
-import Popup from 'templates/Popup';
+import Popup from 'components/Popup';
 import Section from "pages/Main/Section"
 
-import GoogleAuth from 'pages/registration/parts/GoogleAuth';
+import GoogleAuth from 'pages/auth/parts/GoogleAuth';
 
-const RegEnd = () => {
+const RegStart = () => {
 
   return (
     <>
@@ -14,7 +14,7 @@ const RegEnd = () => {
         <h4>Нажимая "Создать", вы принимаете наши <a href="#">Условия.</a>Чтобы узнать, как мы обрабатываем ваши данные, ознакомьтесь с нашей <a href="#">Политика конфиденциальности</a>и <a href="#">Политика в отношении файлов Cookie.</a></h4>
         <h4>Создайте аккаунт с помощью:</h4>
         <div className="btn-container">
-          <GoogleAuth />
+          <GoogleAuth btnText="Создать через Gmail" />
           <Link to="/reg-phone" className="btn reg-btn phone--btn"><i></i><span>Создать через номер телефона</span></Link>
           <Link to="/reg-mail" className="btn reg-btn mail--btn"><i></i><span>Создать через почту</span></Link>
         </div>
@@ -24,4 +24,4 @@ const RegEnd = () => {
   )
 }
 
-export default RegEnd;
+export default RegStart;

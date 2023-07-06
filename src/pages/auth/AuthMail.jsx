@@ -1,24 +1,25 @@
-import RenderForm from 'templates/forms/RenderForm';
-
-import { regFieldsOne } from 'base/forms/regFieldsAll';
-
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Popup from 'templates/Popup';
+
+import RenderForm from 'components/forms/RenderForm';
+import Popup from 'components/Popup';
+
+import { authFields } from 'base/forms/authFields';
+
 import Section from "pages/Main/Section"
 
-import { registrationAccount } from 'services/registrationAccount';
-const RegMail = ({ formData }) => {
+import { authorizationAccount } from 'services/authorizationAccount';
+const AuthMail = ({ formData }) => {
 
   const navigate = useNavigate();
 
   const submitSuccess = () => {
 
 
-    registrationAccount(formData.values).then((res) => {
-      console.log('res', res)
+    authorizationAccount(formData.values).then((res) => {
+
       if (!res) { return false };
-      navigate('/reg-end/', { replace: true });
+      navigate('/cabinet/', { replace: true });
     });
 
 
@@ -30,8 +31,8 @@ const RegMail = ({ formData }) => {
       <Popup>
         <h3>Заполните анкету</h3>
         <RenderForm
-          fields={regFieldsOne}
-          btnSubmiText="Регистрация"
+          fields={authFields}
+          btnSubmiText="Авторизация"
           submitSuccess={submitSuccess}
         />
       </Popup>
@@ -47,4 +48,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(RegMail);
+export default connect(mapStateToProps)(AuthMail);

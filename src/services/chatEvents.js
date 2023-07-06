@@ -15,7 +15,7 @@ import {
   orderBy
 } from 'firebase/firestore';
 
-import { db } from 'config/firebase';
+import { db } from 'default/config/firebase';
 
 import { v4 as uuidv4 } from 'uuid';
 

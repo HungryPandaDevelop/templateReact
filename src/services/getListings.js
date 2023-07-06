@@ -12,7 +12,7 @@ import {
 
 import { toast } from 'react-toastify';
 
-import { db } from 'config/firebase';
+import { db } from 'default/config/firebase';
 
 export const getListing = async (baseName,  type, uid ) => {
 

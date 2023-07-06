@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 
 import { Field } from 'redux-form';
 
-import storeImage from 'hooks/storeImage';
+import storeImage from 'services/storeImage';
 
 import { useDropzone } from 'react-dropzone'
 

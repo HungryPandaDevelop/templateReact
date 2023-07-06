@@ -1,4 +1,4 @@
-import RenderFields from 'templates/forms/RenderFields';
+import RenderFields from 'components/forms/RenderFields';
 
 import { reduxForm } from 'redux-form';
 

@@ -24,9 +24,11 @@ import RenderInputFile from './fields/RenderInputFile'; // файл
 
 import RenderInputFileDropZone from './fields/RenderInputFileDropZone'; // зона файлов
 
-// import RenderInputFileVideo from './fields/RenderInputFileVideo'; // видео
-
 import RenderInputFilePhoto from './fields/RenderInputFilePhoto'; // фото
+
+// // import RenderInputFileVideo from './fields/RenderInputFileVideo'; // видео
+
+
 
 
 
@@ -43,7 +45,7 @@ import RenderInputCoords from './fields/RenderInputCoords'; // координа�
 import RenderInputCity from './fields/RenderInputCity'; // выбор города
 
 
-import { required, minLength, mailCheck } from 'templates/forms/validator';
+import { required, minLength, mailCheck } from 'components/forms/validator';
 
 const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, }) => {
 
@@ -128,7 +130,6 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, }) => {
             obj={obj}
           />
         );
-
       case 'file':
         return (
           <RenderInputFile
@@ -141,21 +142,6 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, }) => {
             obj={obj}
           />
         );
-      // case 'fileVideo':
-      //   return (
-      //     <RenderInputFileVideo
-      //       name={obj.name}
-      //       label={obj.label}
-      //       labelSecond={obj.labelSecond}
-      //       allFields={obj.allFields}
-      //       typeUpload={obj.typeUpload}
-      //       maxSize={obj.maxSize}
-      //       textEmpty={obj.textEmpty}
-      //       // num={obj.num}
-      //       num={index}
-      //       className={obj.wrapClass}
-      //     />
-      //   );
       case 'photo':
         return (
           <RenderInputFilePhoto
@@ -170,6 +156,8 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, }) => {
             className={obj.wrapClass}
           />
         );
+
+
       case 'multy':
         return (
           <RenderInputMulty

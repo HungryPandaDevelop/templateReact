@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from "react-dom/client";
-import 'frontend/css/style.css'
+import 'default/frontend/css/style.css'
 
 
 

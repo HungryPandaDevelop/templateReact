@@ -1,3 +1,5 @@
+import { db } from 'default/config/firebase';
+
 import { 
   getAuth, 
   signInWithPopup, 
@@ -12,7 +14,7 @@ import {
   serverTimestamp 
 } from 'firebase/firestore';
 
-import { db } from 'config/firebase';
+
 
 import { toast } from 'react-toastify';
 
@@ -23,15 +25,17 @@ export const googleAuth = async () => {
 
     const auth = getAuth();
 
+    
     const provider = new GoogleAuthProvider();
+
     provider.setCustomParameters({
       prompt: 'select_account',
     });
-    
+  
     const userCredential = await signInWithPopup(auth, provider);
 
-    const user = userCredential.user;
 
+    const user = userCredential.user;
     updateProfile(auth.currentUser, {
       displayName: user.displayName
     });
@@ -52,8 +56,11 @@ export const googleAuth = async () => {
 
       toast.success('Rегистрация успешна');
     }else{
+
       toast.success('Авторизация успешна');
     }
+
+
 
     return  true;
   }
