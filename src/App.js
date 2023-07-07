@@ -11,7 +11,7 @@ import CheckAuth from 'blocks/header/CheckAuth';
 
 
 import Main from 'pages/Main' ;
-import Cabinet from 'pages/Cabinet';
+import Cabinet from 'pages/cabinet/Cabinet';
 
 
 import AuthStart from 'pages/auth/AuthStart';
@@ -29,7 +29,6 @@ import ChatRoom from 'pages/chat/Room';
 
 
 // import VKauth from 'pages/VKauth';
-
 
 
 const App = ()=> {

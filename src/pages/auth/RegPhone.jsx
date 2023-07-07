@@ -39,6 +39,7 @@ const RegPhone = ({ formData }) => {
   auth.languageCode = 'ru';
 
   function onCaptchVerify() {
+
     if (!window.recaptchaVerifier) {
       window.recaptchaVerifier = new RecaptchaVerifier(
         "recaptcha-container",

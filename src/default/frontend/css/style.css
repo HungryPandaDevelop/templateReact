@@ -421,9 +421,9 @@ section {
   color: #00AEEF;
 }
 .btn--blue-border:hover {
-  background: #C19F56;
+  background: #00AEEF;
   color: #ffffff;
-  border-color: #C19F56;
+  border-color: #00AEEF;
 }
 
 .btn--black {
@@ -1814,11 +1814,22 @@ input {
 
 /*-photo-upload-*/
 .input-photo {
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  height: 340px;
   position: relative;
   cursor: pointer;
   position: relative;
+  overflow: hidden;
+  border-radius: 30px;
+}
+.input-photo .input-photo-file {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .input-photo .input-file-container,
 .input-photo .file-input-item,
@@ -1842,8 +1853,7 @@ input {
   background-size: contain;
   background-image: url("../images/icons/plus-white.svg");
 }
-
-.input-file-user {
+.input-photo .file-decorate {
   width: 100%;
   position: absolute;
   height: 100%;
@@ -2270,7 +2280,7 @@ input[type=range]:active + .range-num::before {
 }
 
 .switch-input {
-  border: 1px solid;
+  border: 1px solid #00AEEF;
   width: 50px;
   height: 25px;
   border-radius: 15px;
@@ -2289,7 +2299,7 @@ input[type=range]:active + .range-num::before {
   display: block;
   width: calc(50% - 5px);
   height: calc(100% - 4px);
-  background-color: #0B132B;
+  background-color: #00AEEF;
   border-radius: 100%;
   left: 0;
   -webkit-transition: ease-out 0.25s;
@@ -2303,7 +2313,7 @@ input[type=range]:active + .range-num::before {
 /*-----forms-end----*/
 /*-----blocks-start----*/
 .stub {
-  height: 85px;
+  height: 120px;
 }
 
 header {
@@ -2832,9 +2842,35 @@ footer .nav li {
   border: 1px solid #98A1A7;
   border-radius: 30px;
 }
+.border-container .main-grid {
+  padding: 0;
+}
 .border-container h3 {
   color: #0B132B;
   font-size: 24px;
+}
+.border-container .input-box {
+  margin: 0 0 15px;
+}
+
+.border-tab {
+  padding: 4px 15px;
+  border: 1px solid #98A1A7;
+  border-bottom: 0;
+  border-radius: 12px 12px 0 0;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: 700;
+  margin-right: 15px;
+}
+.border-tab:hover, .border-tab.active {
+  background-color: #00AEEF;
+  border-color: #00AEEF;
+  color: #ffffff;
+}
+
+.border-null-left {
+  border-top-left-radius: 0;
 }
 
 .user-top-info {
@@ -2844,11 +2880,6 @@ footer .nav li {
   gap: 30px;
 }
 
-.account-main .input-photo {
-  width: 360px;
-  height: 480px;
-  margin: 0 auto;
-}
 .account-main .file-decorate {
   text-align: center;
 }
@@ -2880,9 +2911,12 @@ footer .nav li {
 }
 
 .user-location-map {
-  border: 1px solid #0B132B;
-  height: 200px;
+  border: 1px solid #98A1A7;
+  height: 280px;
   border-radius: 30px;
+  position: relative;
+  margin-top: 30px;
+  overflow: hidden;
 }
 
 .portfel-ico {
@@ -2957,3 +2991,4 @@ footer .nav li {
 }
 
 /*-----users-end----*/
+/*# sourceMappingURL=style.css.map */

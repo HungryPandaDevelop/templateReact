@@ -1,37 +1,46 @@
 
 
 export const accountFields = {
-  accountName: { 
-    type:"text" ,
-    name: "accountName", 
-    label: "Имя аккаунта  *", 
-    placeholder: "Имя аккаунта  *", 
-    wrapClass: "col-12 account-item input-animate-label" ,
-    validate: ['required','minLength'],
-    num: "01",
-  },
+
   name: { 
     type:"text" ,
     name: "name", 
     label: "Имя", 
     placeholder: "Имя", 
-    wrapClass: "col-12 account-item input-animate-label" ,
+    wrapClass: "input-box" ,
     validate: ['required','minLength'],
   },
-  family: { 
-    type:"text" ,
-    name: "family", 
-    label: "Фамилия", 
-    placeholder: "Фамилия", 
-    wrapClass: "col-12 account-item input-animate-label" ,
+  dateBerth: { 
+    type:"date" ,
+    name: "dateBerth", 
+    label: "Дата рождения", 
+    placeholder: "Дата рождения", 
+    wrapClass: "input-box" ,
+    validate: ['required','minLength'],
   },
-  secondName: { 
-    type:"text" ,
-    name: "secondName", 
-    label: "Отчество", 
-    placeholder: "Отчество", 
-    wrapClass: "col-12 account-item input-animate-label" ,
+  gender: { 
+    type:"switch" ,
+    name: "gender", 
+    label: "Пол", 
+    options: [
+      {name:'<div class="man-ico"></div>',value:"man"},
+      {name:'<div class="woman-ico"></div>', value:"woman"},
+    ],
+    wrapClass: "input-box" ,
   },
+  goals: { 
+    type:"tags" ,
+    name: "goals", 
+    label: "Цели", 
+  },
+  currentLocation: { 
+    type:"coords" ,
+    name: "currentLocation", 
+    label: "Tекущие расположение", 
+    wrapClass: "input-box" ,
+  },
+
+
   phoneCompany: {
     type:"phone" ,
     name: "phoneCompany", 

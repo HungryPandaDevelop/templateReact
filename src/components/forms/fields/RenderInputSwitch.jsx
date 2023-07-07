@@ -1,35 +1,36 @@
-import { connect } from 'react-redux';
 
 import { useState, useRef, useEffect } from 'react';
 import { Field } from 'redux-form';
 
 
-const TemplateFieldSwitch = (props) => {
+const TempateInput = (props) => {
 
   const {
     input,
+    meta: { error }
+  } = props;
+
+  const {
     label,
     options,
-    num,
-    className
-  } = props;
+    wrapClass,
+  } = props.obj;
 
   const [switchStatus, setSwitchStatus] = useState(false);
   const [firstLoad, setFirstLoad] = useState(0);
 
-  const elRefL = useRef();
-  const elRefR = useRef();
+  const switchChange = (status) => {
 
-  const switchChange = () => {
 
-    setSwitchStatus(!switchStatus);
-    if (switchStatus) {
-      elRefL.current.focus();
-
+    setSwitchStatus(status)
+    if (status) {
+      input.onChange(options[1].value);
+      console.log(options[1].value)
     } else {
-      elRefR.current.focus();
-
+      input.onChange(options[0].value);
+      console.log(options[0].value)
     }
+
   };
 
   useEffect(() => {
@@ -43,79 +44,39 @@ const TemplateFieldSwitch = (props) => {
         setSwitchStatus(true);
       }
     }
-  });
+  }, []);
 
 
 
 
   return (
-    <div className={className}>
-      {num && <i className="num-offset">{num}</i>}
-      <label><b>{label}</b></label>
+    <div className={wrapClass}>
+      <label><b >{label}</b></label>
       <div
         className="switch-container"
+        onClick={() => { switchChange(!switchStatus) }}
       >
-        <input
-          type="radio"
-          ref={elRefL}
-          checked={!switchStatus}
-          {...input}
-          value={options && options[0].value}
-        />
-        <input
-          type="radio"
-          ref={elRefR}
-          checked={switchStatus}
-          {...input}
-          value={options && options[1].value}
-        />
-
-        <span>{options && options[0].name}</span>
+        <span dangerouslySetInnerHTML={{ __html: options[0].name }}></span>
         <div
-          className={`switch-btn switch-btn--blue ${switchStatus ? 'switch-btn--active' : ''}`}
-          onClick={switchChange}
+          className={`switch-input  ${switchStatus ? 'switch-input--active' : ''}`}
+
         >
           <i></i>
         </div>
-        <span>{options && options[1].name}</span>
+        <span dangerouslySetInnerHTML={{ __html: options[1].name }}></span>
       </div>
     </div>
   )
 }
 
-const RenderInputSwitch = ({
-  name,
-  label,
-  options,
-  num,
-  className,
-  hideByClickId,
-  inputValueConnect
-
-}) => {
-  // console.log(hideByClickId, inputValueConnect)
-  if (hideByClickId && !inputValueConnect) { return false }
-  else if (hideByClickId && inputValueConnect.length > 0 && hideByClickId.indexOf(inputValueConnect) === -1) {
-    return false;
-  }
-
+const RenderInputSwitch = ({ obj }) => {
 
   return <Field
-    name={name}
-    label={label}
-    options={options}
-    num={num}
-    component={TemplateFieldSwitch}
-    hideByClickId={hideByClickId}
-    className={className}
+    name={obj.name}
+    obj={obj}
+    component={TempateInput}
   />;
 }
 
 
-const mapStateToProps = (state) => {
-
-  return {
-    inputValueConnect: state.inputConnectState.inputValueConnect,
-  }
-}
-export default connect(mapStateToProps)(RenderInputSwitch);
+export default RenderInputSwitch;

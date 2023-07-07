@@ -2,9 +2,11 @@ import React from 'react';
 
 
 
-import RenderTitle from './fields/RenderTitle';
+import EditionTags from 'components/forms/fields/EditionTags';
 
-import RenderInputText from './fields/RenderInputText'; // поле стандартное
+import RenderTitle from 'components/forms/fields/RenderTitle';
+
+import RenderInputText from 'components/forms/fields/RenderInputText'; // поле стандартное
 
 import RenderInputDate from './fields/RenderInputDate'; // дата
 
@@ -47,7 +49,7 @@ import RenderInputCity from './fields/RenderInputCity'; // выбор город
 
 import { required, minLength, mailCheck } from 'components/forms/validator';
 
-const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, }) => {
+const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, type }) => {
 
   const setValidate = (validate) => {
     let validateArr = [];
@@ -70,6 +72,14 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, }) => {
         return (
           <>
             <RenderTitle
+              obj={obj}
+            />
+          </>
+        )
+      case 'tags':
+        return (
+          <>
+            <EditionTags
               obj={obj}
             />
           </>
@@ -145,15 +155,7 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, }) => {
       case 'photo':
         return (
           <RenderInputFilePhoto
-            name={obj.name}
-            label={obj.label}
-            labelSecond={obj.labelSecond}
-            allFields={obj.allFields}
-            typeUpload={obj.typeUpload}
-            maxSize={obj.maxSize}
-            typeFile={obj.typeFile}
-            textEmpty={obj.textEmpty}
-            className={obj.wrapClass}
+            obj={obj}
           />
         );
 
@@ -197,16 +199,27 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, }) => {
 
   return (
     <>
-      {Object.keys(fields).map((item, index) => (
-        <React.Fragment
-          key={index} >
+      {type !== 'single' ? (
+        Object.keys(fields).map((item, index) => (
+          <React.Fragment
+            key={index} >
+            {
+              (
+                choiseFieldType({ ...fields[item], checkErrorSubmit, setErrCheck, 'validate': setValidate(fields[item].validate) })
+              )
+            }
+          </React.Fragment>
+        ))
+      ) : (
+        <React.Fragment >
           {
             (
-              choiseFieldType({ ...fields[item], checkErrorSubmit, setErrCheck, 'num': (index + 1), 'validate': setValidate(fields[item].validate) })
+              choiseFieldType({ ...fields, checkErrorSubmit, setErrCheck, 'validate': setValidate(fields.validate) })
             )
           }
         </React.Fragment>
-      ))}
+      )}
+      { }
     </>
   )
 }

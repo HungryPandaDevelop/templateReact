@@ -2,13 +2,17 @@ import { saveListing } from 'services/saveListing';
 
 import { useState, useEffect } from 'react';
 
-import RenderForm from 'components/forms/RenderForm';
+import RenderForm from 'components/forms/RenderFormCabinet';
 
 import { getSingleListing } from 'services/getSingleListing';
 
 import { accountFields } from 'base/forms/accountFields';
 
 import { connect } from 'react-redux';
+
+
+
+import Tabs from 'pages/cabinet/parts/Tabs';
 
 const Cabinet = ({ uid, formData }) => {
 
@@ -17,6 +21,9 @@ const Cabinet = ({ uid, formData }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+
+
+
     getSingleListing('users', uid).then(res => {
       setListings(res);
       setLoading(false);
@@ -30,27 +37,18 @@ const Cabinet = ({ uid, formData }) => {
   if (loading) { return 'Loading...' }
 
   return (
-    <div className="main-full">
+    <>
       <div className="stub"></div>
-      <div className="stub"></div>
-
-      <div className="account-page">
-        <div className="main-full">
-          <div className="account-tabs-container">
-            <div className="account-tab active">Мой аккаунт</div>
-            <div className="account-tab search-tab"><i></i><span>Новый ПОИСК</span></div>
-          </div>
-          <div className="border-container account-main">
-            <RenderForm
-              fields={accountFields}
-              btnSubmiText="Сохранить"
-              initialValues={listings}
-              submitSuccess={submitSuccess}
-            />
-          </div>
-        </div>
+      <div className="main-full">
+        <Tabs />
+        <RenderForm
+          fields={accountFields}
+          btnSubmiText="Сохранить"
+          initialValues={listings}
+          submitSuccess={submitSuccess}
+        /> *
       </div>
-    </div>
+    </>
   )
 }
 
@@ -63,3 +61,4 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(Cabinet);
+
