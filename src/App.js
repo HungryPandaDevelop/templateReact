@@ -12,6 +12,7 @@ import CheckAuth from 'blocks/header/CheckAuth';
 
 import Main from 'pages/Main' ;
 import Cabinet from 'pages/cabinet/Cabinet';
+import Settings from 'pages/cabinet/Settings';
 
 
 import AuthStart from 'pages/auth/AuthStart';
@@ -39,7 +40,7 @@ const App = ()=> {
           <Header />
           
           
-
+          <div className="content">
           <Routes> 
             <Route path='/' exept element={<Main/>} ></Route>
 
@@ -52,13 +53,16 @@ const App = ()=> {
 
             <Route path='/cabinet' element={<PrivatRoute/>} >
               <Route index element={<Cabinet/>} ></Route>
+              <Route path='/cabinet/settings' element={<Settings/>} ></Route>
               <Route path='/cabinet/list_users' element={<ListUsers/>} ></Route>
               <Route path='/cabinet/chat' element={<Chat/>} ></Route>
               <Route path='/cabinet/chat/:roomId'  element={<Chat/>} ></Route>
             </Route>
             {/* <Route path='/vk' element={<VKauth/>} ></Route> */}
           </Routes>
+          </div>
           <Footer />
+          
         </BrowserRouter>
 
               <ToastContainer

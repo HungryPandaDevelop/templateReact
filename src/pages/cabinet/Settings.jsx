@@ -2,6 +2,7 @@ import { saveListing } from 'services/saveListing';
 
 import { useState, useEffect } from 'react';
 
+import SettingTabs from 'pages/cabinet/settings/SettingTabs';
 import RenderForm from 'components/forms/RenderFormCabinet';
 
 import { getSingleListing } from 'services/getSingleListing';
@@ -40,13 +41,8 @@ const Cabinet = ({ uid, formData }) => {
     <>
       <div className="stub"></div>
       <div className="main-full">
-        <Tabs active={0} />
-        <RenderForm
-          fields={accountFields}
-          btnSubmiText="Сохранить"
-          initialValues={listings}
-          submitSuccess={submitSuccess}
-        />
+        <Tabs active={1} />
+        <SettingTabs />
       </div>
     </>
   )

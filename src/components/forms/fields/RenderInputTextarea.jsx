@@ -32,17 +32,17 @@ const TempateInput = (props) => {
 
   return (
     <div className={wrapClass}>
-
+      {label && <label htmlFor={input.name}><b>{label}</b>{labelSecond && <div className='hint-input'><i><span>{labelSecond}</span></i></div>}</label>}
       <textarea
         {...input}
         type="textarea"
         id={input.name}
-        className={`input-decorate ${checkErrorSubmit && error && 'input-error'} ${input.value.length > 0 ? 'input-empty' : ''} `}
+        className={`input-decorate ${checkErrorSubmit && error && 'input-error'} `}
         placeholder={placeholder}
         maxLength={maxLength}
       >
       </textarea>
-      {label && <label htmlFor={input.name}><b>{label}</b>{labelSecond && <div className='hint-input-file'><i><span>{labelSecond}</span></i></div>}</label>}
+
       {(checkErrorSubmit && (error && <span className='input-error-text'>{error}</span>))}
     </div>
   );

@@ -36,15 +36,16 @@ const TempateInput = (props) => {
   return (
     <div className={wrapClass}>
       {label && <label htmlFor={input.name}><b>{label}</b> {labelSecond ? <span>{labelSecond}</span> : ''}</label>}
-      <input
-        {...input}
-        type="date"
-        placeholder={placeholder}
-        id={input.name}
-        ref={$input}
-        className="input-decorate input-date"
-      />
-
+      <div className="data-input-container">
+        <input
+          {...input}
+          type="date"
+          placeholder={placeholder}
+          id={input.name}
+          ref={$input}
+          className="input-decorate input-date"
+        />
+      </div>
 
     </div>
   );

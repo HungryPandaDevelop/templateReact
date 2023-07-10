@@ -1,10 +1,19 @@
+import { Link } from "react-router-dom";
 
+const Tabs = ({ active }) => {
 
-const Tabs = () => {
+  const allTabs = [['Кабинет', '/cabinet'], ['Настройки', '/cabinet/settings']];
+
+  console.log(active)
   return (
     <div className="border-tabs-container">
-      <div className="border-tab active">Кабинет</div>
-      <div className="border-tab">Настройки</div>
+      {allTabs.map((item, index) => (<Link
+        key={index}
+        className={`border-tab ${(index === active) ? 'active' : ''}`}
+        to={item[1]}
+      >{item[0]}</Link>))}
+
+
     </div>
   )
 }

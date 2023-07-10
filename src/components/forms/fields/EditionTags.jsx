@@ -9,7 +9,10 @@ const TempateInput = (props) => {
   } = props;
 
   const {
-    label
+    label,
+    placeholder,
+    text,
+    textSecond
   } = props.obj;
 
   const [tags, setTags] = useState([]);
@@ -53,18 +56,16 @@ const TempateInput = (props) => {
       </div>
       <div className="tags-add-input">
         <div className="tags-add-hint">
-          <h3>Добавьте ваши цели.</h3>
+          <h3>{text}</h3>
           <div className="tags-add-hint-text">
-            Данные цели будут использоваться,
-            как приглашения, для большего
-            совпадения пар.
+            {textSecond}
           </div>
         </div>
         <div className="input-box">
           <input
             className="input-decorate"
             type="text"
-            placeholder="Цели"
+            placeholder={placeholder}
             ref={inputRef}
           />
         </div>

@@ -437,6 +437,28 @@ section {
   border-color: #00AEEF;
 }
 
+.btn--gray {
+  background-color: #0B132B;
+  border-color: #0B132B;
+  color: #ffffff;
+}
+.btn--gray:hover {
+  background: #00AEEF;
+  color: #ffffff;
+  border-color: #00AEEF;
+}
+
+.btn--gray-border {
+  background-color: #ffffff;
+  border-color: #8c95a6;
+  color: #8c95a6;
+}
+.btn--gray-border:hover {
+  background: #00AEEF;
+  color: #ffffff;
+  border-color: #00AEEF;
+}
+
 .btn--white {
   background-color: #ffffff;
   border-color: #ffffff;
@@ -1560,6 +1582,18 @@ input {
   color: #3A506B;
   margin: 0 0 8px;
   display: inline-block;
+}
+
+.data-input-container {
+  position: relative;
+}
+.data-input-container::after {
+  content: "";
+  width: 40px;
+  position: absolute;
+  height: 100%;
+  right: 0;
+  top: 0;
 }
 
 .input-animate {
@@ -2862,6 +2896,7 @@ footer .nav li {
   cursor: pointer;
   font-weight: 700;
   margin-right: 15px;
+  text-decoration: none;
 }
 .border-tab:hover, .border-tab.active {
   background-color: #00AEEF;
@@ -2871,6 +2906,15 @@ footer .nav li {
 
 .border-null-left {
   border-top-left-radius: 0;
+}
+
+.border-null-top {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.btn-container-right {
+  text-align: right;
 }
 
 .user-top-info {
@@ -2988,6 +3032,59 @@ footer .nav li {
 }
 .user-description .btn-container {
   text-align: right;
+}
+
+.settings-tabs-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid #98A1A7;
+  border-bottom: 0;
+  border-top-right-radius: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.settings-tab {
+  border-left: 1px solid #98A1A7;
+  width: 34%;
+  text-align: center;
+  padding: 15px;
+}
+.settings-tab:first-child {
+  border: 0;
+}
+.settings-tab.active, .settings-tab:hover {
+  background-color: #ebedf0;
+}
+
+.userMini-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 15px;
+}
+.userMini-item .img-cover {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 100%;
+  margin-bottom: 8px;
+}
+
+.userMini-name {
+  font-weight: 700;
+  text-align: center;
+}
+
+.userMini-btn-container {
+  margin-top: 30px;
 }
 
 /*-----users-end----*/

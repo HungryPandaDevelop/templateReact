@@ -30,7 +30,7 @@ const ClearYaMap = ({ currentLocation }) => {
 
   useEffect(() => {
 
-    if (loadMap) {
+    if (loadMap && currentLocation) {
       addPosition(currentLocation);
     }
   }, [loadMap, currentLocation]);

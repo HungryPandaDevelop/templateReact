@@ -1,27 +1,23 @@
 import { useState, useEffect, useRef } from 'react';
 import { Field } from 'redux-form';
-import { connect } from 'react-redux';
 
 
-const TemplateSelect = (props) => {
+const TempateInput = (props) => {
   // console.log('hi', props)
   const {
     input,
-    placeholder,
+    meta: { error }
+  } = props;
+
+  const {
     label,
     labelSecond,
+    placeholder,
     options,
-    num,
-    inputValueConnect,
-    hideByClickId,
-    className,
-    setOuterVal, // ?
-    setCurrentAnimal // ?
-
-  } = props;
-  // const elRef = useRef();
-  // const [custVal, setCustVal] = useState('');
-
+    wrapClass,
+    checkErrorSubmit,
+    setErrCheck,
+  } = props.obj;
 
   // создание селекта
 
@@ -54,14 +50,12 @@ const TemplateSelect = (props) => {
       setFirstLoad(1);
       // setCustVal(input.value);
 
-      const findEl = (options.filter((fl) => fl.label === input.value));
-      // console.log('findEl', findEl)
+      const findEl = (options.filter((fl) => fl.value === input.value));
+
+
       if (findEl.length > 0) {
         setSelect(findEl[0].label);
         input.onChange(findEl[0].label);
-
-        setCurrentAnimal && setCurrentAnimal(findEl[0]); // ?
-        setOuterVal && setOuterVal(findEl[0].value); /// ???
       };
 
     }
@@ -69,9 +63,6 @@ const TemplateSelect = (props) => {
   // console.log(options, select)
 
   const renderOptions = options.map((li) => {
-    if (select && li.value === select.value) {
-      return null;
-    }
     return (
       <li
         key={li.value}
@@ -83,24 +74,14 @@ const TemplateSelect = (props) => {
 
 
   const onSelectedChange = (value) => {
-    // elRef.current.focus();
 
-    // setCustVal(value.label);
     setSelect(value.label);
-    input.onChange(value.label);
-
-    setCurrentAnimal && setCurrentAnimal(value)
-    setOuterVal && setOuterVal(value.value); /// ???
+    input.onChange(value.value);
   }
 
-  // console.log(inputValueConnect, inputValueConnect)
-  if (hideByClickId && !inputValueConnect) { return false }
-  else if (hideByClickId && inputValueConnect.length > 0 && hideByClickId.indexOf(inputValueConnect) === -1) {
-    return false;
-  }
+
   return (
-    <div className={className}>
-      {num && <i className="num-offset">{num}</i>}
+    <div className={wrapClass}>
       {label && (<label><b>{label}</b> <span>{labelSecond}</span></label>)}
       <div
         ref={selectRef}
@@ -117,23 +98,16 @@ const TemplateSelect = (props) => {
   )
 }
 
-const RenderInputSelect = (props) => {
-
-
+const RenderInputSelect = ({ obj }) => {
 
 
   return <Field
-    name={props.name}
-    props={props}
-    component={TemplateSelect}
+    name={obj.name}
+    obj={obj}
+    component={TempateInput}
   />
 
 }
 
-const mapStateToProps = (state) => {
 
-  return {
-    inputValueConnect: state.inputConnectState.inputValueConnect,
-  }
-}
-export default connect(mapStateToProps)(RenderInputSelect);
+export default RenderInputSelect;
