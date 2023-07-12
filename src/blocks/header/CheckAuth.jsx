@@ -16,6 +16,7 @@ const CheckAuth = ({
     onAuthStateChanged(auth, (user) => {
 
       if (user) {
+
         localStorage.setItem('account', JSON.stringify({ uid: auth.currentUser.uid }));
         ActionFn('SET_INFO_ACCOUNT', { uid: auth.currentUser.uid });
       }

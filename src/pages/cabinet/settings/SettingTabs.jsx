@@ -1,12 +1,10 @@
-import { useState } from "react";
 
-const SettingTabs = () => {
+const SettingTabs = ({ currentTab, setCurrentTab }) => {
 
-  const allTabs = [['Личные данные'], ['Приватность'], ['Черный список']];
-  const [currentTab, setCurrentStub] = useState(0);
+  const allTabs = [['Смена пароля'], ['Личные данные'], ['Приватность'], ['Черный список']];
+
   const choiseTabs = (index) => {
-    console.log('cl', index)
-    setCurrentStub(index);
+    setCurrentTab(index);
   }
 
   return (

@@ -5,7 +5,7 @@ export const regFields = {
     label: "Имя", 
     placeholder: "Имя", 
     type:"text" , 
-    wrapClass: "input-box  col-6",
+    wrapClass: "input-box col-6",
   },
   email: { 
     name: "email", 

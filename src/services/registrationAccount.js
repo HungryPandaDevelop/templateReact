@@ -44,17 +44,17 @@ export const registrationAccount = async (formData) => {
     
     
   
-    const formDataCopy = { ...formData, uid: user.uid };
+    const formDataCopy = { ...formData, uid: user.uid, typeReg: 'mail' };
 
     delete formDataCopy.password;
 
     formDataCopy.timestamp = serverTimestamp();
 
-    console.log('1')
+
     await setDoc(doc(db, 'users', user.uid), formDataCopy);
-    console.log('2')
+  
     
-    console.log('3')
+
 
     await sendEmailVerification(auth.currentUser).then(function() {
       // Verification email sent.

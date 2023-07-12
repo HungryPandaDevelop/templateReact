@@ -1518,6 +1518,10 @@ input {
   -webkit-border-radius: 0;
 }
 
+input:disabled {
+  background-color: #ebedf0;
+}
+
 .input-decorate,
 .custom-select,
 .file-decorate {

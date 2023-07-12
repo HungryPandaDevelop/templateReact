@@ -15,6 +15,7 @@ const TempateInput = (props) => {
     labelSecond,
     placeholder,
     wrapClass,
+    disabled,
     checkErrorSubmit,
     setErrCheck,
   } = props.obj;
@@ -42,10 +43,9 @@ const TempateInput = (props) => {
       {label && <label htmlFor={input.name}><b>{label}</b>{labelSecond && <div className='hint-input'><i><span>{labelSecond}</span></i></div>}</label>}
       <input
         {...input}
-        type="text"
-        id={input.name}
         placeholder={placeholder}
         className={`input-decorate ${checkErrorSubmit && error && 'input-error'}`}
+        disabled={disabled}
 
       />
 

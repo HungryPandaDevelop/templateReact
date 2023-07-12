@@ -1,7 +1,5 @@
 
-
-export const settingsPrivateData = {
-
+export const privateFields = {
   email: { 
     name: "email", 
     label: "E-mail", 
@@ -17,10 +15,6 @@ export const settingsPrivateData = {
     type:"phone",
     wrapClass: "col-6",
   },
-}
-
-export const settingsPassword = {
-
   checkPassword: { 
     name: "checkPassword", 
     label: "Введите пароль",
@@ -39,4 +33,5 @@ export const settingsPassword = {
     label: "Подтвердить пароль",
     wrapClass: "col-4",
   },
+
 }

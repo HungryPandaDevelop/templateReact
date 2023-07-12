@@ -31,7 +31,7 @@ const Cabinet = ({ uid, formData }) => {
   }, []);
 
   const submitSuccess = () => {
-    console.log('formData', formData.values)
+
     saveListing(formData.values, uid, 'users');
   }
   if (loading) { return 'Loading...' }
