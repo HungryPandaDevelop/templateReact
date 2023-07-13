@@ -15,9 +15,10 @@ import { connect } from 'react-redux';
 
 import PasswordsTabs from 'pages/cabinet/settings/Passwords';
 import PersonalDataTabs from 'pages/cabinet/settings/PersonalData';
+import PrivacyTabs from 'pages/cabinet/settings/Privacy';
 
 
-import Tabs from 'pages/cabinet/parts/Tabs';
+import Tabs from 'pages/cabinet/default/Tabs';
 
 const Cabinet = ({ uid, formData }) => {
 
@@ -45,6 +46,14 @@ const Cabinet = ({ uid, formData }) => {
       case 1:
         return (
           <PersonalDataTabs
+            formData={formData}
+            uid={uid}
+            listings={listings}
+          />
+        )
+      case 2:
+        return (
+          <PrivacyTabs
             formData={formData}
             uid={uid}
             listings={listings}

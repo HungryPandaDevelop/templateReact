@@ -1,11 +1,23 @@
-import React from 'react'
+import RenderForm from 'components/forms/RenderForm';
+import { settingsPrivacy } from 'base/forms/settingsFields';
+import { saveListing } from 'services/saveListing';
 
-const Privacy = () => {
+const Privacy = ({ formData, uid, listings }) => {
+
+  const submitSuccess = () => {
+
+    saveListing(formData.values, uid, 'users');
+
+  }
+
   return (
-    <div>
-      Privacy
-    </div>
+    <RenderForm
+      fields={settingsPrivacy}
+      btnSubmiText="Сохранить"
+      initialValues={listings}
+      submitSuccess={submitSuccess}
+    />
   )
-};
+}
 
 export default Privacy;

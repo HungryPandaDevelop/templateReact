@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 
 
 
-import Tabs from 'pages/cabinet/parts/Tabs';
+import Tabs from 'pages/cabinet/default/Tabs';
 
 const Cabinet = ({ uid, formData }) => {
 
