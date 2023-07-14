@@ -17,12 +17,12 @@ import Settings from 'pages/cabinet/Settings';
 
 import AuthStart from 'pages/auth/AuthStart';
 import RegStart from 'pages/auth/RegStart';
-
 import RegPhone from 'pages/auth/RegPhone';
 import RegMail from 'pages/auth/RegMail';
 import AuthMail from 'pages/auth/AuthMail';
 
-import ListUsers from 'pages/ListUsers';
+
+import UsersCatalog from 'pages/users/UserCatalog';
 
 import Chat from 'pages/Chat';
 import ChatRoom from 'pages/chat/Room';
@@ -50,11 +50,11 @@ const App = ()=> {
             <Route path='/auth-mail' element={<AuthMail/>} ></Route>
             <Route path='/reg-phone' element={<RegPhone/>} ></Route> 
 
+            <Route path='/users-catalog' element={<UsersCatalog/>}></Route>
 
             <Route path='/cabinet' element={<PrivatRoute/>} >
               <Route index element={<Cabinet/>} ></Route>
               <Route path='/cabinet/settings' element={<Settings/>} ></Route>
-              <Route path='/cabinet/list_users' element={<ListUsers/>} ></Route>
               <Route path='/cabinet/chat' element={<Chat/>} ></Route>
               <Route path='/cabinet/chat/:roomId'  element={<Chat/>} ></Route>
             </Route>

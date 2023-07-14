@@ -27,6 +27,7 @@ export const getListing = async (baseName,  type, uid ) => {
       orderBy('timestamp', 'desc'),
     );
   }
+
   if(type==='noUserRef'){
     q = query(
       listingsRef,
@@ -35,6 +36,7 @@ export const getListing = async (baseName,  type, uid ) => {
 
     );
   }
+  
   else if(type==='rooms'){
     q = query(
       listingsRef,

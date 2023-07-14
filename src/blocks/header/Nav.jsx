@@ -3,7 +3,7 @@ const Nav = () => {
   return (
     <ul>
       <li>
-        <Link to="/cabinet/list_users">Все Пользователи</Link>
+        <Link to="/users-catalog">Все Пользователи</Link>
       </li>
       {/* <li>
         <Link to="/support">Поддержка</Link>
