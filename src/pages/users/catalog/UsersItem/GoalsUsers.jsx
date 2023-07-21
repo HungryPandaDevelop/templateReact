@@ -24,7 +24,7 @@ const GoalsUsers = ({ user }) => {
 
   if (goals === undefined || goals.length === 0) { return false; }
 
-  console.log('goals', goals)
+  // console.log('goals', goals)
   const allGoals = goals.map((item, index) => {
     return (<div key={index}>{renderGoals(item)}</div>);
   });

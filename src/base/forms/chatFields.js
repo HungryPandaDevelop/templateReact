@@ -4,7 +4,8 @@ export const chatFields = {
     name: "message", 
     placeholder: "Напишите сообщение... ", 
     type:"textarea",
-    wrapClass: "col-11",
-    maxLength: 10
+    wrapClass: "col-8",
+    maxLength: 10,
+    validate: ['required','minLength'],
   }
 }

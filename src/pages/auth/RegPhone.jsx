@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import Popup from 'components/Popup';
 import RenderForm from 'components/forms/RenderForm';
-import Section from "pages/Main/Section"
+import Section from "pages/main/Section"
 
 import { regFieldsPhone, regFieldVertification } from 'base/forms/authFields';
 

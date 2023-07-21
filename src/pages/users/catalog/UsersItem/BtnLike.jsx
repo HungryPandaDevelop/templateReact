@@ -38,9 +38,11 @@ const BtnLike = ({ user, account, likes }) => {
     }
   }
 
+  console.log('likeStatus', likeStatus)
+
   return (
     <div
-      className="btn-ico--like btn-ico"
+      className={`btn-ico--like btn-ico ${likeStatus ? 'active' : ''}`}
       onClick={() => { onLikeStatusChange(user) }}
     ></div>
   )

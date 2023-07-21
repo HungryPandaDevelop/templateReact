@@ -25,7 +25,7 @@ const TempateInput = (props) => {
 
   const [open, setOpen] = useState(false);
   const [select, setSelect] = useState(placeholder);
-  const [firstLoad, setFirstLoad] = useState(0);
+
 
   useEffect(() => {
 
@@ -46,18 +46,17 @@ const TempateInput = (props) => {
 
 
   useEffect(() => {
-    if (input.value && firstLoad === 0) {
-      setFirstLoad(1);
-      // setCustVal(input.value);
+    if (input.value) {
 
       const findEl = (options.filter((fl) => fl.value === input.value));
-
-
       if (findEl.length > 0) {
         setSelect(findEl[0].label);
         input.onChange(findEl[0].label);
       };
 
+    }
+    else {
+      setSelect(placeholder)
     }
   }, [input]);
   // console.log(options, select)

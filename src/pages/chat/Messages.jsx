@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import { getMyRoomMessages } from 'services/chatEvents';
 
+import MessagesItem from './MessagesItem';
+
 const Messages = ({ uid, roomId }) => {
 
   const [allMessages, setAllMessages] = useState([]);
@@ -14,12 +16,13 @@ const Messages = ({ uid, roomId }) => {
   }, []);
 
   return (
-    <div className=''>
-      <h3>Все сообщения</h3>
-      <div className="chat-messages-list">
-        {allMessages.map((item, index) => {
-          return (<div key={index} className='chat-list-item'>{item.text}</div>)
-        })}
+    <div className="chat-messages">
+      <div className="messages-container">
+        {allMessages.map((message, index) => <MessagesItem
+          key={index}
+          message={message}
+          uid={uid}
+        />)}
       </div>
     </div>
   )

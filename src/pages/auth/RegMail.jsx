@@ -6,7 +6,7 @@ import RenderForm from 'components/forms/RenderForm';
 import Popup from 'components/Popup';
 import RegEnd from 'pages/auth/parts/RegEnd';
 import { regFields } from 'base/forms/authFields';
-import Section from "pages/Main/Section"
+import Section from "pages/main/Section"
 
 import { registrationAccount } from 'services/registrationAccount';
 const RegMail = ({ formData }) => {

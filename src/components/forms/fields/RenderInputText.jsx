@@ -1,6 +1,5 @@
 import { Field } from 'redux-form';
-import { useEffect } from 'react';
-
+import { useState, useEffect } from 'react';
 
 
 const TempateInput = (props) => {
@@ -22,9 +21,10 @@ const TempateInput = (props) => {
 
 
 
+  const [firstLoad, setFirstLoad] = useState(0);
 
   useEffect(() => {
-
+    // console.log('input.name', input.value)
     if (setErrCheck) {
       if (error) {
         setErrCheck(false);
@@ -36,6 +36,12 @@ const TempateInput = (props) => {
 
   }, [error]);
 
+  useEffect(() => {
+    if (input.value && firstLoad === 0) {
+      setFirstLoad(1);
+      input.onChange(input.value);
+    }
+  }, [input]);
 
   return (
     <div className={wrapClass}>

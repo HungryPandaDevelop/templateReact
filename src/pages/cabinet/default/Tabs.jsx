@@ -2,9 +2,14 @@ import { Link } from "react-router-dom";
 
 const Tabs = ({ active }) => {
 
-  const allTabs = [['Кабинет', '/cabinet'], ['Настройки', '/cabinet/settings']];
+  const allTabs = [
+    ['Кабинет', '/cabinet'],
+    ['Настройки', '/cabinet/settings'],
+    ['Чат', '/cabinet/chat'],
+    ['Лайки', '/cabinet/like'],
+    ['Черный список', '/black-list'],
+  ];
 
-  console.log(active)
   return (
     <div className="border-tabs-container">
       {allTabs.map((item, index) => (<Link

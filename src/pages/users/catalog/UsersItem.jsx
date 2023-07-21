@@ -11,8 +11,6 @@ import Btns from 'pages/users/catalog/UsersItem/Btns';
 
 const UserItem = ({ account, user, likes }) => {
 
-  console.log('user', user)
-
 
   return (
     <Link className="users-item" href="/">

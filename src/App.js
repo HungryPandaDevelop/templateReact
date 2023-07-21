@@ -25,7 +25,7 @@ import AuthMail from 'pages/auth/AuthMail';
 import UsersCatalog from 'pages/users/UserCatalog';
 
 import Chat from 'pages/Chat';
-import ChatRoom from 'pages/chat/Room';
+
 
 
 

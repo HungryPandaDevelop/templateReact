@@ -6,12 +6,13 @@ import { useState } from 'react';
 
 // --------------------------------------------------------------------
 
-const TemplateForm = (props) => {
+let TemplateForm = (props) => {
   const {
     fields,
     btnSubmiText,
     waitAnsw,
-    submitSuccess
+    submitSuccess,
+    colBtn
   } = props;
 
 
@@ -53,7 +54,7 @@ const TemplateForm = (props) => {
         checkErrorSubmit={checkErrorSubmit}
         setErrCheck={setErrCheck}
       />
-      <div className="col-12 btn-container">
+      <div className={`${colBtn ? colBtn : 'col-12'} btn-container`}>
         <button className="btn btn--blue" onClick={(e) => { onSubmit(e) }} >
           {waitAnsw ? (<>Loading...</>) : (
             <><i></i><span>{btnSubmiText}</span></>
@@ -64,11 +65,10 @@ const TemplateForm = (props) => {
   )
 }
 
+TemplateForm = reduxForm({
+  form: 'singleInput'  // a unique identifier for this form
+})(TemplateForm)
 
-
-export default reduxForm({
-  form: 'singleInput',
-  enableReinitialize: true,
-})(TemplateForm);
+export default TemplateForm;
 
 

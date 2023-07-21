@@ -1,7 +1,7 @@
 
 import { Link } from 'react-router-dom';
 import Popup from 'components/Popup';
-import Section from "pages/Main/Section"
+import Section from "pages/main/Section"
 
 import GoogleAuth from 'pages/auth/parts/GoogleAuth';
 
@@ -14,8 +14,8 @@ const RegEnd = () => {
         <h4>Войти в аккаунт с помощью:</h4>
         <div className="btn-container">
           <GoogleAuth btnText="Войти через Gmail" />
-          <Link to="/reg-phone" className="btn reg-btn phone--btn"><i></i><span>Войти через номер телефона</span></Link>
-          <Link to="/auth-mail" className="btn reg-btn mail--btn"><i></i><span>Войти через почту</span></Link>
+          <Link to="/auth-phone" className="btn btn-reg btn-phone"><i></i><span>Войти через номер телефона</span></Link>
+          <Link to="/auth-mail" className="btn btn-reg btn-mail"><i></i><span>Войти через почту</span></Link>
         </div>
       </Popup>
       <Section />

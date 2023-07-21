@@ -35,6 +35,7 @@ const Cabinet = ({ uid, formData }) => {
     })
   }, []);
 
+
   const renderTabs = (num) => {
     switch (num) {
       case 0:
@@ -77,6 +78,7 @@ const Cabinet = ({ uid, formData }) => {
           currentTab={currentTab}
           setCurrentTab={setCurrentTab}
         />
+
         <div className="border-container border-null-top account-main" >
           {renderTabs(currentTab)}
         </div>

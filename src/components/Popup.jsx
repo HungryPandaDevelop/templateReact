@@ -5,7 +5,7 @@ const Popup = ({ children }) => {
     <div className="popup element-show show" >
       <div className="popup-overlay"></div>
       <div className="popup-container">
-        <Link to="/" className="close-btn close-btn--popup "></Link>
+        <Link to="/" className="btn-close close-btn--popup "></Link>
         {children}
       </div>
     </div>

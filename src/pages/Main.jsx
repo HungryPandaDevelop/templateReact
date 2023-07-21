@@ -1,4 +1,4 @@
-import Section from "pages/Main/Section"
+import Section from "pages/main/Section"
 
 const Main = () => {
   return (

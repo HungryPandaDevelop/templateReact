@@ -1,7 +1,7 @@
 
 import { Link } from 'react-router-dom';
 import Popup from 'components/Popup';
-import Section from "pages/Main/Section"
+import Section from "pages/main/Section"
 
 import GoogleAuth from 'pages/auth/parts/GoogleAuth';
 
@@ -15,8 +15,8 @@ const RegStart = () => {
         <h4>Создайте аккаунт с помощью:</h4>
         <div className="btn-container">
           <GoogleAuth btnText="Создать через Gmail" />
-          <Link to="/reg-phone" className="btn reg-btn phone--btn"><i></i><span>Создать через номер телефона</span></Link>
-          <Link to="/reg-mail" className="btn reg-btn mail--btn"><i></i><span>Создать через почту</span></Link>
+          <Link to="/reg-phone" className="btn btn-reg btn-phone"><i></i><span>Создать через номер телефона</span></Link>
+          <Link to="/reg-mail" className="btn btn-reg btn-mail"><i></i><span>Создать через почту</span></Link>
         </div>
       </Popup>
       <Section />

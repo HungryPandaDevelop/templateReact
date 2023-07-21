@@ -2,6 +2,8 @@ import React from 'react';
 
 
 
+import RangeSlider from 'components/forms/fields/RangeSlider';
+import ChoiseTags from 'components/forms/fields/ChoiseTags';
 import EditionTags from 'components/forms/fields/EditionTags';
 
 import RenderTitle from 'components/forms/fields/RenderTitle';
@@ -80,6 +82,22 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, type }) => {
         return (
           <>
             <EditionTags
+              obj={obj}
+            />
+          </>
+        )
+      case 'choiseTags':
+        return (
+          <>
+            <ChoiseTags
+              obj={obj}
+            />
+          </>
+        )
+      case 'range':
+        return (
+          <>
+            <RangeSlider
               obj={obj}
             />
           </>

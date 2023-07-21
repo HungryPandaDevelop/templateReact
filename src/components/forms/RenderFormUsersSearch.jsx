@@ -1,8 +1,10 @@
 import RenderFields from 'components/forms/RenderFields';
+import RenderBtnContainer from 'components/forms/formUserSearch/RenderBtnContainer';
 
 import { reduxForm } from 'redux-form';
 
 import { useState } from 'react';
+
 
 
 const UsersSearchPanel = (props) => {
@@ -11,8 +13,27 @@ const UsersSearchPanel = (props) => {
     fields,
     btnSubmiText,
     waitAnsw,
-    submitSuccess
+    submitSuccess,
+    reset,
+    resetForm
   } = props;
+
+
+
+
+  const [fullPanel, setFullPanel] = useState(true);
+
+  const changeStatePanel = () => {
+    setFullPanel(!fullPanel);
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    submitSuccess();
+
+  };
+
 
   return (
     <div className="main-full border-search-outer">
@@ -25,27 +46,67 @@ const UsersSearchPanel = (props) => {
           <RenderFields
             type="single"
             fields={fields.gender}
-          />
-          <div className="input-box col-4">
-            <label>Возраст</label>
 
-          </div>
-          <div className="input-box col-3">
-            <label>Город</label>
-            <select className="style-select" data-text="Выбрать селект">
-              <option>селект 1</option>
-              <option>селект 2</option>
-              <option>селект 3</option>
-              <option>селект 4</option>
-              <option>селект 5</option>
-            </select>
-          </div>
-          <div className="col-3">
-            <div className="btn-container">
-              <div className="btn btn--blue-border">Еще фильтры</div>
-              <div className="btn btn--blue">Найти</div>
-            </div>
-          </div>
+          />
+          <RenderFields
+            type="single"
+            fields={fields.rangeBerth}
+          />
+          <RenderFields
+            type="single"
+            fields={fields.city}
+          />
+          {fullPanel ?
+            <RenderBtnContainer
+              wrapClass="col-4"
+              btnText="Еще фильтры"
+              changeStatePanel={changeStatePanel}
+              waitAnsw={waitAnsw}
+              onSubmit={onSubmit}
+              btnSubmiText={btnSubmiText}
+              reset={reset}
+              resetForm={resetForm}
+
+            /> : (
+              <>
+                <RenderFields
+                  type="single"
+                  fields={fields.goals}
+                />
+                <RenderFields
+                  type="single"
+                  fields={fields.interests}
+                />
+                <RenderFields
+                  type="single"
+                  fields={fields.zodiac}
+                />
+
+                <RenderFields
+                  type="single"
+                  fields={fields.work}
+                />
+                <RenderFields
+                  type="single"
+                  fields={fields.orientation}
+                />
+                <RenderBtnContainer
+                  wrapClass="col-offset-9 col-4"
+                  btnText="Свернуть"
+                  changeStatePanel={changeStatePanel}
+                  waitAnsw={waitAnsw}
+                  onSubmit={onSubmit}
+                  btnSubmiText={btnSubmiText}
+                  reset={reset}
+                  resetForm={resetForm}
+
+                />
+              </>
+            )}
+
+
+
+
         </div>
       </div>
     </div>

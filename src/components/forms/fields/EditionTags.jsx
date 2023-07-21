@@ -12,22 +12,32 @@ const TempateInput = (props) => {
     label,
     placeholder,
     text,
-    textSecond
+    textSecond,
+    options
   } = props.obj;
 
   const [tags, setTags] = useState([]);
 
+
+  const [originList, setOriginList] = useState(options);
+  const [filterList, setFilterList] = useState(options);
+
+  const [showPopup, setShowPopup] = useState(false);
+
+  const [term, setTerm] = useState('');
+
   const inputRef = useRef();
 
-  const onTagsAd = () => {
-    setTags([...tags, inputRef.current.value]);
-    inputRef.current.value = '';
+  const onTagsAd = (item) => {
+    setTags([...tags, item]);
 
+    setFilterList(filterList.filter(origin => origin !== item))
   };
 
   const onRemoveTags = (el) => {
     setTags(tags.filter(item => item !== el));
 
+    setFilterList([...filterList, el]) // такое себе
 
   }
   const [firstLoad, setFirstLoad] = useState(0);
@@ -36,9 +46,43 @@ const TempateInput = (props) => {
     if (input.value && firstLoad === 0) {
       setFirstLoad(1)
       setTags(input.value);
+
+      if (input.value && input.value.length > 0) {
+        let tempArr = options;
+        input.value.map(el => tempArr = tempArr.filter(item => el !== item));
+        setOriginList(tempArr);
+        setFilterList(tempArr);
+
+      } else {
+        setOriginList(options);
+        setFilterList(options);
+      }
     }
+
+
     input.onChange(tags);
   }, [tags]);
+
+
+
+
+  const filterOptions = (e) => {
+
+    setTerm(e.target.value);
+
+    setFilterList(originList.filter(el => {
+      if ((el.toLowerCase()).indexOf(e.target.value) >= 0) { return el; }
+    }));
+  };
+  const renderOptions = () => {
+
+    return (
+      <ul className="tags-popup ln">
+        {filterList.length === 0 ? 'Список пуст' : filterList.map((item, index) => (
+          <li key={index} onClick={() => { onTagsAd(item) }}>{item}</li>
+        ))}
+      </ul>)
+  }
 
 
   return (
@@ -61,18 +105,22 @@ const TempateInput = (props) => {
             {textSecond}
           </div>
         </div>
-        <div className="input-box">
+        <div className={`${showPopup ? 'active' : ''} input-box tags-search`}>
           <input
             className="input-decorate"
             type="text"
             placeholder={placeholder}
             ref={inputRef}
+            value={term}
+            onChange={filterOptions}
+            onBlur={() => { setShowPopup(false) }}
+            onFocus={() => { setShowPopup(true) }}
           />
+          <i></i>
+          {renderOptions()}
+
         </div>
-        <div
-          className="btn btn--blue-border"
-          onClick={onTagsAd}
-        >Добавить</div>
+
       </div>
     </div>
   )

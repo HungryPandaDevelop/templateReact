@@ -13,7 +13,7 @@ const GoogleAuth = ({ btnText }) => {
   }
 
   return (
-    <div className="btn reg-btn google--btn" onClick={onGoogleClick}><i> </i><span>{btnText}</span></div>
+    <div className="btn btn-reg btn-google" onClick={onGoogleClick}><i> </i><span>{btnText}</span></div>
   )
 }
 

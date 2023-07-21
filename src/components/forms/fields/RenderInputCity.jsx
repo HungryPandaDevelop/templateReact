@@ -31,6 +31,11 @@ const TempateInput = (props) => {
   useEffect(() => {
 
 
+    if (!input.value) {
+      setСhoiseName('Выбрать город')
+    }
+
+
     document.addEventListener("click", handleClick);
     return () => document.removeEventListener("click", handleClick);
 
@@ -44,7 +49,9 @@ const TempateInput = (props) => {
       }
     }
 
-  }, [input.value]);
+
+
+  }, [input]);
 
   const choiseCity = (e) => {
 
@@ -72,7 +79,8 @@ const TempateInput = (props) => {
   const clearFilterVal = () => {
     setFilterVal('');
     setСhoiseName('Выбрать город');
-    setOpen(false);
+    setRussianCities(russianCities);
+    // setOpen(false);
   }
 
   const renderCityList = (russianCitiesListParam) => {
@@ -108,7 +116,7 @@ const TempateInput = (props) => {
           <ul
             className='ln'
           >
-            <div className={`search-field-container ${сhoiseName !== 'Выбрать город' ? 'search-choises' : ''}`}>
+            <div className={`search-field-container ${filterVal.length > 0 ? 'search-choises' : ''}`}>
               <em
                 onClick={clearFilterVal}
               ></em>

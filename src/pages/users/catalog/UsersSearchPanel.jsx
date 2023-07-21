@@ -1,33 +1,37 @@
-import { saveListing } from 'services/saveListing';
-
-import { useState, useEffect } from 'react';
+import { onUsersSearch } from './service/onUsersSearch';
 
 import RenderForm from 'components/forms/RenderFormUsersSearch';
 
-import { getSingleListing } from 'services/getSingleListing';
 
 import { usersSearchFields } from 'base/forms/usersSearchFields';
 
 import { connect } from 'react-redux';
 
-const UsersSearchPanel = ({ uid, formData }) => {
+const UsersSearchPanel = ({
+  formData,
+  listings,
+  setSearchListing
+}) => {
 
+  const startValue = {}
 
-
-  useEffect(() => {
-
-  }, []);
 
   const submitSuccess = () => {
-
-
+    console.log(formData.values)
+    setSearchListing(onUsersSearch(listings, formData.values));
   }
+  const resetForm = () => {
+    setSearchListing(onUsersSearch(listings, startValue));
+  }
+
   return (
     <>
       <RenderForm
         fields={usersSearchFields}
         btnSubmiText="Найти"
         submitSuccess={submitSuccess}
+        resetForm={resetForm}
+      // resetAll={resetAll}
       />
     </>
   )

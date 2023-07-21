@@ -1,7 +1,7 @@
 
 const SettingTabs = ({ currentTab, setCurrentTab }) => {
 
-  const allTabs = [['Смена пароля'], ['Личные данные'], ['Приватность'], ['Черный список']];
+  const allTabs = [['Смена пароля'], ['Личные данные'], ['Приватность']];
 
   const choiseTabs = (index) => {
     setCurrentTab(index);

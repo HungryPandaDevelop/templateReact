@@ -19,9 +19,6 @@ const Cabinet = ({ uid, formData }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-
-
-
     getSingleListing('users', uid).then(res => {
       setListings(res);
       setLoading(false);

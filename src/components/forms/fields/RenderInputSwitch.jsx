@@ -7,6 +7,7 @@ const TempateInput = (props) => {
 
   const {
     input,
+    reset,
     meta: { error }
   } = props;
 
@@ -17,7 +18,7 @@ const TempateInput = (props) => {
   } = props.obj;
 
   const [switchStatus, setSwitchStatus] = useState(false);
-  const [firstLoad, setFirstLoad] = useState(0);
+
 
   const switchChange = (status) => {
 
@@ -25,27 +26,30 @@ const TempateInput = (props) => {
     setSwitchStatus(status)
     if (status) {
       input.onChange(options[1].value);
-      console.log(options[1].value)
+
     } else {
       input.onChange(options[0].value);
-      console.log(options[0].value)
+
     }
 
   };
 
   useEffect(() => {
-    if (input.value && firstLoad === 0) {
-      setFirstLoad(1);
 
-      if (options[0].value === input.value) {
-        setSwitchStatus(false);
-      }
-      else {
-        setSwitchStatus(true);
-      }
+    // console.log('input.value', input.value)
+
+    if (options[0].value === input.value) {
+      switchChange(false);
     }
-  }, []);
+    else if (options[1].value === input.value) {
+      switchChange(true);
+    }
+    if (!input.value) {
 
+      switchChange(false);
+    }
+    // }
+  }, [input]);
 
 
 

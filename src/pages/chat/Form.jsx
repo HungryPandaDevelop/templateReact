@@ -18,15 +18,13 @@ const Form = ({ formData, uid, roomId }) => {
 
 
   return (
-    <div>
-      <h2>Chat Form</h2>
-
+    <div className="chat-form">
       <RenderForm
         fields={chatFields}
         btnSubmiText="Отправить"
         submitSuccess={submitSuccess}
+        colBtn="col-4"
       />
-
     </div>
   )
 }

@@ -1,7 +1,8 @@
 import { Field } from 'redux-form';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import InputMask from 'react-input-mask';
+
 
 
 const TempateInput = (props) => {
@@ -13,11 +14,13 @@ const TempateInput = (props) => {
   const {
     label,
     labelSecond,
-    num,
     wrapClass,
     checkErrorSubmit,
     setErrCheck,
   } = props.obj;
+
+  const [firstLoad, setFirstLoad] = useState(0);
+
 
   useEffect(() => {
 
@@ -32,9 +35,14 @@ const TempateInput = (props) => {
 
   }, [error]);
 
+  useEffect(() => {
+    if (input.value && firstLoad === 0) {
+      setFirstLoad(1);
+      input.onChange(input.value);
+    }
+  }, [input]);
   return (
     <div className={wrapClass}>
-      {/* {<i className="num-offset">{num}</i>} */}
       {label && <label htmlFor={input.name}><b>{label}</b>{labelSecond && <div className='hint-input'><i><span>{labelSecond}</span></i></div>}</label>}
       {/* <input {...input} /> */}
       {<InputMask

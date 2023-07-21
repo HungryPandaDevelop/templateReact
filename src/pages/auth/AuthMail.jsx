@@ -6,7 +6,7 @@ import Popup from 'components/Popup';
 
 import { authFields } from 'base/forms/authFields';
 
-import Section from "pages/Main/Section"
+import Section from "pages/main/Section"
 
 import { authorizationAccount } from 'services/authorizationAccount';
 const AuthMail = ({ formData }) => {

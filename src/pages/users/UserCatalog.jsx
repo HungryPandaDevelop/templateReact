@@ -13,6 +13,9 @@ const UserCatalog = ({ account }) => {
   const [loading, setLoading] = useState(true);
   const [likes, setLikes] = useState([]);
 
+
+  const [searchListing, setSearchListing] = useState();
+
   useEffect(() => {
 
     getListing('likes', 'userRef', account.uid).then((res) => {
@@ -21,6 +24,7 @@ const UserCatalog = ({ account }) => {
 
     getListing('users', 'noUserRef', account.uid).then((res) => {
 
+      setSearchListing(res);
       setListings(res);
       setLoading(false);
     });
@@ -32,9 +36,13 @@ const UserCatalog = ({ account }) => {
   return (
     <>
       <div className="stub"></div>
-      <UsersSearchPanel />
+      <UsersSearchPanel
+        listings={listings}
+        searchListing={searchListing}
+        setSearchListing={setSearchListing}
+      />
       <div className="catalog-grid main-grid">
-        {listings.map((user, index) => (
+        {searchListing.map((user, index) => (
           <div key={index} className="col-4">
             <UserItem
               user={user}

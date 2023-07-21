@@ -1,4 +1,8 @@
-
+import {interests} from "base/interests"
+import {goals} from "base/goals"
+import {zodiac} from "base/zodiac"
+import {orientation} from "base/orientation"
+import {typeWork} from "base/typeWork"
 
 export const accountFields = {
 
@@ -33,6 +37,7 @@ export const accountFields = {
     placeholder: "Цели", 
     text: "Добавьте ваши цели.", 
     textSecond: "Данные цели будут использоваться, как приглашения, для большего совпадения пар.", 
+    options: goals,
   },
   currentLocation: { 
     type:"coords" ,
@@ -45,6 +50,7 @@ export const accountFields = {
     name: "interests", 
     label: "Интересы", 
     placeholder: "Интересы", 
+    options: interests,
     text: "Добавьте ваши интересы.", 
     textSecond: "Введите ваши интересы вручную, либо же воспользуйтесь популярными вариантами ниже.", 
   },
@@ -52,31 +58,13 @@ export const accountFields = {
     type:"select", 
     name: "work",  
     placeholder:"Выбрать работу",
-    options: [
-      {label:"тип 1", value:"type1"}, 
-      {label:"тип 2", value:"type2"}, 
-      {label:"тип 3", value:"type3"}, 
-      {label:"тип 4", value:"type4"}, 
-    ]
+    options: typeWork
   },
   zodiac: { 
     type:"select", 
     name: "zodiac",  
     placeholder:"Выбрать зодиак",
-    options: [
-      {label:"Овен", value:"type1"}, 
-      {label:"Телец", value:"type2"}, 
-      {label:"Близнецы", value:"type3"}, 
-      {label:"Рак", value:"type4"}, 
-      {label:"Лев", value:"type5"}, 
-      {label:"Дева", value:"type6"}, 
-      {label:"Весы", value:"type7"}, 
-      {label:"Скорпион", value:"type8"}, 
-      {label:"Стрелец", value:"type9"}, 
-      {label:"Козерог", value:"type10"}, 
-      {label:"Водолей", value:"type11"}, 
-      {label:"Рыбы", value:"type12"}, 
-    ]
+    options: zodiac
   },
   tripPoint: { 
     type:"select", 
@@ -93,12 +81,7 @@ export const accountFields = {
     type:"select", 
     name: "orientation",  
     placeholder:"Выбрать ориентацию",
-    options: [
-      {label:"тип 1", value:"type1"}, 
-      {label:"тип 2", value:"type2"}, 
-      {label:"тип 3", value:"type3"}, 
-      {label:"тип 4", value:"type4"}, 
-    ]
+    options: orientation
   },
   description: { 
     type:"textarea" ,
