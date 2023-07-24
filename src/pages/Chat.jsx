@@ -26,6 +26,7 @@ const Chat = ({ uid }) => {
             <div className="col-4">
               <Rooms
                 uid={uid}
+                roomId={params.roomId}
               />
             </div>
             <div className="col-8">

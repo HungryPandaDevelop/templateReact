@@ -3779,14 +3779,12 @@ footer .nav li {
   overflow-y: auto;
 }
 
-.messages-item {
-  width: 50%;
+.messages-item--answer {
+  text-align: right;
 }
 
-.messages-item--answer {
-  margin-left: 50%;
-  width: 50%;
-  text-align: right;
+.messages--noanswer {
+  background-color: rgba(0, 174, 239, 0.1);
 }
 
 .messages-box {

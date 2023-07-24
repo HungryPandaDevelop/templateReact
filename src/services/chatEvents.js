@@ -32,16 +32,24 @@ export const createRoom = async (connectUsers, uid) => {
     let roomsAvailable = false;
 
     resp.forEach(room=>{    
-      if(room.connectUsers.he.uid === connectUsers.he.uid){
+      if(room.connectUsersUid[1] === connectUsers.he.uid){
+        console.log('1')
+        roomsAvailable = room.id
+      }
+      if(room.connectUsersUid[0] === connectUsers.he.uid){
+        console.log('2')
         roomsAvailable = room.id
       }
     });
+
     const generateId = uuidv4();
+
     try {
       if(roomsAvailable){
         return roomsAvailable;
         
       }else{
+        console.log('create')
         await setDoc(doc(db, 'rooms',  generateId), {...sendData, id: generateId});
         toast.success('Комната добавлена');
         return generateId;
@@ -53,9 +61,6 @@ export const createRoom = async (connectUsers, uid) => {
         toast.error(error)
     }
 
-    // await addDoc(collection(db, 'rooms'), {...sendData, id: uuidv4()});
-    // await setDoc(doc(db, 'rooms',  uuidv4()), {...sendData, id: uuidv4()});
-    // toast.success('Комната добавлена');
 }
 
 export const getMyRooms = async (uid) =>{
@@ -74,25 +79,10 @@ export const getMyRooms = async (uid) =>{
       ...doc.data(),
   }));
 
+  console.log('getMyRooms', list)
+
   return list;
 }
-
-export const getMyRoomsOnline = async (setRooms, uid) =>{
-
-  const listRef = collection(db, 'rooms'); 
-
-  const q = query(
-    listRef,
-    where('connectUsersUid', 'array-contains', uid)
-  );
-
-  const updateSnap = (listing)=>{
-    setRooms(listing);
-  }
-  
-  watchListing(q, updateSnap);
-
-};
 
 const watchListing = (q, updateSnap)=>{
   let listing = [];
@@ -116,11 +106,32 @@ const watchListing = (q, updateSnap)=>{
       if (change.type === "removed") {
         listing = listing.filter(item => item.id !== change.doc.id)
       } 
-      
+
       updateSnap(listing);
     });
   });
 }
+
+export const getMyRoomsOnline = async (setRooms, uid) =>{
+
+  const listRef = collection(db, 'rooms'); 
+
+  const q = query(
+    listRef,
+    where('connectUsersUid', 'array-contains', uid)
+  );
+
+  const updateSnap = (listing)=>{
+    setRooms(listing);
+
+
+  }
+  
+  watchListing(q, updateSnap);
+
+};
+
+
 
 export const getMyRoomMessages = (setMessages, id) => {
 
@@ -132,7 +143,7 @@ export const getMyRoomMessages = (setMessages, id) => {
   );
 
   const updateSnap = (listing)=>{
-    setMessages(listing[0].data.messages)
+    setMessages(listing[0].data.messages);
   }
   
   watchListing(q, updateSnap);
@@ -142,7 +153,7 @@ export const sendMessage = async (roomId, text,  uid) => {
   
   const getDocRoomInfo =  await getDoc(doc(db, 'rooms', roomId));
   const getRoomInfo = getDocRoomInfo.data();
-  console.log(getRoomInfo)
+
   getRoomInfo.messages.push({
     text: text,
     uid: uid,
@@ -158,4 +169,14 @@ export const sendMessage = async (roomId, text,  uid) => {
       console.error(error);
       toast.error(error)
   }
+}
+
+export const updateRead = async (roomId, messages)=>{
+  console.log(messages)
+  const changeRead = messages.map(item=>{
+    item.read = true
+    return item;
+  })
+  messages.messages = changeRead
+  await updateDoc(doc(db, 'message', roomId), messages);
 }

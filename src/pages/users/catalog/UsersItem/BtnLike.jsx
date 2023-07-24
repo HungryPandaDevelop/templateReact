@@ -38,7 +38,6 @@ const BtnLike = ({ user, account, likes }) => {
     }
   }
 
-  console.log('likeStatus', likeStatus)
 
   return (
     <div
