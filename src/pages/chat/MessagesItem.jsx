@@ -9,7 +9,7 @@ const MessagesItem = ({ message, uid }) => {
 
   return (
     <div
-      className={`messages--noanswer ${whose ? 'messages-item' : 'messages-item--answer'}`}
+      className={`${!message.read ? 'messages--noanswer' : ''} ${whose ? 'messages-item' : 'messages-item--answer'}`}
     >
       <div className={whose ? 'messages-box' : 'messages-box--answer'}>{message.text}</div>
       <div className="messages-date">{dateMessage}</div>

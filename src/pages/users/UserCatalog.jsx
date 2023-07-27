@@ -17,7 +17,7 @@ const UserCatalog = ({ account }) => {
   const [searchListing, setSearchListing] = useState();
 
   useEffect(() => {
-
+    console.log('account', account)
     getListing('likes', 'userRef', account.uid).then((res) => {
       setLikes(res);
     });

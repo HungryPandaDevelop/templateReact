@@ -19,24 +19,24 @@ import { db } from 'default/config/firebase';
 
 import { v4 as uuidv4 } from 'uuid';
 
-export const createRoom = async (connectUsers, uid) => {
+export const createRoom = async (MyUid, heUid) => {
     const sendData ={
-      'connectUsers': connectUsers,
-      'connectUsersUid': [connectUsers.my.uid, connectUsers.he.uid],
+      'connectUsersUid': [MyUid, heUid],
       'messages': [],
     };
 
 
-    const resp = await getMyRooms(uid);
+
+    const resp = await getMyRooms(MyUid);
 
     let roomsAvailable = false;
 
     resp.forEach(room=>{    
-      if(room.connectUsersUid[1] === connectUsers.he.uid){
+      if(room.connectUsersUid[1] === heUid){
         console.log('1')
         roomsAvailable = room.id
       }
-      if(room.connectUsersUid[0] === connectUsers.he.uid){
+      if(room.connectUsersUid[0] === heUid){
         console.log('2')
         roomsAvailable = room.id
       }
@@ -83,11 +83,12 @@ export const getMyRooms = async (uid) =>{
 
   return list;
 }
+let subscribeWatch;
 
 const watchListing = (q, updateSnap)=>{
   let listing = [];
 
-  onSnapshot(q,(snapshot)=>{
+  subscribeWatch =  onSnapshot(q,(snapshot)=>{
 
     snapshot.docChanges().forEach((change) => {
       if (change.type === "added") {
@@ -112,6 +113,10 @@ const watchListing = (q, updateSnap)=>{
   });
 }
 
+export const stopWatch = ()=>{
+  subscribeWatch();
+}
+
 export const getMyRoomsOnline = async (setRooms, uid) =>{
 
   const listRef = collection(db, 'rooms'); 
@@ -133,13 +138,13 @@ export const getMyRoomsOnline = async (setRooms, uid) =>{
 
 
 
-export const getMyRoomMessages = (setMessages, id) => {
+export const getMyRoomMessages = (setMessages, roomId) => {
 
   const listRef = collection(db, 'rooms'); 
 
   const q = query(
     listRef,
-    where('id', '==', id)
+    where('id', '==', roomId)
   );
 
   const updateSnap = (listing)=>{
@@ -171,12 +176,16 @@ export const sendMessage = async (roomId, text,  uid) => {
   }
 }
 
-export const updateRead = async (roomId, messages)=>{
-  console.log(messages)
-  const changeRead = messages.map(item=>{
-    item.read = true
-    return item;
-  })
-  messages.messages = changeRead
-  await updateDoc(doc(db, 'message', roomId), messages);
+export const updateRead = async (roomId, room, uid)=>{
+
+  const changeRead = room.data.messages.map(message=>{
+    if(message.uid !== uid){
+      message.read = true
+    }
+    return message;
+  });
+  
+  room.data.messages = changeRead
+  console.log(room)
+  await updateDoc(doc(db, 'rooms', roomId), room.data);
 }

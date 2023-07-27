@@ -9,6 +9,7 @@ let accounInfo = sessionAccount ? sessionAccount : {
 export const accountReducer = (state=accounInfo, action) => {
   switch(action.type){
     case 'SET_INFO_ACCOUNT':
+      // console.log('a', accounInfo)
       return {...state, ...action.payload,}
     default: 
       return state

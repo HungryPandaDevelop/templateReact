@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { connect } from 'react-redux';
 
-import { getMyRoomMessages } from 'services/chatEvents';
+import { getMyRoomMessages, stopWatch } from 'services/chatEvents';
 
 import MessagesItem from './MessagesItem';
 
@@ -18,6 +18,9 @@ const Messages = ({ uid, roomId }) => {
 
     console.log('allMessages', allMessages)
 
+    return () => {
+      stopWatch();
+    }
   }, [roomId]);
 
 

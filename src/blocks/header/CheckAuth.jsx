@@ -4,6 +4,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 import { connect } from 'react-redux';
 import ActionFn from 'store/actions';
+import { saveListing } from 'services/saveListing';
 
 const CheckAuth = ({
   ActionFn
@@ -12,13 +13,20 @@ const CheckAuth = ({
   const auth = getAuth();
 
   useEffect(() => {
+    // const user = false;
 
     onAuthStateChanged(auth, (user) => {
-
+      console.log('state change 1')
       if (user) {
-
-        localStorage.setItem('account', JSON.stringify({ uid: auth.currentUser.uid }));
-        ActionFn('SET_INFO_ACCOUNT', { uid: auth.currentUser.uid });
+        // console.log('state change 2', user)
+        const userInfo = {
+          name: user.displayName,
+          email: user.email,
+          uid: user.uid,
+        }
+        saveListing(userInfo, user.uid, 'users');
+        localStorage.setItem('account', JSON.stringify(userInfo));
+        ActionFn('SET_INFO_ACCOUNT', userInfo);
       }
       else {
         localStorage.removeItem('account');

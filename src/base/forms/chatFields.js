@@ -6,6 +6,6 @@ export const chatFields = {
     type:"textarea",
     wrapClass: "col-8",
     maxLength: 10,
-    validate: ['required','minLength'],
+    validate: ['required'],
   }
 }

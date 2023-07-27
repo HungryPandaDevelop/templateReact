@@ -14,9 +14,10 @@ import { toast } from 'react-toastify';
 export const saveListing = async (dataForm, cardsId, baseName) => {
   
     try {
-
+      
       const cardsRef = doc(db, baseName, cardsId);
-
+      dataForm.timestamp = serverTimestamp();
+      console.log(dataForm);
       await updateDoc(cardsRef, dataForm);
 
       toast.success('Данные обновлены')

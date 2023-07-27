@@ -10,7 +10,7 @@ const RoomList = ({ uid, roomId }) => {
 
   useEffect(() => {
 
-    getMyRoomsOnline(setRooms, uid).then((res) => {
+    rooms && getMyRoomsOnline(setRooms, uid).then((res) => {
       setLoading(false)
     });
 

@@ -6,7 +6,8 @@ const BtnChat = ({ user, account }) => {
   const navigate = useNavigate();
 
   const onInviteChat = (user) => {
-    createRoom({ 'my': account, 'he': user }, account.uid).then(res => {
+    console.log(user.uid)
+    createRoom(account.uid, user.uid).then(res => {
       navigate('/cabinet/chat/' + res, { replace: true });
     });
   };

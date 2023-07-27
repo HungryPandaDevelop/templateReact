@@ -9,7 +9,6 @@ const InfoAccount = ({ account }) => {
 
   const onLogOut = () => {
     auth.signOut();
-    ActionFn('SET_INFO_ACCOUNT', { uid: false, email: '', infoAccount: [], });
   };
   return (
     <>
