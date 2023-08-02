@@ -1,5 +1,5 @@
-import BtnLike from 'pages/users/catalog/UsersItem/BtnLike';
-import BtnChat from 'pages/users/catalog/UsersItem/BtnChat';
+import BtnLike from 'pages/users/btns/BtnLike';
+import BtnChat from 'pages/users/btns/BtnChat';
 
 const Btns = ({ user, account, likes }) => {
 

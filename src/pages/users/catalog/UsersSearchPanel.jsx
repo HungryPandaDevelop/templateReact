@@ -1,4 +1,4 @@
-import { onUsersSearch } from './service/onUsersSearch';
+import { onUsersSearch } from '../hooks/onUsersSearch';
 
 import RenderForm from 'components/forms/RenderFormUsersSearch';
 

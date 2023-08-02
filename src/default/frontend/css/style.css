@@ -130,7 +130,6 @@ a {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  overflow: hidden;
 }
 .img-cover img {
   visibility: hidden;
@@ -298,6 +297,7 @@ section {
   text-decoration: none;
   font-size: 14px;
   position: relative;
+  font-style: normal;
 }
 .tag em {
   width: 20px;
@@ -433,6 +433,28 @@ section {
   background-repeat: no-repeat;
   background-size: contain;
   background-image: url("../images/icons-app/tags/pribor.svg");
+}
+
+.calendar-ico {
+  display: inline-block;
+  vertical-align: middle;
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("../images/icons-app/calendar-black.svg");
+}
+
+.marker-ico {
+  display: inline-block;
+  vertical-align: middle;
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("../images/icons-app/marker-black.svg");
 }
 
 .btn {
@@ -620,6 +642,39 @@ section {
   background-image: url("../images/icons/close-blue.svg");
 }
 
+.btn-trash {
+  display: inline-block;
+  vertical-align: middle;
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 18px;
+  background-image: url("../images/icons/trash-gray.svg");
+  cursor: pointer;
+  border: 1px solid #98A1A7;
+  border-radius: 100%;
+}
+.btn-trash:hover {
+  background-image: url("../images/icons/trash-blue.svg");
+  border-color: #00AEEF;
+}
+
+.btn-full {
+  display: inline-block;
+  vertical-align: middle;
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 32px;
+  background-image: url("../images/icons-app/full-black.svg");
+  cursor: pointer;
+}
+.btn-full:hover {
+  background-image: url("../images/icons-app/full-blue.svg");
+}
+
 .btn-hamburger {
   display: inline-block;
   vertical-align: middle;
@@ -743,6 +798,7 @@ section {
 
 .link-back {
   cursor: pointer;
+  display: inline-block;
 }
 .link-back i {
   display: inline-block;
@@ -752,7 +808,7 @@ section {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 30px;
-  background-image: url("../images/arrows/carret-left-blue.svg");
+  background-image: url("../images/arrows/carret-left-black.svg");
   margin-right: 0;
 }
 .link-back span {
@@ -762,7 +818,7 @@ section {
   color: #98A1A7;
 }
 .link-back:hover i {
-  background-image: url("../images/arrows/carret-left-gray.svg");
+  background-image: url("../images/arrows/carret-left-blue.svg");
 }
 
 .btn-ico {
@@ -792,6 +848,26 @@ section {
 }
 .btn-ico--like.active:hover {
   background-image: url("../images/icons-app/like-white-fill.svg");
+}
+
+.btn-ico--dislike {
+  display: inline-block;
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 40px;
+  background-image: url("../images/icons-app/dislike-blue.svg");
+}
+.btn-ico--dislike:hover {
+  background-image: url("../images/icons-app/dislike-white.svg");
+}
+.btn-ico--dislike.active {
+  background-image: url("../images/icons-app/dislike-blue-fill.svg");
+}
+.btn-ico--dislike.active:hover {
+  background-image: url("../images/icons-app/dislike-white-fill.svg");
 }
 
 .btn-ico--chat {
@@ -2471,6 +2547,290 @@ header .hamburger-btn {
   gap: 30px;
 }
 
+.controls-panel {
+  width: 60px;
+  position: fixed;
+  height: 100%;
+  z-index: 4;
+  right: 0;
+  top: 0;
+  background-color: #ebedf0;
+  padding-top: 155px;
+}
+
+.controls-chat i {
+  display: inline-block;
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("../images/icons-app/chat-black.svg");
+}
+.controls-chat:hover i {
+  background-image: url("../images/icons-app/chat-white.svg");
+}
+
+.controls-like i {
+  display: inline-block;
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("../images/icons-app/like-black.svg");
+}
+.controls-like:hover i {
+  background-image: url("../images/icons-app/like-white.svg");
+}
+
+.controls-invite i {
+  display: inline-block;
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 28px;
+  background-image: url("../images/icons-app/invite-black.svg");
+}
+.controls-invite:hover i {
+  background-image: url("../images/icons-app/invite-white.svg");
+}
+
+.controls-search i {
+  display: inline-block;
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 24px;
+  background-image: url("../images/icons-app/loop-black.svg");
+}
+.controls-search:hover i {
+  background-image: url("../images/icons-app/loop-white.svg");
+}
+
+.controls-settings i {
+  display: inline-block;
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 28px;
+  background-image: url("../images/icons-app/settings-black.svg");
+}
+.controls-settings:hover i {
+  background-image: url("../images/icons-app/settings-white.svg");
+}
+
+.controls-btn {
+  padding: 10px 5px;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+}
+.controls-btn:hover {
+  background-color: #00AEEF;
+}
+.controls-btn:hover span {
+  background-color: #ffffff;
+  color: #0B132B;
+}
+.controls-btn i {
+  display: inline-block;
+}
+.controls-btn span {
+  width: 21px;
+  position: absolute;
+  height: 21px;
+  left: 32px;
+  top: 32px;
+  background-color: #00AEEF;
+  border-radius: 100%;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.controls-panel-popup {
+  width: 360px;
+  position: absolute;
+  height: 600px;
+  z-index: 3;
+  right: 90px;
+  top: 130px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  -webkit-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+          box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 15px;
+}
+.controls-panel-popup .panel-deg {
+  width: 30px;
+  position: absolute;
+  height: 30px;
+  right: -15px;
+  top: 40px;
+  background-color: #ffffff;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-box-shadow: rgba(149, 157, 165, 0.1) 25px -5px 10px;
+          box-shadow: rgba(149, 157, 165, 0.1) 25px -5px 10px;
+}
+.controls-panel-popup .panel-deg--active-1 {
+  top: 40px;
+}
+.controls-panel-popup .panel-deg--active-2 {
+  top: 100px;
+}
+.controls-panel-popup .panel-deg--active-3 {
+  top: 155px;
+}
+
+.controls-panel-head {
+  background-color: #00AEEF;
+  color: #ffffff;
+  border-radius: 10px 10px 0 0;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  padding: 3px 15px 2px;
+  font-weight: 700;
+}
+
+.popup-chat {
+  height: 100%;
+}
+.popup-chat .messages-container {
+  border: 0;
+  padding: 0;
+  max-height: 345px;
+}
+.popup-chat .form-container {
+  margin-bottom: 15px;
+}
+.popup-chat .rooms-item {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.popup-chat-rooms {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 100%;
+}
+
+.chat-popup-header {
+  border-bottom: 1px solid #ebedf0;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+
+.chat-popup-face {
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 15px;
+}
+
+.chat-popup-info {
+  width: calc(100% - 95px);
+  vertical-align: middle;
+  font-size: 14px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+.chat-popup-info .btn-container {
+  margin-left: auto;
+  padding: 10px 0 0;
+}
+.chat-popup-info .btn-close {
+  margin-left: 15px;
+}
+
+.chat-popup-name {
+  font-weight: 700;
+}
+
+.chat-popup-online {
+  font-weight: 700;
+  color: #00AEEF;
+}
+
+.likes-popup {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 15px 1fr 15px 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.like-popup-box {
+  text-align: center;
+}
+
+.like-popup {
+  width: 90px;
+  height: 90px;
+  background-image: url("../images/temp/avatar-1.jpg");
+  background-size: cover;
+  border-radius: 100%;
+  position: relative;
+  display: inline-block;
+}
+.like-popup .btn-container {
+  width: 100%;
+  position: absolute;
+  height: auto;
+  left: 0;
+  top: calc(100% - 15px);
+}
+
+.like-popup-btn {
+  display: inline-block;
+  vertical-align: middle;
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 18px;
+  background-image: url("../images/icons-app/like-white-fill.svg");
+  background-color: #00AEEF;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.like-popup-btn:hover {
+  background-color: #ffffff;
+  background-image: url("../images/icons-app/like-blue-fill.svg");
+}
+
+.close-popup-btn {
+  display: inline-block;
+  vertical-align: middle;
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 18px;
+  background-image: url("../images/icons/close-black.svg");
+  background-color: #ebedf0;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.close-popup-btn:hover {
+  background-image: url("../images/icons/close-blue.svg");
+}
+
 footer {
   padding: 45px 0 15px;
   position: relative;
@@ -2596,16 +2956,18 @@ footer .nav li {
   background-image: url("../images/arrows/carret-right-white.svg");
 }
 
-.owl-dots {
+.tns-nav {
   width: 100%;
   position: absolute;
   height: auto;
   left: 0;
-  bottom: 0px;
+  bottom: 30px;
   text-align: center;
   font-size: 0;
+  z-index: 2;
 }
-.owl-dots .owl-dot {
+.tns-nav [type=button] {
+  border: 0;
   width: 27px;
   height: 27px;
   display: inline-block;
@@ -2613,30 +2975,30 @@ footer .nav li {
   margin: 0 10px;
   cursor: pointer;
   position: relative;
-  border: 2px solid rgba(11, 19, 43, 0);
   -webkit-transition: ease-out 0.5s;
   transition: ease-out 0.5s;
+  background: none;
 }
-.owl-dots .owl-dot::after {
+.tns-nav [type=button]::after {
   content: "";
-  width: 5px;
+  width: 10px;
   position: absolute;
-  height: 5px;
+  height: 10px;
   left: 50%;
   top: 50%;
   border-radius: 100%;
-  background-color: #98A1A7;
+  background-color: #ffffff;
   -webkit-transform: translateX(-50%) translateY(-50%);
           transform: translateX(-50%) translateY(-50%);
 }
-.owl-dots .owl-dot.active, .owl-dots .owl-dot:hover {
-  border-color: #0b132b;
+.tns-nav [type=button].tns-nav-active, .tns-nav [type=button]:hover {
+  border-color: #00aeef;
 }
-.owl-dots .owl-dot.active::after, .owl-dots .owl-dot:hover::after {
-  background-color: #0B132B;
+.tns-nav [type=button].tns-nav-active::after, .tns-nav [type=button]:hover::after {
+  background-color: #00AEEF;
 }
 
-/*-----popup-start----*/
+/*-----popup-start----*/ 
 .popup {
   width: 100%;
   position: fixed;
@@ -3171,9 +3533,6 @@ footer .nav li {
 .user-description textarea {
   height: 150px;
 }
-.user-description .btn-container {
-  text-align: right;
-}
 
 .settings-tabs-container {
   display: -webkit-box;
@@ -3204,13 +3563,22 @@ footer .nav li {
   background-color: #ebedf0;
 }
 
-.userMini-item {
+.likedis-item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   gap: 15px;
 }
-.userMini-item .img-cover {
+.likedis-item h3 {
+  text-align: center;
+  font-size: 16px;
+  color: #0B132B;
+}
+.likedis-item .btn-container {
+  margin-top: 30px;
+}
+
+.likedis-img {
   width: 100px;
   height: 100px;
   position: relative;
@@ -3218,14 +3586,12 @@ footer .nav li {
   border-radius: 100%;
   margin-bottom: 8px;
 }
-
-.userMini-name {
-  font-weight: 700;
-  text-align: center;
-}
-
-.userMini-btn-container {
-  margin-top: 30px;
+.likedis-img .img-cover {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
 }
 
 .users-item {
@@ -3629,6 +3995,7 @@ footer .nav li {
   display: -ms-inline-flexbox;
   display: inline-flex;
   margin-bottom: 15px;
+  margin-left: auto;
 }
 .users-item-info .goals-users-tag i {
   margin: auto;
@@ -3685,6 +4052,92 @@ footer .nav li {
   background-image: url("../images/logo.svg");
 }
 
+.user-top-info--view {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.user-top-info--view h2 {
+  color: #0B132B;
+}
+
+.user-info-gender {
+  padding: 15px 0;
+  font-size: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.user-info-gender div {
+  margin: auto 0;
+}
+.user-info-gender b {
+  display: inline-block;
+  margin: 0 9px;
+}
+.user-info-gender * {
+  vertical-align: middle;
+}
+
+.user-middle-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.user-middle-info .tags-container,
+.user-middle-info .btn-container {
+  width: 50%;
+}
+.user-middle-info .btn-container {
+  padding-top: 45px;
+  text-align: right;
+}
+.user-middle-info .btn-ico {
+  border: 2px solid #00AEEF;
+  margin-left: 15px;
+}
+
+.user-location h3 {
+  margin-bottom: 8px;
+}
+.user-location i {
+  margin-right: 15px;
+}
+
+.user-location-item {
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.personal-info-el {
+  padding: 8px 15px;
+}
+
+.user-description h3 {
+  margin-bottom: 8px;
+}
+.user-description ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  font-size: 0;
+}
+.user-photo img {
+  width: 100%;
+  height: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 /*-----users-end----*/ 
 /*-----chat-start----*/
 .chat-form {
@@ -3712,16 +4165,16 @@ footer .nav li {
 }
 
 .rooms-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   border-bottom: 1px solid #98A1A7;
-  padding: 8px 15px;
+  padding: 8px 8px 8px 15px;
   cursor: pointer;
   text-decoration: none;
 }
 .rooms-item:hover, .rooms-item.active {
   background-color: #f3f3f3;
+}
+.rooms-item .btn-trash {
+  margin-left: 8px;
 }
 
 .rooms-item-face {
@@ -3729,6 +4182,8 @@ footer .nav li {
   height: 60px;
   position: relative;
   border-radius: 100%;
+  vertical-align: middle;
+  display: inline-block;
 }
 
 .rooms-item-name {
@@ -3737,16 +4192,17 @@ footer .nav li {
 
 .rooms-item-info {
   text-align: right;
+  width: calc(100% - 106px);
+  display: inline-block;
+  vertical-align: middle;
 }
 
-.rooms-item-face,
 .rooms-item-name,
 .rooms-item-date,
 .rooms-item-online,
 .rooms-item-count {
   display: inline-block;
-  margin: auto 0;
-  margin-right: 15px;
+  margin-left: 15px;
 }
 
 .rooms-item-date {
@@ -3754,20 +4210,26 @@ footer .nav li {
 }
 
 .rooms-item-count {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
+  width: 21px;
+  position: absolute;
+  height: 21px;
+  left: 28px;
+  top: 40px;
   text-align: center;
   color: #ffffff;
   background-color: #00AEEF;
   border-radius: 100%;
   font-weight: 700;
-  margin-left: auto;
 }
 
 .rooms-item-online {
   font-weight: 700;
   color: #00AEEF;
+}
+
+.room-item-message {
+  font-size: 14px;
+  color: #98A1A7;
 }
 
 .messages-container {

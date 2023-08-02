@@ -17,6 +17,7 @@ import RenderInputPhone from './fields/RenderInputPhone'; // телефон
 import RenderInputPassword from './fields/RenderInputPassword'; // пароля
 
 import RenderInputTextarea from './fields/RenderInputTextarea'; // область текста
+import RenderMessage from './fields/RenderMessage'; // область текста
 
 import RenderInputCheckbox from './fields/RenderInputCheckbox';  // чекбокс
 
@@ -30,7 +31,6 @@ import RenderInputFileDropZone from './fields/RenderInputFileDropZone'; // зо�
 
 import RenderInputFilePhoto from './fields/RenderInputFilePhoto'; // фото
 
-// // import RenderInputFileVideo from './fields/RenderInputFileVideo'; // видео
 
 
 
@@ -39,8 +39,6 @@ import RenderInputFilePhoto from './fields/RenderInputFilePhoto'; // фото
 import RenderInputStar from './fields/RenderInputStar'; // звезды отзыв
 
 import RenderInputSwitch from './fields/RenderInputSwitch'; // поле переключателя
-
-import RenderInputMulty from './fields/RenderInputMulty'; // поле селект + текст
 
 import RenderInputComplex from './fields/RenderInputComplex'; // комлекс
 
@@ -51,7 +49,7 @@ import RenderInputCity from './fields/RenderInputCity'; // выбор город
 
 import { required, minLength, mailCheck } from 'components/forms/validator';
 
-const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, type }) => {
+const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, type, onSubmit }) => {
 
   const setValidate = (validate) => {
     let validateArr = [];
@@ -113,6 +111,12 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, type }) => {
       case 'textarea':
         return (
           <RenderInputTextarea
+            obj={obj}
+          />
+        );
+      case 'message':
+        return (
+          <RenderMessage
             obj={obj}
           />
         );
@@ -178,12 +182,6 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, type }) => {
         );
 
 
-      case 'multy':
-        return (
-          <RenderInputMulty
-            obj={obj}
-          />
-        );
       case 'complex':
         return (
           <RenderInputComplex
@@ -223,7 +221,7 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, type }) => {
             key={index} >
             {
               (
-                choiseFieldType({ ...fields[item], checkErrorSubmit, setErrCheck, 'validate': setValidate(fields[item].validate) })
+                choiseFieldType({ ...fields[item], checkErrorSubmit, setErrCheck, 'validate': setValidate(fields[item].validate), onSubmit })
               )
             }
           </React.Fragment>
@@ -232,7 +230,7 @@ const RenderFields = ({ fields, checkErrorSubmit, setErrCheck, type }) => {
         <React.Fragment >
           {
             (
-              choiseFieldType({ ...fields, checkErrorSubmit, setErrCheck, 'validate': setValidate(fields.validate) })
+              choiseFieldType({ ...fields, checkErrorSubmit, setErrCheck, 'validate': setValidate(fields.validate), onSubmit })
             )
           }
         </React.Fragment>

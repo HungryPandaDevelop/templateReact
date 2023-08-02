@@ -9,11 +9,11 @@ const GoalsUsers = ({ user }) => {
 
 
   return (
-    <div className="goals-users">
-      {goals.map((item, index) => (
-        <div>
-          <div className="goals-users-tag" key={index}>{renderGoals(item)}</div>
-        </div>))
+    <div className="tags-container">
+      <h3>Цели:</h3>
+      {goals.map((goal, index) => (
+        <div className="tag" key={index}>{renderGoals(goal)} <span>{goal}</span> </div>
+      ))
       }
     </div>
   )

@@ -1,7 +1,7 @@
 import { Field } from 'redux-form';
 import { useEffect, useState, useRef } from 'react';
 
-import ClearYaMap from 'components/forms/fields/partInputCoords/ClearYaMap'
+import ClearYaMap from 'components/partInputCoords/ClearYaMap'
 
 const TempateInput = (props) => {
 

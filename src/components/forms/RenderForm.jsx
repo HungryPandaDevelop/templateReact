@@ -53,6 +53,7 @@ let TemplateForm = (props) => {
         fields={fields}
         checkErrorSubmit={checkErrorSubmit}
         setErrCheck={setErrCheck}
+        onSubmit={onSubmit}
       />
       <div className={`${colBtn ? colBtn : 'col-12'} btn-container`}>
         <button className="btn btn--blue" onClick={(e) => { onSubmit(e) }} >

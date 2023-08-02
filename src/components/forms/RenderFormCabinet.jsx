@@ -147,7 +147,7 @@ const TemplateForm = (props) => {
               setErrCheck={setErrCheck}
             />
             <div className="btn-container">
-              <button className="btn btn--blue-border" onClick={(e) => { onSubmit(e) }} >
+              <button className="btn btn--blue" onClick={(e) => { onSubmit(e) }} >
                 {waitAnsw ? (<>Loading...</>) : (
                   <><i></i><span>{btnSubmiText}</span></>
                 )}

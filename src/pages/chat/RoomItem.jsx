@@ -8,6 +8,8 @@ import { updateRead } from 'services/chatEvents';
 
 import { getSingleListing } from 'services/getSingleListing';
 
+import moment from 'moment';
+
 const RoomItem = ({ room, roomUrl, uid }) => {
 
 
@@ -23,9 +25,10 @@ const RoomItem = ({ room, roomUrl, uid }) => {
   const [loading, setLoading] = useState(true);
 
 
+
   useEffect(() => {
     getSingleListing('users', invite).then(res => {
-      // console.log('res', res)
+      console.log('res', res)
       setLoading(false);
       setRoomUserInfo(res);
     });
@@ -47,12 +50,31 @@ const RoomItem = ({ room, roomUrl, uid }) => {
   }, [roomUrl]);
 
   const renderImg = (roomUserInfo) => {
-    const imgLink = roomUserInfo?.imgsAccount;
+    const imgLink = roomUserInfo.imgsAccount && roomUserInfo?.imgsAccount[0];
 
-    const img = imgLink ? imgLink[0] : imgStub;
+    const img = imgLink ? imgLink : imgStub;
 
     return img;
   }
+
+  const getCurrentTime = (roomUserInfo) => {
+
+    let onlineUserTime = moment.unix(roomUserInfo.timestamp.seconds).format("DD.MM.YYYY HH:mm");
+
+    let calcDate = moment() - moment.unix(roomUserInfo.timestamp.seconds);
+    let minutes = moment.duration(calcDate).minutes();
+
+    if (minutes < 5) {
+      return <div className="rooms-item-online">В сети</div>
+    }
+    else {
+      return <>Был(а) {onlineUserTime}</>
+    }
+
+    // var seconds = moment.duration(calcDate).seconds();
+    // var hours = Math.trunc(moment.duration(calcDate).asHours());
+  }
+
 
   if (loading) { return 'Loading...' }
 
@@ -70,7 +92,9 @@ const RoomItem = ({ room, roomUrl, uid }) => {
       <div className="rooms-item-name">
         {roomUserInfo.name}
       </div>
-      {/* <span className="rooms-item-date">16.06.2023</span> */}
+      <span className="rooms-item-date">
+        {getCurrentTime(roomUserInfo)}
+      </span>
       {countUnread !== 0 && (<div className="rooms-item-count">{countUnread}</div>)}
     </Link>
   )

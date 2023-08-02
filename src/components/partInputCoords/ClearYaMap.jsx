@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { YMaps, Map, ZoomControl } from 'react-yandex-maps';
 import { useState, useEffect } from 'react';
 
-import addPlacemark from 'components/forms/fields/partInputCoords/addPlacemark';
+import addPlacemark from 'components/partInputCoords/addPlacemark';
 
 const ClearYaMap = ({ currentLocation }) => {
 

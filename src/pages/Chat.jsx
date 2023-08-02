@@ -7,6 +7,7 @@ import ChatForm from 'pages/chat/Form';
 import Messages from 'pages/chat/Messages';
 
 import Rooms from 'pages/chat/Rooms';
+import Tabs from 'pages/cabinet/default/Tabs';
 
 
 const Chat = ({ uid }) => {
@@ -17,9 +18,7 @@ const Chat = ({ uid }) => {
     <>
       <div className='main-full'>
         <div className="stub"></div>
-        <div className="border-tabs-container">
-          <div className="border-tab active">Чат</div>
-        </div>
+        <Tabs active={2} />
 
         <div className="border-container border-null-left chat">
           <div className='main-grid'>

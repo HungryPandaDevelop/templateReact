@@ -3,7 +3,8 @@ import moment from "moment";
 const MessagesItem = ({ message, uid }) => {
 
   const whose = message.uid === uid;
-  const dateMessage = moment.unix(message.timestamp).format("MM.DD.YYYY HH:mm");
+
+  const dateMessage = moment.unix(message.timestamp.seconds).format("DD.MM.YYYY HH:mm");
 
 
 

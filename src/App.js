@@ -13,6 +13,7 @@ import CheckAuth from 'blocks/header/CheckAuth';
 import Main from 'pages/Main' ;
 import Cabinet from 'pages/cabinet/Cabinet';
 import Settings from 'pages/cabinet/Settings';
+import LikeDis from 'pages/cabinet/LikeDis';
 
 
 import AuthStart from 'pages/auth/AuthStart';
@@ -23,6 +24,7 @@ import AuthMail from 'pages/auth/AuthMail';
 
 
 import UsersCatalog from 'pages/users/UserCatalog';
+import UsersDetail from 'pages/users/UserDetail';
 
 import Chat from 'pages/Chat';
 
@@ -51,12 +53,15 @@ const App = ()=> {
             <Route path='/reg-phone' element={<RegPhone/>} ></Route> 
 
             <Route path='/users-catalog' element={<UsersCatalog/>}></Route>
+            <Route path='/users-catalog/:userId' element={<UsersDetail/>}></Route>
 
             <Route path='/cabinet' element={<PrivatRoute/>} >
               <Route index element={<Cabinet/>} ></Route>
               <Route path='/cabinet/settings' element={<Settings/>} ></Route>
               <Route path='/cabinet/chat' element={<Chat/>} ></Route>
               <Route path='/cabinet/chat/:roomId'  element={<Chat/>} ></Route>
+              <Route path='/cabinet/likes'   element={<LikeDis likeDis='likes'/>} ></Route>
+              <Route path='/cabinet/dislikes'  element={<LikeDis likeDis='dislikes'/>} ></Route>
             </Route>
             {/* <Route path='/vk' element={<VKauth/>} ></Route> */}
           </Routes>
@@ -65,7 +70,7 @@ const App = ()=> {
           
         </BrowserRouter>
 
-              <ToastContainer
+        <ToastContainer
           position="top-right"
           autoClose={5000}
           hideProgressBar={false}

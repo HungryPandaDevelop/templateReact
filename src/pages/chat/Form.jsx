@@ -9,11 +9,10 @@ import { sendMessage } from 'services/chatEvents';
 const Form = ({ formData, uid, roomId }) => {
 
   const submitSuccess = () => {
-    console.log(formData.values)
+    // console.log(formData.values)
 
-    sendMessage(roomId, formData.values.message, uid).then(() => {
-      formData.values.message = '';
-    });
+    sendMessage(roomId, formData.values.message, uid);
+    formData.values.message = '';
   }
 
 
