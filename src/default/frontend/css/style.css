@@ -830,6 +830,26 @@ section {
   background-color: #00AEEF;
 }
 
+.btn-ico--favorites {
+  display: inline-block;
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 40px;
+  background-image: url("../images/icons/star-blue.svg");
+}
+.btn-ico--favorites:hover {
+  background-image: url("../images/icons/star-white.svg");
+}
+.btn-ico--favorites.active {
+  background-image: url("../images/icons/star-fill-blue.svg");
+}
+.btn-ico--favorites.active:hover {
+  background-image: url("../images/icons/star-fill-white.svg");
+}
+
 .btn-ico--like {
   display: inline-block;
   vertical-align: middle;
@@ -883,51 +903,6 @@ section {
 }
 .btn-ico--chat:hover {
   background-image: url("../images/icons-app/chat-white.svg");
-}
-
-.ico-in {
-  border-color: #0B132B;
-  color: #3A506B;
-  padding: 6px 12px;
-}
-.ico-in i, .ico-in span {
-  vertical-align: middle;
-  display: inline-block;
-}
-.ico-in i {
-  width: 24px;
-  height: 24px;
-  position: relative;
-}
-.ico-in img {
-  width: 100%;
-  position: absolute;
-  height: 100%;
-  left: 0;
-  top: 0;
-}
-.ico-in .back-ico {
-  visibility: hidden;
-}
-.ico-in.active, .ico-in:hover {
-  text-decoration: none;
-  background-color: #00AEEF;
-  border-color: #00AEEF;
-  color: #ffffff;
-}
-.ico-in.active .back-ico, .ico-in:hover .back-ico {
-  visibility: visible;
-}
-.ico-in.active .front-ico, .ico-in:hover .front-ico {
-  visibility: hidden;
-}
-
-.ico-in--right i {
-  margin-left: 8px;
-}
-
-.ico-in--left i {
-  margin-right: 8px;
 }
 
 .spinner-container {
@@ -2568,7 +2543,7 @@ header .hamburger-btn {
   background-size: contain;
   background-image: url("../images/icons-app/chat-black.svg");
 }
-.controls-chat:hover i {
+.controls-chat.active i, .controls-chat:hover i {
   background-image: url("../images/icons-app/chat-white.svg");
 }
 
@@ -2582,7 +2557,7 @@ header .hamburger-btn {
   background-size: contain;
   background-image: url("../images/icons-app/like-black.svg");
 }
-.controls-like:hover i {
+.controls-like.active i, .controls-like:hover i {
   background-image: url("../images/icons-app/like-white.svg");
 }
 
@@ -2596,7 +2571,7 @@ header .hamburger-btn {
   background-size: 28px;
   background-image: url("../images/icons-app/invite-black.svg");
 }
-.controls-invite:hover i {
+.controls-invite.active i, .controls-invite:hover i {
   background-image: url("../images/icons-app/invite-white.svg");
 }
 
@@ -2610,7 +2585,7 @@ header .hamburger-btn {
   background-size: 24px;
   background-image: url("../images/icons-app/loop-black.svg");
 }
-.controls-search:hover i {
+.controls-search.active i, .controls-search:hover i {
   background-image: url("../images/icons-app/loop-white.svg");
 }
 
@@ -2624,20 +2599,21 @@ header .hamburger-btn {
   background-size: 28px;
   background-image: url("../images/icons-app/settings-black.svg");
 }
-.controls-settings:hover i {
+.controls-settings.active i, .controls-settings:hover i {
   background-image: url("../images/icons-app/settings-white.svg");
 }
 
 .controls-btn {
   padding: 10px 5px;
+  width: 100%;
   cursor: pointer;
   text-align: center;
   position: relative;
 }
-.controls-btn:hover {
+.controls-btn.active, .controls-btn:hover {
   background-color: #00AEEF;
 }
-.controls-btn:hover span {
+.controls-btn.active span, .controls-btn:hover span {
   background-color: #ffffff;
   color: #0B132B;
 }
@@ -2665,7 +2641,7 @@ header .hamburger-btn {
   right: 90px;
   top: 130px;
   background-color: #ffffff;
-  border-radius: 15px;
+  border-radius: 0 0 15px 15px;
   -webkit-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
           box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 15px;
@@ -2682,13 +2658,13 @@ header .hamburger-btn {
   -webkit-box-shadow: rgba(149, 157, 165, 0.1) 25px -5px 10px;
           box-shadow: rgba(149, 157, 165, 0.1) 25px -5px 10px;
 }
-.controls-panel-popup .panel-deg--active-1 {
+.controls-panel-popup .panel-deg--chat {
   top: 40px;
 }
-.controls-panel-popup .panel-deg--active-2 {
+.controls-panel-popup .panel-deg--like {
   top: 100px;
 }
-.controls-panel-popup .panel-deg--active-3 {
+.controls-panel-popup .panel-deg--invite {
   top: 155px;
 }
 
@@ -2701,6 +2677,24 @@ header .hamburger-btn {
   left: 0;
   padding: 3px 15px 2px;
   font-weight: 700;
+}
+
+.panel-close {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 21px;
+  background-image: url("../images/icons/close-white.svg");
+  width: 28px;
+  position: absolute;
+  height: 28px;
+  right: 0;
+  bottom: 100%;
+  background-color: #00AEEF;
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+}
+.panel-close:hover {
+  background-color: #3A506B;
 }
 
 .popup-chat {
@@ -2717,6 +2711,14 @@ header .hamburger-btn {
 .popup-chat .rooms-item {
   padding-left: 0;
   padding-right: 0;
+}
+
+.controls-panel-popup .chat-form .main-grid {
+  padding: 0;
+  gap: 0;
+}
+.controls-panel-popup .chat-form .btn-container {
+  margin-top: 12px;
 }
 
 .popup-chat-rooms {
@@ -2750,12 +2752,9 @@ header .hamburger-btn {
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
-.chat-popup-info .btn-container {
+.chat-popup-info .btn-full {
   margin-left: auto;
-  padding: 10px 0 0;
-}
-.chat-popup-info .btn-close {
-  margin-left: 15px;
+  margin-top: 8px;
 }
 
 .chat-popup-name {
@@ -2765,6 +2764,113 @@ header .hamburger-btn {
 .chat-popup-online {
   font-weight: 700;
   color: #00AEEF;
+}
+
+.invites-popup-item {
+  font-size: 14px;
+  margin: 0 0 8px;
+  border-bottom: 1px solid #ebedf0;
+  padding-bottom: 8px;
+}
+.invites-popup-item .btn-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 15px;
+}
+.invites-popup-item .btn-invite {
+  width: 50%;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  font-weight: 700;
+}
+.invites-popup-item .btn-invite i {
+  margin-right: 5px;
+}
+
+.invites-img {
+  width: 60px;
+  height: 60px;
+  background-image: url("../images/temp/avatar-1.jpg");
+  background-size: cover;
+  border-radius: 100%;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 15px;
+}
+
+.invites-info {
+  display: inline-block;
+  width: calc(100% - 105px);
+  vertical-align: top;
+}
+
+.invites-name {
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.invites-type {
+  margin: 0 0 8px;
+}
+.invites-type i {
+  display: inline-block;
+  border: 1px solid;
+  border-radius: 100%;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  font-size: 0;
+  margin-right: 8px;
+  padding: 3px 0 0;
+}
+.invites-type i, .invites-type span {
+  vertical-align: middle;
+}
+
+.btn-apply {
+  color: #00AEEF;
+}
+.btn-apply i {
+  border: 1px solid #00AEEF;
+  border-radius: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 18px;
+  background-image: url("../images/icons/agree-lite-blue.svg");
+}
+.btn-apply:hover {
+  color: #3A506B;
+}
+.btn-apply:hover i {
+  border-color: #3A506B;
+  background-image: url("../images/icons/agree-lite-black.svg");
+}
+
+.btn-dismiss i {
+  border: 1px solid #98A1A7;
+  border-radius: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 18px;
+  background-image: url("../images/icons/close-black.svg");
+}
+.btn-dismiss:hover {
+  color: #3A506B;
+}
+.btn-dismiss:hover i {
+  border-color: #3A506B;
+  background-image: url("../images/icons/close-blue.svg");
 }
 
 .likes-popup {
@@ -4138,6 +4244,13 @@ footer .nav li {
      object-fit: cover;
 }
 
+.ymaps-2-1-79-ground-pane {
+  -webkit-filter: grayscale(100%) brightness(80%);
+          filter: grayscale(100%) brightness(80%);
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
 /*-----users-end----*/ 
 /*-----chat-start----*/
 .chat-form {
@@ -4165,16 +4278,25 @@ footer .nav li {
 }
 
 .rooms-item {
+  position: relative;
   border-bottom: 1px solid #98A1A7;
   padding: 8px 8px 8px 15px;
   cursor: pointer;
+  width: 100%;
   text-decoration: none;
 }
 .rooms-item:hover, .rooms-item.active {
   background-color: #f3f3f3;
 }
 .rooms-item .btn-trash {
-  margin-left: 8px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 12px;
+}
+.rooms-item a {
+  display: block;
+  width: 100%;
 }
 
 .rooms-item-face {

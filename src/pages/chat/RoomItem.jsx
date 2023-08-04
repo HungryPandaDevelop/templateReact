@@ -1,24 +1,26 @@
 import { useState, useEffect } from 'react';
 
-import { Link } from 'react-router-dom';
-
-import imgStub from 'default/frontend/images/icons/avatar-black.svg'
-
 import { updateRead } from 'services/chatEvents';
+
+import { renderImg } from 'pages/chat/RoomItem/renderImg';
+
+import { getCurrentTime } from 'pages/chat/RoomItem/getCurrentTime';
 
 import { getSingleListing } from 'services/getSingleListing';
 
-import moment from 'moment';
+import LinkWrap from 'pages/chat/RoomItem/LinkWrap';
 
-const RoomItem = ({ room, roomUrl, uid }) => {
+const RoomItem = ({
+  room,
+  roomUrl,
+  uid,
+  onDeleteRoom,
+  setChoiseRoom,
+  setCurrentUser,
+  type
+}) => {
 
-
-
-
-
-  // const invite = room.data.connectUsersUid[0] === uid ? 'he' : 'my';
   const invite = room.data.connectUsersUid[0] === uid ? room.data.connectUsersUid[1] : room.data.connectUsersUid[0];
-
 
   const [roomUserInfo, setRoomUserInfo] = useState({});
   const [countUnread, setCountUnread] = useState(0);
@@ -28,7 +30,7 @@ const RoomItem = ({ room, roomUrl, uid }) => {
 
   useEffect(() => {
     getSingleListing('users', invite).then(res => {
-      console.log('res', res)
+
       setLoading(false);
       setRoomUserInfo(res);
     });
@@ -49,54 +51,50 @@ const RoomItem = ({ room, roomUrl, uid }) => {
     }
   }, [roomUrl]);
 
-  const renderImg = (roomUserInfo) => {
-    const imgLink = roomUserInfo.imgsAccount && roomUserInfo?.imgsAccount[0];
 
-    const img = imgLink ? imgLink : imgStub;
 
-    return img;
-  }
 
-  const getCurrentTime = (roomUserInfo) => {
-
-    let onlineUserTime = moment.unix(roomUserInfo.timestamp.seconds).format("DD.MM.YYYY HH:mm");
-
-    let calcDate = moment() - moment.unix(roomUserInfo.timestamp.seconds);
-    let minutes = moment.duration(calcDate).minutes();
-
-    if (minutes < 5) {
-      return <div className="rooms-item-online">В сети</div>
-    }
-    else {
-      return <>Был(а) {onlineUserTime}</>
-    }
-
-    // var seconds = moment.duration(calcDate).seconds();
-    // var hours = Math.trunc(moment.duration(calcDate).asHours());
-  }
 
 
   if (loading) { return 'Loading...' }
 
   return (
-    <Link
-      to={`/cabinet/chat/${room.id}`}
+    <div
       className={`rooms-item ${roomUrl === room.id ? 'active' : ''}`}
-
     >
-      <div
-        className="rooms-item-face img-cover"
-        style={{ backgroundImage: `url(${renderImg(roomUserInfo)})` }}
-      ></div>
+      <LinkWrap
+        path={`/cabinet/chat/${room.id}`}
+        type={type}
+        room={room}
+        roomUserInfo={roomUserInfo}
+        setChoiseRoom={setChoiseRoom}
+        setCurrentUser={setCurrentUser}
+      >
 
-      <div className="rooms-item-name">
-        {roomUserInfo.name}
-      </div>
-      <span className="rooms-item-date">
-        {getCurrentTime(roomUserInfo)}
-      </span>
-      {countUnread !== 0 && (<div className="rooms-item-count">{countUnread}</div>)}
-    </Link>
+        <>
+          <div
+            className="rooms-item-face img-cover"
+            style={{ backgroundImage: `url(${renderImg(roomUserInfo)})` }}
+          >
+            {countUnread !== 0 && (<div className="rooms-item-count">{countUnread}</div>)}
+          </div>
+          <div className="rooms-item-info">
+            <div className="rooms-item-name">
+              {roomUserInfo.name}
+            </div>
+            <span className="rooms-item-date">
+              {getCurrentTime(roomUserInfo)}
+            </span>
+          </div></>
+      </LinkWrap>
+
+
+
+      <div
+        className="btn-trash"
+        onClick={() => { onDeleteRoom(room.id) }}
+      ></div>
+    </div>
   )
 }
 

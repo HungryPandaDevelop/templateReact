@@ -4,8 +4,10 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import PrivatRoute from 'blocks/PrivatRoute';
-import Header from 'blocks/header/Header';
+import Header from 'blocks/Header';
 import Footer from 'blocks/footer/Footer';
+
+import ControlsPanel from 'blocks/ControlsPanel';
 
 import CheckAuth from 'blocks/header/CheckAuth';
 
@@ -40,6 +42,7 @@ const App = ()=> {
         <BrowserRouter>
           <CheckAuth />
           <Header />
+          <ControlsPanel />
           
           
           <div className="content">
@@ -60,8 +63,9 @@ const App = ()=> {
               <Route path='/cabinet/settings' element={<Settings/>} ></Route>
               <Route path='/cabinet/chat' element={<Chat/>} ></Route>
               <Route path='/cabinet/chat/:roomId'  element={<Chat/>} ></Route>
-              <Route path='/cabinet/likes'   element={<LikeDis likeDis='likes'/>} ></Route>
-              <Route path='/cabinet/dislikes'  element={<LikeDis likeDis='dislikes'/>} ></Route>
+              <Route path='/cabinet/favorites'   element={<LikeDis likeDis='favorites' extraItem={false}/>} ></Route>
+              <Route path='/cabinet/dislikes'  element={<LikeDis likeDis='dislikes' extraItem={false}/>} ></Route>
+              <Route path='/cabinet/sympathy'  element={<LikeDis likeDis='sympathy' extraItem={true} />} ></Route>
             </Route>
             {/* <Route path='/vk' element={<VKauth/>} ></Route> */}
           </Routes>

@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import { getMyRoomsOnline } from 'services/chatEvents';
 import { deleteListing } from 'services/getListings';
-
+import actionFn from 'store/actions/index';
 import RoomItem from 'pages/chat/RoomItem';
-const RoomList = ({ uid, roomId }) => {
+import { connect } from 'react-redux';
+
+const RoomList = ({ uid, roomId, setChoiseRoom, setCurrentUser, type, actionFn }) => {
+
 
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,16 +19,25 @@ const RoomList = ({ uid, roomId }) => {
 
   }, []);
 
+  const calcUnread = (rooms) => {
+    let count = 0;
+    rooms.map(room => {
+      room.data.messages.map(message => {
+        if (!message.read) {
+          count++;
+        }
+      })
+    })
+    return count;
+  }
 
+  useEffect(() => {
+    actionFn('SET_COUNT_UNREAD', calcUnread(rooms));
+  }, [rooms])
 
-
-
-  // console.log('r', rooms)
-
-  // const onDeleteRoom = (id) => {
-  //   console.log('id', id)
-  //   deleteListing(rooms, 'messages', id);
-  // }
+  const onDeleteRoom = (id) => {
+    deleteListing(rooms, 'rooms', id);
+  }
 
 
 
@@ -37,9 +49,14 @@ const RoomList = ({ uid, roomId }) => {
         key={room.id}
         roomUrl={roomId}
         uid={uid}
+        type={type}
+        onDeleteRoom={onDeleteRoom}
+        setChoiseRoom={setChoiseRoom}
+        setCurrentUser={setCurrentUser}
       />)}
     </div>
   )
 };
 
-export default RoomList;
+
+export default connect(null, { actionFn })(RoomList);

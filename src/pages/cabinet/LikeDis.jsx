@@ -13,7 +13,7 @@ const LikeDis = ({ account, likeDis }) => {
 
 
   useEffect(() => {
-    console.log('likeDis', likeDis)
+
     setLoading(true);
     getListing(likeDis, 'userRef', account.uid).then((res) => {
       setLikes(res);

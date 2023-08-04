@@ -6,7 +6,8 @@ const Tabs = ({ active }) => {
     ['Кабинет', '/cabinet'],
     ['Настройки', '/cabinet/settings'],
     ['Чат', '/cabinet/chat'],
-    ['Симпатии', '/cabinet/likes'],
+    ['Симпатии', '/cabinet/sympathy'],
+    ['Избранное', '/cabinet/favorites'],
     ['Черный список', '/cabinet/dislikes'],
   ];
 

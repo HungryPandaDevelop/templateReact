@@ -16,8 +16,6 @@ const Messages = ({ uid, roomId }) => {
 
     getMyRoomMessages(setAllMessages, roomId);
 
-    console.log('allMessages', allMessages)
-
     return () => {
       stopWatch();
     }

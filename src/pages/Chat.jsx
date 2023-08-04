@@ -26,6 +26,7 @@ const Chat = ({ uid }) => {
               <Rooms
                 uid={uid}
                 roomId={params.roomId}
+                type='page'
               />
             </div>
             <div className="col-8">
@@ -36,6 +37,7 @@ const Chat = ({ uid }) => {
                   />
                   <ChatForm
                     roomId={params.roomId}
+                    type='page'
                   />
                 </>) : ('Выбрать комнату')}
               </div>

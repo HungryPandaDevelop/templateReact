@@ -2,10 +2,12 @@
 import { combineReducers } from 'redux';
 import {reducer as formReducer} from 'redux-form';
 import {accountReducer} from 'store/reducers/accountReducer'
+import {chatReducer} from 'store/reducers/chatReducer'
 
 const rootReducer = combineReducers({
   form: formReducer,
-  account : accountReducer
+  account : accountReducer,
+  unreadChatCount : chatReducer
 });
 
 export default rootReducer;

@@ -148,7 +148,7 @@ export const getMyRoomMessages = (setMessages, roomId) => {
   );
 
   const updateSnap = (listing)=>{
-    setMessages(listing[0].data.messages);
+    listing[0] && setMessages(listing[0].data.messages);
   }
   
   watchListing(q, updateSnap);
