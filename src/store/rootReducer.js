@@ -7,7 +7,7 @@ import {chatReducer} from 'store/reducers/chatReducer'
 const rootReducer = combineReducers({
   form: formReducer,
   account : accountReducer,
-  unreadChatCount : chatReducer
+  rooms : chatReducer
 });
 
 export default rootReducer;

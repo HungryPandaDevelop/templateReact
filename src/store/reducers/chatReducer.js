@@ -1,10 +1,10 @@
 
-let unreadChatCount = 0;
+let rooms = [];
 
-export const chatReducer = (state=unreadChatCount, action) => {
+export const chatReducer = (state=rooms, action) => {
   switch(action.type){
-    case 'SET_COUNT_UNREAD':
-      return state = action.payload
+    case 'SET_ROOMS':
+      return [...action.payload]
     default: 
       return state
   }

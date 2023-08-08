@@ -4,6 +4,7 @@ const Nav = () => {
     <ul>
       <li>
         <Link to="/users-catalog">Все Пользователи</Link>
+        <Link to="/hotels-catalog">Все Отели</Link>
       </li>
       {/* <li>
         <Link to="/support">Поддержка</Link>

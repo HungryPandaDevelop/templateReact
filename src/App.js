@@ -16,6 +16,7 @@ import Main from 'pages/Main' ;
 import Cabinet from 'pages/cabinet/Cabinet';
 import Settings from 'pages/cabinet/Settings';
 import LikeDis from 'pages/cabinet/LikeDis';
+import Sympathy from 'pages/cabinet/Sympathy';
 
 
 import AuthStart from 'pages/auth/AuthStart';
@@ -28,7 +29,10 @@ import AuthMail from 'pages/auth/AuthMail';
 import UsersCatalog from 'pages/users/UserCatalog';
 import UsersDetail from 'pages/users/UserDetail';
 
-import Chat from 'pages/Chat';
+import HotelsCatalog from 'pages/hotels/HotelsCatalog';
+
+import Chat from 'pages/chat/Chat';
+import GetRooms from 'pages/chat/getRooms';
 
 
 
@@ -41,6 +45,7 @@ const App = ()=> {
       <>
         <BrowserRouter>
           <CheckAuth />
+          <GetRooms />
           <Header />
           <ControlsPanel />
           
@@ -58,14 +63,16 @@ const App = ()=> {
             <Route path='/users-catalog' element={<UsersCatalog/>}></Route>
             <Route path='/users-catalog/:userId' element={<UsersDetail/>}></Route>
 
+            <Route path='/hotels-catalog' element={<HotelsCatalog/>}></Route>
+
             <Route path='/cabinet' element={<PrivatRoute/>} >
               <Route index element={<Cabinet/>} ></Route>
               <Route path='/cabinet/settings' element={<Settings/>} ></Route>
               <Route path='/cabinet/chat' element={<Chat/>} ></Route>
               <Route path='/cabinet/chat/:roomId'  element={<Chat/>} ></Route>
-              <Route path='/cabinet/favorites'   element={<LikeDis likeDis='favorites' extraItem={false}/>} ></Route>
-              <Route path='/cabinet/dislikes'  element={<LikeDis likeDis='dislikes' extraItem={false}/>} ></Route>
-              <Route path='/cabinet/sympathy'  element={<LikeDis likeDis='sympathy' extraItem={true} />} ></Route>
+              <Route path='/cabinet/favorites'   element={<LikeDis likeDis='favorites'/>} ></Route>
+              <Route path='/cabinet/dislikes'  element={<LikeDis likeDis='dislikes' />} ></Route>
+              <Route path='/cabinet/sympathy'  element={<Sympathy likeDis='sympathy'  />} ></Route>
             </Route>
             {/* <Route path='/vk' element={<VKauth/>} ></Route> */}
           </Routes>

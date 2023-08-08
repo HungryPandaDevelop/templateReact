@@ -12,7 +12,7 @@ const BtnSympathy = ({ user, account, collections }) => {
   useEffect(() => {
     console.log('collections', collections)
     collections && collections.map((collection) => {
-      if (user.uid === collection.connectUsersUid[1]) {
+      if (user.uid === collection.interlocutors[1]) {
         setСollectionStatus(collection.id);
       };
     });
@@ -21,7 +21,7 @@ const BtnSympathy = ({ user, account, collections }) => {
 
   const onСollectionAdd = (userInfo) => {
     addCardsDefault({
-      'connectUsersUid': [account.uid, userInfo.uid],
+      'interlocutors': [account.uid, userInfo.uid],
       'status': 'see',
       'userRef': account.uid
     }, 'sympathy').then(res => {

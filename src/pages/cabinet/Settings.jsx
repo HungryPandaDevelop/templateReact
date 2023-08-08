@@ -18,7 +18,7 @@ import PersonalDataTabs from 'pages/cabinet/settings/PersonalData';
 import PrivacyTabs from 'pages/cabinet/settings/Privacy';
 
 
-import Tabs from 'pages/cabinet/default/Tabs';
+import Tabs from 'pages/cabinet/parts/Tabs';
 
 const Cabinet = ({ uid, formData }) => {
 

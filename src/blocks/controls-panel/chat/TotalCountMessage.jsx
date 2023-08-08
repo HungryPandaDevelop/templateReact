@@ -1,13 +1,14 @@
 
 import { connect } from 'react-redux';
+import { calcUnread } from 'pages/chat/hooks/calcUnread';
 
-const TotalCountMessage = ({ unreadChatCount }) => {
+const TotalCountMessage = ({ rooms, uid }) => {
 
-  if (unreadChatCount === 0) return false;
+  if (calcUnread(rooms, uid) === 0) return false;
 
   return (
     <span>
-      {unreadChatCount}
+      {calcUnread(rooms, uid)}
     </span>
   )
 }
@@ -15,7 +16,8 @@ const TotalCountMessage = ({ unreadChatCount }) => {
 const mapStateToProps = (state) => {
 
   return {
-    unreadChatCount: state.unreadChatCount
+    uid: state.account.uid,
+    rooms: state.rooms,
   }
 }
 

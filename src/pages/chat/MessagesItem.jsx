@@ -12,7 +12,7 @@ const MessagesItem = ({ message, uid }) => {
     <div
       className={`${!message.read ? 'messages--noanswer' : ''} ${whose ? 'messages-item' : 'messages-item--answer'}`}
     >
-      <div className={whose ? 'messages-box' : 'messages-box--answer'}>{message.text}</div>
+      <div className={`messages-item ${whose ? 'messages-box' : 'messages-box--answer'}`}>{message.text}</div>
       <div className="messages-date">{dateMessage}</div>
     </div>
   )

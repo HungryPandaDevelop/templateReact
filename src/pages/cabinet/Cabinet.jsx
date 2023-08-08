@@ -10,7 +10,7 @@ import { accountFields } from 'base/forms/accountFields';
 
 import { connect } from 'react-redux';
 
-import Tabs from 'pages/cabinet/default/Tabs';
+import Tabs from 'pages/cabinet/parts/Tabs';
 
 const Cabinet = ({ uid, formData }) => {
 

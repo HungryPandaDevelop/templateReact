@@ -3700,6 +3700,60 @@ footer .nav li {
   top: 0;
 }
 
+.sympathy-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 15px;
+}
+.sympathy-item h3 {
+  text-align: center;
+  font-size: 16px;
+  color: #0B132B;
+}
+.sympathy-item .btn-container {
+  margin-top: 15px;
+}
+
+.sympathy-img {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 100%;
+  margin-bottom: 8px;
+}
+.sympathy-img .img-cover {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.status-sympathy {
+  font-size: 14px;
+  padding: 2px 6px;
+  background-color: #98A1A7;
+  border-radius: 6px;
+  font-weight: 700;
+  display: inline-block;
+  color: #ffffff;
+  margin: 0 0 15px;
+}
+
+.status--see {
+  background-color: #00AEEF;
+}
+
+.status--agree {
+  background-color: #03ac9f;
+}
+
+.status--disagree {
+  background-color: #ed1834;
+}
+
 .users-item {
   width: 100%;
   padding-bottom: 100%;
@@ -4310,6 +4364,7 @@ footer .nav li {
 
 .rooms-item-name {
   font-weight: 700;
+  display: block;
 }
 
 .rooms-item-info {
@@ -4319,7 +4374,6 @@ footer .nav li {
   vertical-align: middle;
 }
 
-.rooms-item-name,
 .rooms-item-date,
 .rooms-item-online,
 .rooms-item-count {
@@ -4361,6 +4415,10 @@ footer .nav li {
   position: relative;
   max-height: 400px;
   overflow-y: auto;
+}
+
+.messages-item {
+  word-break: break-all;
 }
 
 .messages-item--answer {

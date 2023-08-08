@@ -117,7 +117,7 @@ export const stopWatch = ()=>{
   subscribeWatch();
 }
 
-export const getMyRoomsOnline = async (setRooms, uid) =>{
+export const getMyRoomsOnline = async (setRoomOut, uid) =>{
 
   const listRef = collection(db, 'rooms'); 
 
@@ -127,8 +127,8 @@ export const getMyRoomsOnline = async (setRooms, uid) =>{
   );
 
   const updateSnap = (listing)=>{
-    setRooms(listing);
 
+    setRoomOut(listing)
 
   }
   

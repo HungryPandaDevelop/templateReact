@@ -1,12 +1,12 @@
 import Tabs from 'pages/cabinet/parts/Tabs';
-import LikedisItem from 'pages/cabinet/parts/LikedisItem'
+import SympathyItem from 'pages/cabinet/parts/SympathyItem'
 
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 import { getListing } from 'services/getListings';
 
 
-const LikeDis = ({ account, likeDis }) => {
+const Sympathy = ({ account, likeDis }) => {
 
   const [loading, setLoading] = useState(true);
   const [likes, setLikes] = useState([]);
@@ -15,7 +15,8 @@ const LikeDis = ({ account, likeDis }) => {
   useEffect(() => {
 
     setLoading(true);
-    getListing(likeDis, 'userRef', account.uid).then((res) => {
+    getListing(likeDis, 'rooms', account.uid).then((res) => {
+      console.log('res', account.uid, res)
       setLikes(res);
       setLoading(false);
     });
@@ -29,17 +30,19 @@ const LikeDis = ({ account, likeDis }) => {
       <div className="stub"></div>
       <div className="main-full">
         <Tabs
-          active={likeDis === 'likes' ? 4 : 5}
+          active={3}
         />
         <div className="border-container border-null-top account-main" >
           <div className="main-grid">
-            {likes.map((like, index) => (
-              <LikedisItem
+            {likes.map((like, index) =>
+              <SympathyItem
                 key={index}
                 like={like}
                 likes={likes}
+                uid={account.uid}
                 setLikes={setLikes}
-              />))}
+              />
+            )}
           </div>
 
         </div>
@@ -56,4 +59,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(LikeDis);
+export default connect(mapStateToProps)(Sympathy);

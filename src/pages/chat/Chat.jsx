@@ -7,7 +7,7 @@ import ChatForm from 'pages/chat/Form';
 import Messages from 'pages/chat/Messages';
 
 import Rooms from 'pages/chat/Rooms';
-import Tabs from 'pages/cabinet/default/Tabs';
+import Tabs from 'pages/cabinet/parts/Tabs';
 
 
 const Chat = ({ uid }) => {
