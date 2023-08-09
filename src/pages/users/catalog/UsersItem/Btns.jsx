@@ -1,20 +1,19 @@
-import BtnCollections from 'pages/users/btns/BtnCollections';
+import BtnSympathy from 'pages/users/btns/BtnSympathy';
 import BtnChat from 'pages/users/btns/BtnChat';
 
-const Btns = ({ user, account, likes }) => {
+const Btns = ({ user, uid, sympathys }) => {
 
   return (
     <div className="btn-container">
       <div className="btn-container-inner">
-        <BtnCollections
+        <BtnSympathy
           user={user}
-          account={account}
-          likes={likes}
-          base='favorites'
+          uid={uid}
+          collections={sympathys}
         />
         <BtnChat
           user={user}
-          account={account}
+          uid={uid}
         />
       </div>
     </div>

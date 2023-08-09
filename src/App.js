@@ -72,7 +72,7 @@ const App = ()=> {
               <Route path='/cabinet/chat/:roomId'  element={<Chat/>} ></Route>
               <Route path='/cabinet/favorites'   element={<LikeDis likeDis='favorites'/>} ></Route>
               <Route path='/cabinet/dislikes'  element={<LikeDis likeDis='dislikes' />} ></Route>
-              <Route path='/cabinet/sympathy'  element={<Sympathy likeDis='sympathy'  />} ></Route>
+              <Route path='/cabinet/sympathy'  element={<Sympathy  />} ></Route>
             </Route>
             {/* <Route path='/vk' element={<VKauth/>} ></Route> */}
           </Routes>

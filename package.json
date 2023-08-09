@@ -2,7 +2,6 @@
   "name": "hotpal",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3000/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
@@ -12,6 +11,7 @@
     "base-64": "^1.0.0",
     "firebase": "^9.22.2",
     "install": "^0.13.0",
+    "json-server": "^0.17.3",
     "moment": "^2.29.4",
     "npm": "^9.8.0",
     "prop-types": "^15.8.1",
@@ -39,6 +39,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:5000",
   "eslintConfig": {
     "extends": [
       "react-app",

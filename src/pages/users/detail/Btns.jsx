@@ -8,30 +8,26 @@ import BtnChat from 'pages/users/btns/BtnChat';
 import { getListing } from 'services/getListings';
 
 
-const Btns = ({ user, account }) => {
+const Btns = ({ user, uid, sympathys }) => {
 
 
   const [fav, setFav] = useState([]);
   const [favLoad, setFavLoad] = useState(true);
   const [dislikes, setDislikes] = useState([]);
   const [dislikesLoad, setDislikesLoad] = useState(true);
-  const [sympathy, setSympathy] = useState([]);
-  const [sympathyLoad, setSympathyLoad] = useState(true);
+
 
 
   useEffect(() => {
-    getListing('favorites', 'userRef', account.uid).then((res) => {
+    getListing('favorites', 'userRef', uid).then((res) => {
       setFav(res);
       setFavLoad(false)
     });
-    getListing('dislikes', 'userRef', account.uid).then((res) => {
+    getListing('dislikes', 'userRef', uid).then((res) => {
       setDislikes(res);
       setDislikesLoad(false)
     });
-    getListing('sympathy', 'userRef', account.uid).then((res) => {
-      setSympathy(res);
-      setSympathyLoad(false)
-    });
+
   }, []);
 
 
@@ -39,27 +35,27 @@ const Btns = ({ user, account }) => {
     <div className="btn-container">
       {!favLoad && <BtnCollections
         user={user}
-        account={account}
+        uid={uid}
         collections={fav}
         base='favorites'
         btnClass='favorites'
       />}
       <BtnChat
         user={user}
-        account={account}
+        uid={uid}
       />
       {!dislikesLoad && (<BtnCollections
         user={user}
-        account={account}
+        uid={uid}
         collections={dislikes}
         base='dislikes'
         btnClass='dislike'
       />)}
 
-      {!sympathyLoad && (<BtnSympathy
+      {(<BtnSympathy
         user={user}
-        account={account}
-        collections={sympathy}
+        uid={uid}
+        collections={sympathys}
       />)}
 
     </div>

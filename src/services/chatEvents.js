@@ -127,14 +127,31 @@ export const getMyRoomsOnline = async (setRoomOut, uid) =>{
   );
 
   const updateSnap = (listing)=>{
-
     setRoomOut(listing)
-
   }
   
   watchListing(q, updateSnap);
 
 };
+
+export const getMySympathyOnline = async (setElementOut, uid) =>{
+
+  const listRef = collection(db, 'sympathy'); 
+
+  const q = query(
+    listRef,
+    where('interlocutors', 'array-contains', uid)
+  );
+
+  const updateSnap = (listing)=>{
+    console.log('listing',listing)
+    setElementOut(listing)
+  }
+  
+  watchListing(q, updateSnap);
+
+};
+
 
 
 
@@ -153,6 +170,9 @@ export const getMyRoomMessages = (setMessages, roomId) => {
   
   watchListing(q, updateSnap);
 }
+
+
+
 
 export const sendMessage = async (roomId, text,  uid) => {
   

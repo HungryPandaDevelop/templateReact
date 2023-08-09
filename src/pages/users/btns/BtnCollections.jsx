@@ -4,7 +4,7 @@ import { addCardsDefault } from 'services/addListing';
 
 import { deleteListingTemp } from 'services/getListings';
 
-const BtnCollections = ({ user, account, collections, base, btnClass }) => {
+const BtnCollections = ({ user, uid, collections, base, btnClass }) => {
 
   const [collectionStatus, setСollectionStatus] = useState(false);
 
@@ -19,7 +19,7 @@ const BtnCollections = ({ user, account, collections, base, btnClass }) => {
   }, []);
 
   const onСollectionAdd = (userInfo) => {
-    addCardsDefault({ 'userRef': account.uid, 'likeUserRef': userInfo.uid }, base).then(res => {
+    addCardsDefault({ 'userRef': uid, 'likeUserRef': userInfo.uid }, base).then(res => {
       setСollectionStatus(res)
     });
   };

@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { getMyRoomsOnline } from 'services/chatEvents';
+import { getMySympathyOnline } from 'services/chatEvents';
+
 import { connect } from 'react-redux';
 import actionFn from 'store/actions/index';
 
@@ -9,10 +11,16 @@ const GetRooms = ({ uid, actionFn }) => {
   const setRoomOut = (rooms) => {
     actionFn('SET_ROOMS', rooms);
   }
+  const setSympathyOut = (rooms) => {
+    actionFn('SET_SYMPATHY', rooms);
+  }
 
   useEffect(() => {
 
-    getMyRoomsOnline(setRoomOut, uid);
+    // getMyRoomsOnline(setRoomOut, uid);
+    getMySympathyOnline(setSympathyOut, uid);
+
+
   }, []);
 
 

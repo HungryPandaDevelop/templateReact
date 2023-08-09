@@ -7,22 +7,19 @@ import { connect } from 'react-redux';
 import UsersSearchPanel from 'pages/users/catalog/UsersSearchPanel';
 import UserItem from 'pages/users/catalog/UsersItem';
 
-const UserCatalog = ({ account }) => {
+const UserCatalog = ({ uid, sympathys }) => {
 
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [likes, setLikes] = useState([]);
+
 
 
   const [searchListing, setSearchListing] = useState();
 
   useEffect(() => {
-    console.log('account', account)
-    getListing('likes', 'userRef', account.uid).then((res) => {
-      setLikes(res);
-    });
 
-    getListing('users', 'noUserRef', account.uid).then((res) => {
+
+    getListing('users', 'noUserRef', uid).then((res) => {
 
       setSearchListing(res);
       setListings(res);
@@ -46,8 +43,8 @@ const UserCatalog = ({ account }) => {
           <div key={index} className="col-4">
             <UserItem
               user={user}
-              account={account}
-              likes={likes}
+              uid={uid}
+              sympathys={sympathys}
             />
           </div>
         ))}
@@ -59,7 +56,8 @@ const UserCatalog = ({ account }) => {
 
 const mapStateToProps = (state) => {
   return {
-    account: state.account,
+    uid: state.account.uid,
+    sympathys: state.sympathys,
   }
 }
 

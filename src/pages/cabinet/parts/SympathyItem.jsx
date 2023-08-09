@@ -1,36 +1,42 @@
 import { getSingleListing } from 'services/getSingleListing';
-import { deleteListingTemp } from 'services/getListings';
 import { useState, useEffect } from 'react'
 import { renderStatus } from './SympathyItem/renderStatus';
 import UserImg from 'pages/users/catalog/UsersItem/UserImg';
 import RenderUserBtn from 'pages/cabinet/parts/SympathyItem/RenderUserBtn';
+import { deleteListingTemp } from 'services/getListings';
 
-
-const LikedisItem = ({ like, likes, setLikes, uid }) => {
+const LikedisItem = ({
+  sympathy,
+  sympathys,
+  uid
+}) => {
 
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState([]);
 
-  let userSide = uid === like.interlocutors[0] ? true : false;
+  let userSide = uid === sympathy.interlocutors[0] ? true : false;
 
   useEffect(() => {
-    let userLoadId = uid === like.interlocutors[0] ? like.interlocutors[1] : like.interlocutors[0];
+
+
+
+    let userLoadId = uid === sympathy.interlocutors[0] ? sympathy.interlocutors[1] : sympathy.interlocutors[0];
 
     getSingleListing('users', userLoadId).then((getuser) => {
 
       setUser(getuser);
       setLoading(false);
-    })
+    });
+
 
   }, []);
 
   if (loading) { return 'Loading...' }
 
-  const onLikeDelete = (id) => {
-    deleteListingTemp('likes', id)
-    setLikes(likes.filter(el => el.id !== id))
-  };
-
+  const onDelete = (id) => {
+    console.log('id', id)
+    deleteListingTemp('sympathy', id);
+  }
 
 
 
@@ -45,24 +51,34 @@ const LikedisItem = ({ like, likes, setLikes, uid }) => {
           <h3>{user.name}</h3>
         </div>
         <div className="btn-container">
-          {userSide ? renderStatus(like) : (
+          {userSide ? renderStatus(sympathy) : (
             <>
+              <div className="sympathy-hint">
+                Ваш ответ на симпатию
+              </div>
               <RenderUserBtn
-                like={like}
+                sympathy={sympathy}
+                status="see"
+                textBtn="Оцениваю"
+              />
+              <RenderUserBtn
+                sympathy={sympathy}
                 status="agree"
                 textBtn="Нравится"
               />
               <RenderUserBtn
-                like={like}
+                sympathy={sympathy}
                 status="disagree"
                 textBtn="Не нравится"
               />
             </>
           )}
           <div
-            className="btn btn--gray-border"
-            onClick={() => { onLikeDelete(like.id) }}
-          >Удалить </div></div>
+            className="sympathy-btn trash-sympathy-btn"
+            onClick={() => { onDelete(sympathy.id) }}
+            title="С глаз долой"
+          ></div>
+        </div>
       </div>
     </div>
   )

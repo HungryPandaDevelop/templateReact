@@ -4,7 +4,7 @@ import { addCardsDefault } from 'services/addListing';
 
 import { deleteListingTemp } from 'services/getListings';
 
-const BtnSympathy = ({ user, account, collections }) => {
+const BtnSympathy = ({ user, uid, collections }) => {
 
   const [collectionStatus, setСollectionStatus] = useState(false);
 
@@ -12,8 +12,8 @@ const BtnSympathy = ({ user, account, collections }) => {
   useEffect(() => {
     console.log('collections', collections)
     collections && collections.map((collection) => {
-      if (user.uid === collection.interlocutors[1]) {
-        setСollectionStatus(collection.id);
+      if (uid === collection.data.interlocutors[0] && user.uid === collection.data.interlocutors[1]) {
+        setСollectionStatus(collection.data.id);
       };
     });
 
@@ -21,9 +21,9 @@ const BtnSympathy = ({ user, account, collections }) => {
 
   const onСollectionAdd = (userInfo) => {
     addCardsDefault({
-      'interlocutors': [account.uid, userInfo.uid],
+      'interlocutors': [uid, userInfo.uid],
       'status': 'see',
-      'userRef': account.uid
+      'userRef': uid
     }, 'sympathy').then(res => {
       setСollectionStatus(res)
     });

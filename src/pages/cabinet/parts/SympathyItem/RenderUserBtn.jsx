@@ -1,21 +1,18 @@
 import { saveListing } from 'services/saveListing';
 
-const RenderUserBtn = ({ like, status, textBtn }) => {
+const RenderUserBtn = ({ sympathy, status, textBtn }) => {
 
   const onSetStatus = () => {
-    let newData = { ...like, status: status }
-    saveListing(newData, like.id, 'sympathy')
+    let newData = { ...sympathy, status: status }
+    saveListing(newData, sympathy.id, 'sympathy')
   }
 
   return (
-    <div>
-      <div
-        className="btn btn--blue-border"
-        onClick={() => { onSetStatus('agree') }}
-      >
-        {textBtn}
-      </div>
-    </div>
+    <div
+      className={`sympathy-btn ${status}-sympathy-btn ${sympathy.status === status ? 'active' : ''}`}
+      onClick={() => { onSetStatus('agree') }}
+      title={textBtn}
+    ></div>
   )
 }
 

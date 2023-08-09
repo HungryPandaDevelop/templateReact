@@ -9,9 +9,9 @@ import GoalsUsers from 'pages/users/catalog/UsersItem/GoalsUsers';
 import NameUsers from 'pages/users/catalog/UsersItem/NameUsers';
 import Btns from 'pages/users/catalog/UsersItem/Btns';
 
-const UserItem = ({ account, user, likes }) => {
+const UserItem = ({ uid, user, sympathys }) => {
 
-  console.log(user.id)
+
 
   return (
     <Link className="users-item" to={`/users-catalog/${user.id}`}>
@@ -32,8 +32,8 @@ const UserItem = ({ account, user, likes }) => {
         />
         <Btns
           user={user}
-          account={account}
-          likes={likes}
+          uid={uid}
+          sympathys={sympathys}
         />
 
       </div>

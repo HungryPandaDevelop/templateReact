@@ -3670,27 +3670,27 @@ footer .nav li {
 }
 
 .likedis-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 15px;
+  text-align: center;
 }
 .likedis-item h3 {
-  text-align: center;
   font-size: 16px;
   color: #0B132B;
 }
 .likedis-item .btn-container {
-  margin-top: 30px;
+  margin-top: 8px;
+}
+.likedis-item .btn {
+  padding: 5px 12px;
 }
 
 .likedis-img {
   width: 100px;
   height: 100px;
+  display: inline-block;
   position: relative;
   overflow: hidden;
   border-radius: 100%;
-  margin-bottom: 8px;
+  font-size: 0;
 }
 .likedis-img .img-cover {
   width: 100%;
@@ -3701,27 +3701,20 @@ footer .nav li {
 }
 
 .sympathy-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 15px;
+  text-align: center;
 }
 .sympathy-item h3 {
   text-align: center;
   font-size: 16px;
   color: #0B132B;
 }
-.sympathy-item .btn-container {
-  margin-top: 15px;
-}
-
 .sympathy-img {
   width: 100px;
   height: 100px;
   position: relative;
   overflow: hidden;
   border-radius: 100%;
-  margin-bottom: 8px;
+  display: inline-block;
 }
 .sympathy-img .img-cover {
   width: 100%;
@@ -3739,7 +3732,8 @@ footer .nav li {
   font-weight: 700;
   display: inline-block;
   color: #ffffff;
-  margin: 0 0 15px;
+  vertical-align: middle;
+  margin-right: 15px;
 }
 
 .status--see {
@@ -3752,6 +3746,66 @@ footer .nav li {
 
 .status--disagree {
   background-color: #ed1834;
+}
+
+.sympathy-btn {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #00AEEF;
+  border-radius: 100%;
+  cursor: pointer;
+  vertical-align: middle;
+  margin: 0 8px;
+}
+.sympathy-btn:hover, .sympathy-btn.active {
+  background-color: #00AEEF;
+}
+
+.see-sympathy-btn {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("../images/icons/view-blue.svg");
+}
+.see-sympathy-btn:hover, .see-sympathy-btn.active {
+  background-image: url("../images/icons/view-fill-white.svg");
+}
+
+.agree-sympathy-btn {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("../images/icons-app/like-blue.svg");
+}
+.agree-sympathy-btn:hover, .agree-sympathy-btn.active {
+  background-image: url("../images/icons-app/like-white-fill.svg");
+}
+
+.disagree-sympathy-btn {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 24px;
+  background-image: url("../images/icons-app/dislike-blue.svg");
+}
+.disagree-sympathy-btn:hover, .disagree-sympathy-btn.active {
+  background-image: url("../images/icons-app/dislike-white-fill.svg");
+}
+
+.trash-sympathy-btn {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 24px;
+  background-image: url("../images/icons/trash-blue.svg");
+}
+.trash-sympathy-btn:hover {
+  background-image: url("../images/icons/trash-white.svg");
+}
+
+.sympathy-hint {
+  font-size: 14px;
+  color: #98A1A7;
+  margin: 0 0 8px;
 }
 
 .users-item {

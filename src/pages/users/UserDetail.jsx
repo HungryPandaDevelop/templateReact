@@ -12,7 +12,7 @@ import PersonalInfo from "./detail/PersonalInfo";
 
 import Btns from "./detail/Btns";
 
-const UserDetail = ({ account }) => {
+const UserDetail = ({ uid, sympathys }) => {
 
   const params = useParams();
 
@@ -21,7 +21,7 @@ const UserDetail = ({ account }) => {
 
   useEffect(() => {
     getSingleListing('users', params.userId).then((getuser) => {
-      console.log(getuser)
+
       setUser(getuser);
       setLoading(false);
     })
@@ -41,7 +41,8 @@ const UserDetail = ({ account }) => {
                 <GoalsUsers user={user} />
                 <Btns
                   user={user}
-                  account={account}
+                  uid={uid}
+                  sympathys={sympathys}
                 />
               </div>
               {user.currentLocation && <Location user={user} />}
@@ -77,7 +78,8 @@ const UserDetail = ({ account }) => {
 
 const mapStateToProps = (state) => {
   return {
-    account: state.account,
+    uid: state.account.uid,
+    sympathys: state.sympathys,
   }
 }
 

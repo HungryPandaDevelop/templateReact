@@ -1,11 +1,15 @@
 export const renderStatus = (like) => {
 
   const tagSimp = (name, text) => {
-    return <div>
-      <div className={`status-sympathy status--${name}`}>
-        {text}
-      </div>
-    </div>
+    return (
+      <>
+        <div className="sympathy-hint">
+        Ответ на симпатию
+        </div>
+        <div className={`status-sympathy status--${name}`}>
+          {text}
+        </div>
+      </>)
   }
 
 
